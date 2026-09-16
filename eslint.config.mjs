@@ -9,6 +9,12 @@ export default tseslint.config(
       '**/coverage/**',
       '**/node_modules/**',
       'graphify-out/**',
+      // Playwright's own output. The HTML reporter writes a bundled copy of the
+      // trace viewer, which is third-party JavaScript outside every tsconfig —
+      // linting it fails the whole run, so generating a report must not be able
+      // to break `pnpm lint`.
+      '**/playwright-report/**',
+      '**/test-results/**',
       // Vendored skill bundles from the agent kit: third-party templates that
       // do not meet this repo's lint contract and are not compiled here.
       '.claude/skills/**',

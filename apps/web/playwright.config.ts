@@ -45,11 +45,23 @@ export default defineConfig({
   webServer: {
     command: 'pnpm start',
     url: 'http://127.0.0.1:3000',
-    reuseExistingServer: !process.env.CI,
+    // NEVER reuse a server this config did not start.
+    //
+    // The attribution suite depends on the server's *environment*, not just on
+    // its responses: it reads the captured lead back off the path in
+    // LEAD_SINK_PATH. A server already listening on 3000 — one a developer left
+    // running, or one from an earlier build — does not carry that variable, so
+    // its leads land in the default `.data/demo-leads.jsonl` and the suite
+    // inspects a file nothing ever writes to.
+    //
+    // That has now cost two debugging sessions, both spent on a "regression"
+    // that was the harness inspecting the wrong file. Reuse saves about five
+    // seconds and buys a test whose subject is unknown, so it is off
+    // everywhere rather than off in CI only.
+    reuseExistingServer: false,
     timeout: 180_000,
     env: {
-      // The attribution test reads the captured lead back off disk, which is
-      // the only way to assert acceptance row 8 end to end while DEBT-08 stands
+      // The only way to assert acceptance row 8 end to end while DEBT-08 stands
       // and the LeadSink writes to a file. Pointing it at a test path keeps the
       // suite from appending to whatever a developer has been collecting.
       LEAD_SINK_PATH: LEAD_SINK_PATH,
