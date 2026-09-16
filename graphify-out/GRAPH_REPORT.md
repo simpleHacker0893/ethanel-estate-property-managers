@@ -1,17 +1,17 @@
 # Graph Report - ethanel-real-estate-management  (2026-09-16)
 
 ## Corpus Check
-- 100 files · ~97,541 words
+- 163 files · ~117,333 words
 - Verdict: corpus is large enough that graph structure adds value.
-- Unclassified: 4 file(s) not represented in the graph (top: (none) 4)
+- Unclassified: 19 file(s) not represented in the graph (top: (none) 9, .tpl 8, .css 2)
 
 ## Summary
-- 990 nodes · 892 edges · 99 communities (91 shown, 8 thin omitted)
+- 1488 nodes · 1379 edges · 139 communities (125 shown, 11 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `10e39efe`
+- Built from commit: `8c862a91`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -110,32 +110,77 @@
 - extraction-spec.md
 - meetings/README.md
 - Marketing site blueprint
-- 7. Functional requirements
+- package.json
 - Marketing site acceptance
 - Track · The public marketing site
 - Tracks
 - pull_request_template.md
+- web/package.json
+- ui/package.json
+- compilerOptions
+- demo-request.ts
+- tasks
+- values.schema.json
+- contracts/package.json
+- config/package.json
+- renovate.json
+- parseEnv
+- docs-worker/package.json
+- gateway/package.json
+- worker/package.json
+- properties
+- enabled
+- Spec · Track — The public marketing site
+- properties
+- properties
+- resources
+- properties
+- compilerOptions
+- compilerOptions
+- properties
+- lib.json
+- .prettierrc.json
+- web/tsconfig.json
+- docs-worker/tsconfig.json
+- gateway/tsconfig.json
+- worker/tsconfig.json
+- containerPort
+- config/tsconfig.json
+- contracts/tsconfig.json
+- ui/tsconfig.json
+- route.ts
+- renovate-note.md
+- README.md
+- tickets/README.md
 
 ## God Nodes (most connected - your core abstractions)
-1. `Ethanel — Product Requirements Document` - 17 edges
-2. `Ethanel — Architecture v1.2` - 16 edges
-3. `Marketing site blueprint` - 15 edges
-4. `7. Functional requirements` - 14 edges
-5. `9. Integrations` - 13 edges
-6. `Sprint NNN Blueprint — {sprint name}` - 13 edges
-7. `What You Must Do When Invoked` - 12 edges
-8. `Track · The public marketing site` - 12 edges
-9. `DevOps Guidelines` - 11 edges
-10. `Sprint 001 · Ground truth and the pipeline` - 11 edges
+1. `compilerOptions` - 25 edges
+2. `Ethanel — Product Requirements Document` - 17 edges
+3. `Ethanel — Architecture v1.2` - 16 edges
+4. `Marketing site blueprint` - 15 edges
+5. `7. Functional requirements` - 14 edges
+6. `9. Integrations` - 13 edges
+7. `Sprint NNN Blueprint — {sprint name}` - 13 edges
+8. `What You Must Do When Invoked` - 12 edges
+9. `Track · The public marketing site` - 12 edges
+10. `Code Examples` - 11 edges
 
 ## Surprising Connections (you probably didn't know these)
-- None detected - all connections are within the same source files.
+- `startShell()` --calls--> `parseEnv()`  [EXTRACTED]
+  apps/docs-worker/src/shell.ts → packages/config/src/env.ts
+- `startShell()` --calls--> `parseEnv()`  [EXTRACTED]
+  apps/gateway/src/shell.ts → packages/config/src/env.ts
+- `startShell()` --calls--> `parseEnv()`  [EXTRACTED]
+  apps/worker/src/shell.ts → packages/config/src/env.ts
 
-## Communities (99 total, 8 thin omitted)
+## Import Cycles
+- None detected.
+
+## Communities (139 total, 11 thin omitted)
 
 ### Community 0 - "Ethanel — Product Requirements Document"
-Cohesion: 0.06
-Nodes (34): 0. Founder calls, 10. Non-functional requirements, 11. Compliance, 12. Integrations, 13. Pilot delivery plan (solo founder with Claude Code sub-agents), 14. Decisions log, 1. Product summary, 2. Glossary (binding for UI, code and tickets) (+26 more)
+Cohesion: 0.04
+Nodes (48): 0. Founder calls, 10. Non-functional requirements, 11. Compliance, 12. Integrations, 13. Pilot delivery plan (solo founder with Claude Code sub-agents), 14. Decisions log, 1. Product summary, 2. Glossary (binding for UI, code and tickets) (+40 more)
 
 ### Community 1 - "Ethanel — Architecture v1.2"
 Cohesion: 0.04
@@ -206,8 +251,8 @@ Cohesion: 0.17
 Nodes (11): Checklists, CI/CD, Configuration, Deployment strategy, DevOps Guidelines, Docker, Feature Flags, Health and shutdown (+3 more)
 
 ### Community 18 - "Sprint 001 · Ground truth and the pipeline"
-Cohesion: 0.17
-Nodes (11): Blocked by, Decisions this sprint may not re-open, Depends on, Exit criteria, Goal, In scope, Notes, Out of scope (+3 more)
+Cohesion: 0.14
+Nodes (13): Blocked by, Decisions this sprint may not re-open, Depends on, Exit criteria, Goal, In scope, Notes, Out of scope (+5 more)
 
 ### Community 19 - "Sprint 002 · The chassis and tenancy"
 Cohesion: 0.17
@@ -477,9 +522,9 @@ Nodes (3): Rules for this sprint, Sprint NNN Builder Handoff Prompt, When you be
 Cohesion: 0.12
 Nodes (15): Accessibility — AA by construction, API contracts added, Copy rules — non-negotiable, Dependency policy, Files to review first, Jobs, Marketing site blueprint, Objective (+7 more)
 
-### Community 94 - "7. Functional requirements"
-Cohesion: 0.14
-Nodes (14): 7. Functional requirements, M10 Marketplace, storefronts and viewings, M11 Land projects and sales [1.1], M12 Super admin and SaaS billing, M13 Tax integration [1.1], M1 Organizations, accounts and roles, M2 Portfolio, M3 Residents and leases (+6 more)
+### Community 94 - "package.json"
+Cohesion: 0.04
+Nodes (45): devDependencies, eslint, eslint-config-prettier, husky, lint-staged, prettier, prettier-plugin-tailwindcss, turbo (+37 more)
 
 ### Community 95 - "Marketing site acceptance"
 Cohesion: 0.14
@@ -497,20 +542,156 @@ Nodes (3): Current tracks, Tracks, What a track is not
 Cohesion: 0.22
 Nodes (8): Boundary check, Business facts, Copy, Evidence, Money, Shared surfaces, What this changes, Which exit criterion this moves
 
+### Community 99 - "web/package.json"
+Cohesion: 0.04
+Nodes (41): metadata, viewport, nextConfig, dependencies, @ethanel/contracts, @ethanel/ui, next, next-intl (+33 more)
+
+### Community 100 - "ui/package.json"
+Cohesion: 0.07
+Nodes (26): dependencies, clsx, tailwind-merge, devDependencies, @ethanel/config, react, tailwindcss, @types/react (+18 more)
+
+### Community 101 - "compilerOptions"
+Cohesion: 0.07
+Nodes (27): compilerOptions, allowImportingTsExtensions, declaration, declarationMap, erasableSyntaxOnly, exactOptionalPropertyTypes, forceConsistentCasingInFileNames, incremental (+19 more)
+
+### Community 102 - "demo-request.ts"
+Cohesion: 0.12
+Nodes (15): Attribution, ATTRIBUTION_COOKIE, ATTRIBUTION_MAX_AGE_SECONDS, attributionSchema, CURRENT_SYSTEMS, CurrentSystem, DemoRequest, demoRequestSchema (+7 more)
+
+### Community 103 - "tasks"
+Cohesion: 0.10
+Nodes (19): dependsOn, outputs, cache, persistent, globalDependencies, globalEnv, dependsOn, $schema (+11 more)
+
+### Community 104 - "values.schema.json"
+Cohesion: 0.11
+Nodes (17): type, definitions, probe, resourceSide, description, type, anyOf, type (+9 more)
+
+### Community 105 - "contracts/package.json"
+Cohesion: 0.12
+Nodes (16): dependencies, zod, devDependencies, @ethanel/config, exports, ./marketing, @ethanel/config, zod (+8 more)
+
+### Community 106 - "config/package.json"
+Cohesion: 0.12
+Nodes (15): dependencies, zod, exports, ./env, ./tsconfig/lib, ./tsconfig/next, ./tsconfig/node, zod (+7 more)
+
+### Community 107 - "renovate.json"
+Cohesion: 0.11
+Nodes (17): config:recommended, :semanticCommitsDisabled, extends, lockFileMaintenance, enabled, schedule, minimumReleaseAge, _minimumReleaseAgeWhy (+9 more)
+
+### Community 108 - "parseEnv"
+Cohesion: 0.27
+Nodes (7): startShell(), startShell(), startShell(), ADR-0011, BaseEnv, baseEnvSchema, parseEnv()
+
+### Community 109 - "docs-worker/package.json"
+Cohesion: 0.15
+Nodes (12): dependencies, @ethanel/config, @ethanel/config, name, private, scripts, dev, lint (+4 more)
+
+### Community 110 - "gateway/package.json"
+Cohesion: 0.15
+Nodes (12): dependencies, @ethanel/config, @ethanel/config, name, private, scripts, dev, lint (+4 more)
+
+### Community 111 - "worker/package.json"
+Cohesion: 0.15
+Nodes (12): dependencies, @ethanel/config, @ethanel/config, name, private, scripts, dev, lint (+4 more)
+
+### Community 112 - "properties"
+Cohesion: 0.17
+Nodes (12): pattern, type, properties, required, type, digest, image, repository (+4 more)
+
+### Community 113 - "enabled"
+Cohesion: 0.18
+Nodes (11): type, const, type, type, properties, required, type, egress (+3 more)
+
+### Community 114 - "Spec · Track — The public marketing site"
+Cohesion: 0.18
+Nodes (10): Acceptance — verbatim from `./acceptance.md`, Further Notes, Implementation Decisions, Out of Scope, Problem Statement, Readiness items narrowed, written out in full, Solution, Spec · Track — The public marketing site (+2 more)
+
+### Community 115 - "properties"
+Cohesion: 0.20
+Nodes (10): properties, required, type, minimum, type, minimum, type, autoscaling (+2 more)
+
+### Community 116 - "properties"
+Cohesion: 0.20
+Nodes (10): $ref, properties, required, type, liveness, probes, readiness, startup (+2 more)
+
+### Community 117 - "resources"
+Cohesion: 0.25
+Nodes (8): $ref, limits, requests, resources, $ref, properties, required, type
+
+### Community 118 - "properties"
+Cohesion: 0.25
+Nodes (8): type, type, properties, required, type, maxUnavailable, minAvailable, podDisruptionBudget
+
+### Community 119 - "compilerOptions"
+Cohesion: 0.25
+Nodes (7): compilerOptions, allowJs, jsx, lib, plugins, extends, ../../../tsconfig.base.json
+
+### Community 120 - "compilerOptions"
+Cohesion: 0.25
+Nodes (7): compilerOptions, lib, module, moduleResolution, types, extends, ../../../tsconfig.base.json
+
+### Community 121 - "properties"
+Cohesion: 0.29
+Nodes (7): properties, replicaCount, terminationGracePeriodSeconds, minimum, type, minimum, type
+
+### Community 122 - "lib.json"
+Cohesion: 0.33
+Nodes (5): compilerOptions, lib, types, extends, ../../../tsconfig.base.json
+
+### Community 123 - ".prettierrc.json"
+Cohesion: 0.33
+Nodes (5): plugins, printWidth, semi, singleQuote, trailingComma
+
+### Community 124 - "web/tsconfig.json"
+Cohesion: 0.40
+Nodes (4): exclude, extends, include, @ethanel/config/tsconfig/next
+
+### Community 125 - "docs-worker/tsconfig.json"
+Cohesion: 0.50
+Nodes (3): extends, include, @ethanel/config/tsconfig/node
+
+### Community 126 - "gateway/tsconfig.json"
+Cohesion: 0.50
+Nodes (3): extends, include, @ethanel/config/tsconfig/node
+
+### Community 127 - "worker/tsconfig.json"
+Cohesion: 0.50
+Nodes (3): extends, include, @ethanel/config/tsconfig/node
+
+### Community 128 - "containerPort"
+Cohesion: 0.50
+Nodes (4): maximum, minimum, type, containerPort
+
+### Community 129 - "config/tsconfig.json"
+Cohesion: 0.50
+Nodes (3): extends, include, ./tsconfig/lib.json
+
+### Community 130 - "contracts/tsconfig.json"
+Cohesion: 0.50
+Nodes (3): extends, include, @ethanel/config/tsconfig/lib
+
+### Community 131 - "ui/tsconfig.json"
+Cohesion: 0.50
+Nodes (3): extends, include, @ethanel/config/tsconfig/next
+
+### Community 138 - "tickets/README.md"
+Cohesion: 0.06
+Nodes (19): 01: Test harness and live gates, 02: Design tokens and the kitchen sink, 03: Marketing shell, content types and the boundary rule, 04: Hero and proof bar, 05: The problem, how it works, and the feature grid, 06: Three deep dives, including the real chart of accounts, 07: Role switcher, marketplace band and land band, 08: Security, pricing preview, FAQ and final call to action — completes the landing page (+11 more)
+
 ## Knowledge Gaps
-- **740 isolated node(s):** `Where the project is`, `What has to happen before Sprint 001 can start`, `The marketing-site track`, `Eleven stale cross-references, closed`, `The go-live target` (+735 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 837 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **1077 isolated node(s):** `semi`, `singleQuote`, `printWidth`, `trailingComma`, `plugins` (+1072 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 1184 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **11 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Ethanel — Product Requirements Document` connect `Ethanel — Product Requirements Document` to `7. Functional requirements`?**
-  _High betweenness centrality (0.002) - this node is a cross-community bridge._
-- **What connects `Where the project is`, `What has to happen before Sprint 001 can start`, `The marketing-site track` to the rest of the system?**
-  _740 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Why does `properties` connect `properties` to `containerPort`, `values.schema.json`, `properties`, `enabled`, `properties`, `properties`, `resources`, `properties`?**
+  _High betweenness centrality (0.005) - this node is a cross-community bridge._
+- **What connects `semi`, `singleQuote`, `printWidth` to the rest of the system?**
+  _1077 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Ethanel — Product Requirements Document` be split into smaller, more focused modules?**
-  _Cohesion score 0.05714285714285714 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.04081632653061224 - nodes in this community are weakly interconnected._
 - **Should `Ethanel — Architecture v1.2` be split into smaller, more focused modules?**
   _Cohesion score 0.043478260869565216 - nodes in this community are weakly interconnected._
 - **Should `Technical Writer` be split into smaller, more focused modules?**
