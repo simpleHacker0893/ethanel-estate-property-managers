@@ -113,6 +113,9 @@ Recorded because each one was an enforcement mechanism that was not enforcing.
 | The entire site navigation | The header and footer are generated from the route manifest, so all 28 routes were linked from every page while only `/`, `/demo` and `/features/*` were built. **Eighteen links 404'd**, including every item under Solutions, Company and Legal. The manifest documents the invariant it was breaking — `v1.1-stub` is defined as "a titled placeholder that exists so a nav item does not 404" — and `crawlableRoutes` sat correctly computed and called by nothing under the comment "every route the link crawl must find a 200 on". Written down three times, enforced zero times. | Phase 3.1 |
 | `buildFooterColumns` | Kept a second copy of the footer group list and of the filter-and-sort, while `footerGroups` and `footerEntriesFor` sat unused beside the manifest they describe. Two implementations of one rule, in the place where divergence is least visible. | Phase 3.1 |
 | Partial prerendering vs `notFound()` | PPR commits the response status before the dynamic render, so a `notFound()` streamed into an already-sent shell renders "not found" under a **200**. The first catch-all shipped exactly that: a soft 404 on every unknown path, invisible to a link crawl and indexable. `generateStaticParams` is what makes the 404 real. | Phase 3.1 |
+| `PageBlock` had no link field | Every page that referenced another wrote the path into a sentence — "set out on /security" — which renders as unclickable text that reads like a broken link. Two independent reviewers flagged it. Blocks now carry structured links whose hrefs resolve against the manifest, and a test bans bare internal paths in copy; it found three more the first pass missed. | Phase 4 |
+| The `/security` draft itself | Said "a single-tenant bug and a cross-tenant leak". `\btenants?\b` is forbidden site-wide (D-60) and the hyphen is a word boundary, so the page stating the rules broke one. | Phase 4 |
+| **The JS budget (D-71)** | **The gate fails.** 271,587 bytes of JavaScript over the wire against a 150 KB (153,600) budget — 1.77x over. Total page weight is fine at ~463 KB against 900 KB. Worse than the overage: the figure is byte-identical across `/`, `/pricing`, `/security`, `/features/rent-collection` and `/demo`, so the client components are not route-split — a legal stub ships the same bundle as the demo form. Not fixed; see below. | Phase 6 |
 | `/security` on a feature page | `marketplace-and-viewings` linked to nine routes and not to the one where the design targets are explained. Caught by the new content test on its first run. | Phase 3 |
 
 ---
@@ -222,12 +225,38 @@ schemes.
 `sitemap.ts` and `robots.ts` from the route manifest, `hreflang` scaffolding.
 The `Organization` JSON-LD **omits `address`** until Q20 is answered.
 
-### Phase 6 · Verification (tickets 15–16)
+### Phase 6 · Verification (tickets 15–16) — **partial**
 
-Link crawl, axe gate, Lighthouse at 150 KB, geometry assertions, dark-mode
-screenshots, content-truth grep, stray-hex grep. Then `acceptance.md`'s evidence
-column filled from actual output, the Outcome section written, `STATE.md`
-updated in place, and the conversion self-audit.
+Green: the link crawl (`routes.spec.ts` — every manifest route answers 200,
+every chrome link resolves, unknown paths are real 404s, dev-only routes are
+unreachable), the axe gate across one page of each template shape in both
+colour schemes, the geometry assertions, the content-truth greps and the
+contrast proof.
+
+**Failing: the JavaScript budget.** Measured at 271,587 bytes over the wire
+against D-71's 150 KB, on every route. Lighthouse itself cannot run in the
+build container — Chrome refuses to launch as root without `--no-sandbox` and
+lhci does not propagate the flag — so the figure was taken from the CDP
+network log instead, which is the same quantity `resource-summary:script:size`
+asserts on.
+
+Two things are true and only one of them is a bug:
+
+1. The client components are **not route-split**. The byte count is identical
+   on a legal stub and on `/demo`, so the mega menu, the mobile drawer, the
+   role switcher and the demo form all sit in chunks every page loads. A page
+   with no interactive element should not ship the demo form.
+2. Next 16 and React 19 have a floor of their own, and 150 KB was set without
+   measuring it. Removing Radix's `NavigationMenu` in favour of a CSS-only
+   disclosure is the largest single lever available, but it is a real design
+   change — Radix is there because focus management, `aria`, escape and
+   outside-click are each something a hand-rolled menu gets wrong (D-19).
+
+Neither is fixed here. The budget is left failing and recorded rather than
+quietly raised: a budget edited to match the measurement is not a budget.
+
+Still owed: `acceptance.md`'s evidence column filled from actual output, the
+Outcome section, and the conversion self-audit.
 
 ---
 
@@ -266,9 +295,9 @@ Full rules in `AGENT-BRIEF.md`. The four that get violated first:
 | 1 · Landing page | **done** — commit `03c5d29` |
 | 2 · Demo flow | **done** — commit `03c5d29` |
 | 3 · Features | **done** — ten pages on one template |
-| 4 · Pages | not started |
-| 5 · SEO | not started |
-| 6 · Verification | not started |
+| 4 · Pages | **done** — sixteen pages on one template |
+| 5 · SEO | **done** — sitemap, robots, JSON-LD, OG cards, per-page metadata |
+| 6 · Verification | **partial** — link crawl, axe and geometry green; **JS budget fails** |
 
 Update this table at the end of every phase. It is the only place a fresh
 session looks to find out where the track is.
