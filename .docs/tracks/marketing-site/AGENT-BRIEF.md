@@ -302,8 +302,15 @@ nothing. That is acceptance row 10 and it is checked.
 - **Ochre is never text on white** (accent-500 on white is 2.67:1) and **never
   carries white text** (also 2.67:1). Both are forbidden pairs.
 - **The primary CTA is always the `accent-500` fill with `brand-900` ink** —
-  6.12:1. Use `<Button variant="primary">`, which sets it and the
-  `data-cta="primary"` marker for you.
+  6.12:1.
+  - For a real button: `<Button variant="primary">`, which sets the fill **and**
+    the `data-cta="primary"` marker for you.
+  - For a link — which is what a CTA usually is, since it navigates — use
+    `next/link` with `className={buttonClassName('primary', 'lg')}` **and**
+    `{...ctaMarker('primary')}`. **`buttonClassName` does not set the marker on
+    its own.** Forgetting the spread silently removes the element from the
+    acceptance-row-5 count, which is the kind of failure that makes a gate go
+    green by measuring nothing.
 - **Ochre text on white is `accent-700` only** — `text-accent-text`, 5.98:1.
 - **Form control borders use `--line-control` (sand-500) or darker.** `sand-200`
   is 1.27:1 and `sand-400` is 2.73:1; both fail WCAG 1.4.11's 3:1 floor for a

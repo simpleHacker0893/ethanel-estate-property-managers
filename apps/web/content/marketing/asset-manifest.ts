@@ -25,7 +25,7 @@ export const assetManifest: readonly AssetRow[] = [
   },
   {
     id: 'reconciliation-queue',
-    usedOn: '/ — S8 reconciliation deep dive',
+    usedOn: '/ — S9 reconciliation deep dive',
     owes: 'Screen capture of the manual match queue with two unmatched payments and one being allocated. Real UI, taken once Sprint 007 ships; not a mockup.',
     width: 1440,
     height: 960,

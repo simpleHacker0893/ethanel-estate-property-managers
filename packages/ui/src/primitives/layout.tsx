@@ -105,18 +105,35 @@ export function Eyebrow({ className, children, ...rest }: ComponentPropsWithoutR
   )
 }
 
+/**
+ * `surface` is the default card. `inherit` is the one to use inside a
+ * `Section tone="inverted"`.
+ *
+ * The distinction exists because the default hard-codes `bg-surface`, which on
+ * an inverted band renders a white card that has inherited white ink — invisible
+ * text, and a failure no unit test catches. Giving it a name here means each
+ * section does not have to reinvent the same `cn` override, and the override
+ * cannot be forgotten quietly.
+ */
+export type CardTone = 'surface' | 'inherit'
+
 export function Card({
   className,
+  tone = 'surface',
   children,
   ...rest
-}: ComponentPropsWithoutRef<'div'> & { children?: ReactNode }) {
+}: ComponentPropsWithoutRef<'div'> & { tone?: CardTone; children?: ReactNode }) {
   return (
     <div
       className={cn(
+        'rounded-lg border p-5',
         // sand-200 at 1.27:1 is permitted here: a card border is decoration,
         // not the only means of identifying a control (WCAG 1.4.11). A form
         // control border uses --line-control instead. See contrast.test.ts.
-        'border-line bg-surface rounded-lg border p-5',
+        tone === 'surface' && 'border-line bg-surface',
+        // Takes the band's own ink and a border drawn from the band's accent,
+        // so the card reads as a division of the band rather than a hole in it.
+        tone === 'inherit' && 'border-accent-band-quiet/40 bg-transparent',
         className,
       )}
       {...rest}

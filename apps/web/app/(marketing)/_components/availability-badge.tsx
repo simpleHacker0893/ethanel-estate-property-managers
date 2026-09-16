@@ -35,9 +35,18 @@ export function AvailabilityBadge({
   className,
 }: {
   availability: Availability
-  /** Required by the type when availability is not 'available'. */
-  sprint?: string
-  className?: string
+  /**
+   * Explicitly `| undefined` rather than a bare optional.
+   *
+   * The repo runs `exactOptionalPropertyTypes`, and `Capability`'s discriminated
+   * union gives `capability.sprint` the type `string | undefined`. With a bare
+   * `sprint?: string` every caller has to write
+   * `{...(x.sprint === undefined ? {} : { sprint: x.sprint })}` just to forward
+   * a value straight through — which three separate slices independently
+   * discovered and worked around. Widening here fixes it once.
+   */
+  sprint?: string | undefined
+  className?: string | undefined
 }) {
   const label = LABELS[availability]
   return (

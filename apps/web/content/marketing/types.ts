@@ -115,8 +115,16 @@ export interface HeroContent {
 
 export interface ProblemContent {
   heading: SectionHeading
-  /** In the customer's words, not ours. */
-  pains: { quote: string; response: string }[]
+  /**
+   * The symptom in the owner's voice, and the capability that answers it.
+   *
+   * The field is `symptom` and not `quote` for two reasons. Nobody is being
+   * quoted — these are written by us, and calling them quotations invites
+   * exactly the invented-testimonial the content-truth guard exists to catch,
+   * which greps for a `quote:` key. And `symptom` is the more accurate word for
+   * what they are.
+   */
+  pains: { symptom: string; response: string }[]
 }
 
 export interface HowItWorksContent {

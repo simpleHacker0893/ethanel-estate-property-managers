@@ -1,4 +1,9 @@
+import { join } from 'node:path'
+
 import { defineConfig, devices } from '@playwright/test'
+
+/** Where the demo Server Action writes captured leads during the suite. */
+export const LEAD_SINK_PATH = join(import.meta.dirname, 'test-results', 'demo-leads.jsonl')
 
 // Ticket 01 (marketing-site track): the prefactor that puts the three approved
 // gates at the front of the track, so an accessibility or budget regression
@@ -42,5 +47,12 @@ export default defineConfig({
     url: 'http://127.0.0.1:3000',
     reuseExistingServer: !process.env.CI,
     timeout: 180_000,
+    env: {
+      // The attribution test reads the captured lead back off disk, which is
+      // the only way to assert acceptance row 8 end to end while DEBT-08 stands
+      // and the LeadSink writes to a file. Pointing it at a test path keeps the
+      // suite from appending to whatever a developer has been collecting.
+      LEAD_SINK_PATH: LEAD_SINK_PATH,
+    },
   },
 })
