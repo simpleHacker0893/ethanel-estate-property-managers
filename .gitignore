@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+.venv/
+__pycache__/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Build outputs
+dist/
+build/
+.next/
+.turbo/
+out/
+coverage/
+*.tsbuildinfo
+
+# Knowledge graph — graph.json IS committed (union-merged by the graphify
+# merge driver); the cost ledger and HTML artifacts are local noise.
+graphify-out/cache/
+graphify-out/cost.json
+graphify-out/graph.html
+graphify-out/GRAPH_TREE.html
+graphify-out/memory/
+
+# Client-sensitive local files. Anonymised design-partner fixtures under
+# fixtures/ ARE committed on purpose (Sprint 001) — raw originals never are.
+samples/raw/
+samples/private/
+
+# Sprint pack archive — the unpacked .docs/ tree is the source of truth
+ethanel-sprint-pack.zip
+
+# Claude Code — the agent kit IS committed (D-53, AGENTS.md is canonical);
+# the local permission allowlist is per-machine and is not.
+.claude/settings.local.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/settings.json
+
+# Logs
+*.log

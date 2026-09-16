@@ -1,0 +1,6 @@
+# Normalise to LF in the repository and on checkout. Shell scripts, Dockerfiles
+# and GitHub Actions workflows break with CRLF inside a Linux container, and the
+# whole pipeline runs on ubuntu-latest.
+* text=auto eol=lf
+
+graphify-out/graph.json merge=graphify
