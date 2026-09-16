@@ -230,7 +230,7 @@ cannot scope — which is a policy question, not a table question.
 through a `LeadSink` seam to an append-only file, recorded as **DEBT-08**. The
 seam exists precisely so this answer is a new implementation and not a migration.
 
-**Q23 · The 120 KB first-party JS budget is under the Next.js floor — relax, re-platform, or hold?** — blocks the marketing track's Lighthouse gate
+**Q23 · The 120 KB first-party JS budget is under the Next.js floor — relax, re-platform, or hold?** — **ANSWERED, D-71**
 `requirements.md` (marketing track) budgets "first-party JS on `/` under
 120 KB gzipped". Measured 16 September 2026 on the deployed placeholder — a
 single static server-component page with **zero** first-party client code —
@@ -245,9 +245,15 @@ record it as standing stack evidence (the budget stays, CI stays yellow on that
 one assertion); or move marketing routes off the Next runtime — a D-69-adjacent
 decision far beyond this track. The assertion currently runs as a **warning**
 so CI stays green while this is open; it is not silently deleted.
-*Needed by:* before `/` goes live with real content, which can only add script.
-Whichever way this lands, the Lighthouse assertion is flipped from warn back to
-error in the same commit.
+**Answered 16 September 2026 — relax to 150 KB and enforce it (D-71).** The
+budget could not be met by deleting first-party code because there was none to
+delete, and a gate nobody can pass by doing the right thing stops being read.
+150 KB leaves roughly 14 KB over the measured framework floor, so the assertion
+still fails the moment first-party client JavaScript becomes significant. Per
+this question's own terms the assertion flipped from `warn` to `error` in the
+same commit as the number, so the budget was never both relaxed and unenforced.
+That a framework floor consumed the whole original budget stays on the record as
+evidence about the stack on Kenyan mobile.
 
 **Q14 · What is readiness item E18?** — **ANSWERED, D-55**
 E18 is the **automated delivery pipeline**: merge to `main` builds, tests and

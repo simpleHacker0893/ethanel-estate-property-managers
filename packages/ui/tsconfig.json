@@ -1,4 +1,14 @@
 {
-  "extends": "@ethanel/config/tsconfig/next",
+  // Direct relative path rather than the `@ethanel/config` package export:
+  // vitest's tsconfig loader does not resolve the chain through pnpm's
+  // symlinked node_modules and looks for tsconfig.base.json inside
+  // node_modules. tsc resolves both forms identically. Same reason as
+  // packages/contracts and apps/web.
+  "extends": "../config/tsconfig/next.json",
+  "compilerOptions": {
+    // src/contrast.ts reads theme.css from disk so the ratio table is
+    // recomputed rather than transcribed.
+    "types": ["node"]
+  },
   "include": ["src/**/*.ts", "src/**/*.tsx"]
 }
