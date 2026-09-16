@@ -67,8 +67,12 @@ export function Section({
           : 'py-10 md:py-12',
         tone === 'default' && 'bg-surface text-ink',
         tone === 'raised' && 'bg-surface-raised text-ink',
-        tone === 'sunken' && 'bg-surface-sunken text-ink',
-        tone === 'inverted' && 'bg-accent-band text-accent-band-ink',
+        // The decorative field rides on `tone` rather than on a separate prop.
+        // Depth is a property of what the band already is, so binding it here
+        // means every existing section gets it without an edit, and no page can
+        // end up with a sunken band that forgot its texture.
+        tone === 'sunken' && 'field field-grid bg-surface-sunken text-ink',
+        tone === 'inverted' && 'field field-band bg-accent-band text-accent-band-ink',
         className,
       )}
       {...rest}

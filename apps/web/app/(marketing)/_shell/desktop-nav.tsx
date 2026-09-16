@@ -11,6 +11,12 @@ import type { NavMenu } from './nav-data'
  * hand-rolled: focus management, aria, escape and outside-click come from the
  * library, and every one of those is something a hand-rolled menu gets wrong.
  *
+ * The list fills the header bar (`flex-1`) so it can place items at both ends:
+ * the menu triggers sit immediately beside the wordmark, and `ml-auto` on the
+ * call-to-action pushes that one item to the far right. Before that, the
+ * header's `justify-between` pushed the whole list right, which stranded the
+ * triggers against the CTA and left the bar empty beside the logo.
+ *
  * Entries come from the route manifest via props; this component does not know
  * what a route is.
  */
@@ -24,7 +30,7 @@ export function DesktopNav({
   ariaLabel: string
 }) {
   return (
-    <NavigationMenu.Root aria-label={ariaLabel} className="relative hidden lg:block">
+    <NavigationMenu.Root aria-label={ariaLabel} className="relative hidden flex-1 lg:block">
       <NavigationMenu.List className="flex items-center gap-1">
         {menus.map((menu) => (
           <NavigationMenu.Item key={menu.id}>
@@ -76,7 +82,7 @@ export function DesktopNav({
           </NavigationMenu.Item>
         ))}
 
-        <NavigationMenu.Item>
+        <NavigationMenu.Item className="ml-auto">
           <NavigationMenu.Link asChild>
             {/*
               The header CTA is the `secondary` variant, not `primary`. That is
@@ -85,7 +91,7 @@ export function DesktopNav({
               every 844px scroll step and collide with the one the section
               beneath it owns.
             */}
-            <Link href="/demo" className={buttonClassName('secondary', 'md', 'ml-2')}>
+            <Link href="/demo" className={buttonClassName('secondary', 'md')}>
               {ctaLabel}
             </Link>
           </NavigationMenu.Link>

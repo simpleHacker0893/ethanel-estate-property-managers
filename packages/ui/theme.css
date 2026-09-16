@@ -249,6 +249,89 @@
   --color-focus: var(--focus);
 }
 
+/* -------------------------------------------------------------- decoration ---
+ * Decorative backgrounds. Atmosphere without a single image file.
+ *
+ * The site has no photography and is not allowed to invent any (DEBT-10): a
+ * rendered "screenshot" of a product that does not exist yet is a claim, not a
+ * decoration. So the depth here is generated — radial light fields and a ruled
+ * grid, built from the same brand and accent ramps the rest of the system
+ * uses. Nothing is fetched, nothing is animated, and the JS budget (D-71) is
+ * untouched, because none of this is JavaScript.
+ *
+ * Every value is a token, so dark mode is a redefinition rather than a second
+ * set of rules — the same property that makes the semantic layer work. The
+ * mixes are deliberately weak: these sit *behind* body text, and the contrast
+ * pairs proved in `contrast.test.ts` assume the surface token underneath. A
+ * field strong enough to shift a measured pair would invalidate the proof, so
+ * the glows stay under 20% and the grid is a hairline.
+ */
+:root {
+  --field-glow: color-mix(in oklab, var(--color-brand-500) 13%, transparent);
+  --field-glow-warm: color-mix(in oklab, var(--color-accent-500) 11%, transparent);
+  --field-rule: color-mix(in oklab, var(--color-sand-900) 5%, transparent);
+  --field-band-glow: color-mix(in oklab, var(--color-accent-500) 18%, transparent);
+  /* The two corners of the reserved-image plate. */
+  --field-plate-a: color-mix(in oklab, var(--color-brand-500) 12%, var(--surface));
+  --field-plate-b: color-mix(in oklab, var(--color-accent-500) 10%, var(--surface));
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Light fields have to work harder on a near-black surface, and the cooler
+     * brand-400 reads as light rather than as a colour cast. */
+    --field-glow: color-mix(in oklab, var(--color-brand-400) 20%, transparent);
+    --field-glow-warm: color-mix(in oklab, var(--color-accent-500) 13%, transparent);
+    --field-rule: color-mix(in oklab, var(--color-sand-0) 7%, transparent);
+    --field-band-glow: color-mix(in oklab, var(--color-accent-400) 20%, transparent);
+    --field-plate-a: color-mix(in oklab, var(--color-brand-400) 16%, var(--surface));
+    --field-plate-b: color-mix(in oklab, var(--color-accent-500) 12%, var(--surface));
+  }
+}
+
+/* `isolation` is what makes `z-index: -1` safe: it creates a stacking context
+ * on the section, so the pseudo-element paints above the section's own
+ * background and below its content, instead of escaping behind an ancestor. */
+.field {
+  position: relative;
+  isolation: isolate;
+}
+
+.field::before {
+  content: '';
+  position: absolute;
+  /* `inset: 0` rather than a negative inset: the landing page asserts no
+   * horizontal scroll at 390px, and a bleeding pseudo-element is the usual way
+   * that assertion starts failing. */
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* The hero: a cool light from the upper right, where the portrait sits, and a
+ * warm one bled in from the lower left to keep the fold from going grey. */
+.field-hero::before {
+  background:
+    radial-gradient(56rem 30rem at 84% -12%, var(--field-glow), transparent 70%),
+    radial-gradient(38rem 24rem at 6% 112%, var(--field-glow-warm), transparent 72%);
+}
+
+/* A ruled grid, faded out before it reaches the text it sits behind. */
+.field-grid::before {
+  background-image:
+    linear-gradient(to right, var(--field-rule) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--field-rule) 1px, transparent 1px);
+  background-size: 3.5rem 3.5rem;
+  -webkit-mask-image: radial-gradient(70% 60% at 50% 0%, #000, transparent 78%);
+  mask-image: radial-gradient(70% 60% at 50% 0%, #000, transparent 78%);
+}
+
+/* The inverted band, lit from one corner so it reads as a surface rather than
+ * a flat block of brand colour. */
+.field-band::before {
+  background: radial-gradient(44rem 26rem at 88% 0%, var(--field-band-glow), transparent 68%);
+}
+
 /* ---------------------------------------------------------------- behavior ---
  * The visible focus ring is a requirement, not a default; reassert it because
  * Tailwind preflight does not provide one.

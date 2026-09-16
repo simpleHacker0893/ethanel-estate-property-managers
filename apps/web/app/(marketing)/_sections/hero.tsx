@@ -33,7 +33,10 @@ import type { HeroContent } from '../../../content/marketing/types'
  */
 export function Hero({ content }: { content: HeroContent }) {
   return (
-    <section className="bg-surface pt-6 pb-12 md:pt-14 md:pb-20" aria-labelledby="hero-h1">
+    <section
+      className="field field-hero bg-surface pt-6 pb-12 md:pt-14 md:pb-20"
+      aria-labelledby="hero-h1"
+    >
       <Container>
         <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:items-center lg:gap-14">
           <div className="max-w-[var(--measure)]">
