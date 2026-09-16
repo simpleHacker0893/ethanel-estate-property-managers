@@ -120,15 +120,15 @@
     "semantic_hash": ""
   },
   ".docs/ARCHITECTURE.md": {
-    "mtime": 1789535842.592095,
-    "seen": 1789536119.699142,
-    "ast_hash": "d7206c1d6cabcfd7028145ac06cd4b32",
+    "mtime": 1789493835.365078,
+    "seen": 1789535418.1459055,
+    "ast_hash": "7b19a90e856c768244c4e42bb77f6c5a",
     "semantic_hash": ""
   },
   ".docs/DECISIONS.md": {
-    "mtime": 1789535484.8115568,
-    "seen": 1789536119.699144,
-    "ast_hash": "c8df2973b4e399b88d899850e70ad9fe",
+    "mtime": 1789493714.6986635,
+    "seen": 1789535418.1459067,
+    "ast_hash": "c1fd57dc0699eead17b0936c85cfe1b9",
     "semantic_hash": ""
   },
   ".docs/DOMAIN.md": {
@@ -138,33 +138,33 @@
     "semantic_hash": ""
   },
   ".docs/FILE_INVENTORY.md": {
-    "mtime": 1789535842.592095,
-    "seen": 1789536119.699147,
-    "ast_hash": "1ed44a5de64f57d87f574e3df3c351e0",
+    "mtime": 1789492044.0502627,
+    "seen": 1789535418.1459095,
+    "ast_hash": "5f1414716376ba2a8509cd210f66bd02",
     "semantic_hash": ""
   },
   ".docs/PLAYBOOK.md": {
-    "mtime": 1789535842.5857835,
-    "seen": 1789536119.6991482,
-    "ast_hash": "d8907a403653c7b1995755dd82a653b0",
+    "mtime": 1789491415.8130875,
+    "seen": 1789535418.1459107,
+    "ast_hash": "c9fe7cf816515fb39eceb5dc0aadee67",
     "semantic_hash": ""
   },
   ".docs/PRD.md": {
-    "mtime": 1789535842.5891845,
-    "seen": 1789536119.6991496,
-    "ast_hash": "344336bb5dbcadad1c08af6581c013fe",
+    "mtime": 1789493835.3671148,
+    "seen": 1789535418.1459122,
+    "ast_hash": "cc5e3d6636bdee7c11bb601305c8e3c8",
     "semantic_hash": ""
   },
   ".docs/QUESTIONS.md": {
-    "mtime": 1789535554.0005538,
-    "seen": 1789536119.6991515,
-    "ast_hash": "1e0cc86c9b0c557e56935d352ab2ccd9",
+    "mtime": 1789493508.4800699,
+    "seen": 1789535418.1459131,
+    "ast_hash": "165628f7dec6cd366da8c78498c157a0",
     "semantic_hash": ""
   },
   ".docs/READINESS.md": {
-    "mtime": 1789535842.5881004,
-    "seen": 1789536119.699154,
-    "ast_hash": "7b51a159e5bba2c2d1283c4c05b4d631",
+    "mtime": 1789493887.8470936,
+    "seen": 1789535418.1459143,
+    "ast_hash": "b3bf32b0db43e096debd999db5e5ba6d",
     "semantic_hash": ""
   },
   ".docs/RECONCILIATION.md": {
@@ -174,9 +174,9 @@
     "semantic_hash": ""
   },
   ".docs/RISKS.md": {
-    "mtime": 1789535842.592095,
-    "seen": 1789536119.6991591,
-    "ast_hash": "84875c2722e3eaeb69fc08541413978c",
+    "mtime": 1789491415.7927375,
+    "seen": 1789535418.1459167,
+    "ast_hash": "358526d79feb5adfc193bcdbf3247d66",
     "semantic_hash": ""
   },
   ".docs/ROADMAP.md": {
@@ -192,15 +192,15 @@
     "semantic_hash": ""
   },
   ".docs/STATE.md": {
-    "mtime": 1789536055.2121093,
-    "seen": 1789536119.6991673,
-    "ast_hash": "24fb2c9d9f8ff3cc23b732447af8fced",
+    "mtime": 1789493835.3759198,
+    "seen": 1789535418.1459203,
+    "ast_hash": "b7ecfce9d9af15efdc6cee05567cf511",
     "semantic_hash": ""
   },
   ".docs/VALIDATION.md": {
-    "mtime": 1789535520.3220406,
-    "seen": 1789536119.6991696,
-    "ast_hash": "524abd44cc042b4a42efcff3e9ecef79",
+    "mtime": 1789492044.0457036,
+    "seen": 1789535418.1459212,
+    "ast_hash": "9dd25aa86edfb86f2cddfa1beeb93783",
     "semantic_hash": ""
   },
   ".docs/adr/ADR-012-reporting-read-model.md": {
@@ -222,9 +222,9 @@
     "semantic_hash": ""
   },
   ".docs/sprints/001-foundations-and-region/acceptance.md": {
-    "mtime": 1789535842.583877,
-    "seen": 1789536119.6991768,
-    "ast_hash": "beb1e31313df8cca266ef0f89c092f77",
+    "mtime": 1789491415.8811016,
+    "seen": 1789535418.1459262,
+    "ast_hash": "7e7e72ecddc22af45923314ba96e755d",
     "semantic_hash": ""
   },
   ".docs/sprints/001-foundations-and-region/blueprint.md": {
@@ -252,9 +252,9 @@
     "semantic_hash": ""
   },
   ".docs/sprints/002-chassis-and-tenancy/blueprint.md": {
-    "mtime": 1789535842.5857835,
-    "seen": 1789536119.6991844,
-    "ast_hash": "0bd77649cfd236a282b0a79d5690b47d",
+    "mtime": 1789493665.0272875,
+    "seen": 1789535418.145932,
+    "ast_hash": "eb3b5d77959bd51f635de47ddc7bd3c1",
     "semantic_hash": ""
   },
   ".docs/sprints/002-chassis-and-tenancy/handoff-prompt.md": {
@@ -264,9 +264,9 @@
     "semantic_hash": ""
   },
   ".docs/sprints/002-chassis-and-tenancy/requirements.md": {
-    "mtime": 1789535842.583877,
-    "seen": 1789536119.6991878,
-    "ast_hash": "e56d735ac8a19c187828cac5ccd0f167",
+    "mtime": 1789493665.0262392,
+    "seen": 1789535418.145935,
+    "ast_hash": "9364379bcc057220e7cc9c86cb14d40f",
     "semantic_hash": ""
   },
   ".docs/sprints/003-property-domain/acceptance.md": {
@@ -546,15 +546,15 @@
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1789536075.410614,
-    "seen": 1789536119.6992662,
-    "ast_hash": "c5f9134a94584cc79d35181b4dee7801",
+    "mtime": 1789493665.029332,
+    "seen": 1789535418.1459904,
+    "ast_hash": "fadb803a3fc8a961bc83e3c8f95df165",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1789536075.4121451,
-    "seen": 1789536119.6992676,
-    "ast_hash": "55a331df5ccb75f4c7ee7344d24ce73a",
+    "mtime": 1789488493.3393714,
+    "seen": 1789535418.1459916,
+    "ast_hash": "f13d34aa8bf66bfa727f97b6922832b8",
     "semantic_hash": ""
   },
   "CODEX.md": {
@@ -567,30 +567,6 @@
     "mtime": 1789479711.8973866,
     "seen": 1789535418.145994,
     "ast_hash": "dcc0c423b934818215e31bb16eb0e619",
-    "semantic_hash": ""
-  },
-  ".docs/tracks/README.md": {
-    "mtime": 1789535861.640929,
-    "seen": 1789536119.6992605,
-    "ast_hash": "2a0d713f14ec0b736da491e3764e3350",
-    "semantic_hash": ""
-  },
-  ".docs/tracks/marketing-site/acceptance.md": {
-    "mtime": 1789535998.1823735,
-    "seen": 1789536119.699262,
-    "ast_hash": "9f53f1ff02861185dfd4a2c71ab97c11",
-    "semantic_hash": ""
-  },
-  ".docs/tracks/marketing-site/blueprint.md": {
-    "mtime": 1789535962.577921,
-    "seen": 1789536119.6992633,
-    "ast_hash": "1839f0a87f1c1825061c155306a2d432",
-    "semantic_hash": ""
-  },
-  ".docs/tracks/marketing-site/requirements.md": {
-    "mtime": 1789535901.1164699,
-    "seen": 1789536119.6992645,
-    "ast_hash": "cf437e5b32a01b2987bebcfff60b6b3e",
     "semantic_hash": ""
   }
 }

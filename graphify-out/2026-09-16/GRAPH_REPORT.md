@@ -1,17 +1,17 @@
 # Graph Report - ethanel-real-estate-management  (2026-09-16)
 
 ## Corpus Check
-- 99 files · ~96,491 words
+- 95 files · ~89,732 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 4 file(s) not represented in the graph (top: (none) 4)
 
 ## Summary
-- 981 nodes · 884 edges · 98 communities (90 shown, 8 thin omitted)
+- 932 nodes · 839 edges · 93 communities (85 shown, 8 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `c7722e99`
+- Built from commit: `9f605083`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -109,32 +109,27 @@
 - graphify
 - extraction-spec.md
 - meetings/README.md
-- Marketing site blueprint
-- 7. Functional requirements
-- Marketing site acceptance
-- Track · The public marketing site
-- Tracks
 
 ## God Nodes (most connected - your core abstractions)
 1. `Ethanel — Product Requirements Document` - 17 edges
 2. `Ethanel — Architecture v1.2` - 16 edges
-3. `Marketing site blueprint` - 15 edges
-4. `7. Functional requirements` - 14 edges
-5. `9. Integrations` - 13 edges
-6. `Sprint NNN Blueprint — {sprint name}` - 13 edges
-7. `Track · The public marketing site` - 12 edges
-8. `What You Must Do When Invoked` - 12 edges
-9. `Sprint 002 · The chassis and tenancy` - 11 edges
-10. `DevOps Guidelines` - 11 edges
+3. `7. Functional requirements` - 14 edges
+4. `9. Integrations` - 13 edges
+5. `Sprint NNN Blueprint — {sprint name}` - 13 edges
+6. `What You Must Do When Invoked` - 12 edges
+7. `Code Examples` - 11 edges
+8. `DevOps Guidelines` - 11 edges
+9. `Sprint 001 · Ground truth and the pipeline` - 11 edges
+10. `Sprint 002 · The chassis and tenancy` - 11 edges
 
 ## Surprising Connections (you probably didn't know these)
 - None detected - all connections are within the same source files.
 
-## Communities (98 total, 8 thin omitted)
+## Communities (93 total, 8 thin omitted)
 
 ### Community 0 - "Ethanel — Product Requirements Document"
-Cohesion: 0.06
-Nodes (34): 0. Founder calls, 10. Non-functional requirements, 11. Compliance, 12. Integrations, 13. Pilot delivery plan (solo founder with Claude Code sub-agents), 14. Decisions log, 1. Product summary, 2. Glossary (binding for UI, code and tickets) (+26 more)
+Cohesion: 0.04
+Nodes (48): 0. Founder calls, 10. Non-functional requirements, 11. Compliance, 12. Integrations, 13. Pilot delivery plan (solo founder with Claude Code sub-agents), 14. Decisions log, 1. Product summary, 2. Glossary (binding for UI, code and tickets) (+40 more)
 
 ### Community 1 - "Ethanel — Architecture v1.2"
 Cohesion: 0.04
@@ -274,7 +269,7 @@ Nodes (10): Accepted debt, Architecture, DECISIONS, Delivery, Domain model, Fron
 
 ### Community 35 - "RISKS"
 Cohesion: 0.18
-Nodes (10): R-01 · Twelve service boundaries, one person, sixteen weeks, R-02 · The reconciliation rate lands below 95%, R-03 · Daraja integration behaves differently in production than in sandbox, R-04 · Partner sample files never arrive, R-05 · WhatsApp Business API approval and template review, R-06 · Neon at an African latency, R-07 · The ledger model meets a real accountant too late, R-08 · Solo bus factor (+2 more)
+Nodes (10): R-01 · Eleven service boundaries, one person, sixteen weeks, R-02 · The reconciliation rate lands below 95%, R-03 · Daraja integration behaves differently in production than in sandbox, R-04 · Partner sample files never arrive, R-05 · WhatsApp Business API approval and template review, R-06 · Neon at an African latency, R-07 · The ledger model meets a real accountant too late, R-08 · Solo bus factor (+2 more)
 
 ### Community 36 - "graphify reference: extra exports and benchmark"
 Cohesion: 0.22
@@ -293,8 +288,8 @@ Cohesion: 0.25
 Nodes (7): 1. What runs, 2. Data, 3. Consistency across services, 4. API surface (D-02), 5. Edge and platform, 6. Region (D-38), Ethanel — Deployable Architecture
 
 ### Community 40 - "STATE"
-Cohesion: 0.20
-Nodes (9): Architecture decisions — none open, Eleven stale cross-references, closed, Live risks, Open questions blocking the nearest sprints, STATE, The go-live target, The marketing-site track, What has to happen before Sprint 001 can start (+1 more)
+Cohesion: 0.25
+Nodes (7): Architecture decisions — none open, Live risks, Open questions blocking the nearest sprints, STATE, The go-live target, What has to happen before Sprint 001 can start, Where the project is
 
 ### Community 41 - "VALIDATION"
 Cohesion: 0.25
@@ -472,40 +467,18 @@ Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphif
 Cohesion: 0.50
 Nodes (3): Rules for this sprint, Sprint NNN Builder Handoff Prompt, When you believe the sprint is done
 
-### Community 93 - "Marketing site blueprint"
-Cohesion: 0.12
-Nodes (15): Accessibility — AA by construction, API contracts added, Copy rules — non-negotiable, Dependency policy, Files to review first, Jobs, Marketing site blueprint, Objective (+7 more)
-
-### Community 94 - "7. Functional requirements"
-Cohesion: 0.14
-Nodes (14): 7. Functional requirements, M10 Marketplace, storefronts and viewings, M11 Land projects and sales [1.1], M12 Super admin and SaaS billing, M13 Tax integration [1.1], M1 Organizations, accounts and roles, M2 Portfolio, M3 Residents and leases (+6 more)
-
-### Community 95 - "Marketing site acceptance"
-Cohesion: 0.14
-Nodes (13): Boundary check, Conversion self-audit, Could not check, Debt this track books, deliberately, Exit criteria, Fix now, Marketing site acceptance, Not a problem (+5 more)
-
-### Community 96 - "Track · The public marketing site"
-Cohesion: 0.15
-Nodes (12): Blocked by, Decisions this track may not re-open, Depends on, Exit criteria, Goal, In scope, Notes, Out of scope (+4 more)
-
-### Community 97 - "Tracks"
-Cohesion: 0.50
-Nodes (3): Current tracks, Tracks, What a track is not
-
 ## Knowledge Gaps
-- **732 isolated node(s):** `1. Architecture principles`, `2. System context`, `3. Cloud decision: AWS (GCP rejected)`, `4. Container view`, `5.1 Monorepo layout` (+727 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 829 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **692 isolated node(s):** `graphify`, `Your Expertise`, `Your Approach`, `Guidelines`, `Common Scenarios You Excel At` (+687 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 785 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Ethanel — Product Requirements Document` connect `Ethanel — Product Requirements Document` to `7. Functional requirements`?**
-  _High betweenness centrality (0.002) - this node is a cross-community bridge._
-- **What connects `1. Architecture principles`, `2. System context`, `3. Cloud decision: AWS (GCP rejected)` to the rest of the system?**
-  _732 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `graphify`, `Your Expertise`, `Your Approach` to the rest of the system?**
+  _692 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Ethanel — Product Requirements Document` be split into smaller, more focused modules?**
-  _Cohesion score 0.05714285714285714 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.04081632653061224 - nodes in this community are weakly interconnected._
 - **Should `Ethanel — Architecture v1.2` be split into smaller, more focused modules?**
   _Cohesion score 0.043478260869565216 - nodes in this community are weakly interconnected._
 - **Should `Technical Writer` be split into smaller, more focused modules?**
@@ -514,3 +487,5 @@ _Questions this graph is uniquely positioned to answer:_
   _Cohesion score 0.07407407407407407 - nodes in this community are weakly interconnected._
 - **Should `What You Must Do When Invoked` be split into smaller, more focused modules?**
   _Cohesion score 0.08 - nodes in this community are weakly interconnected._
+- **Should `System Architecture Reviewer` be split into smaller, more focused modules?**
+  _Cohesion score 0.08333333333333333 - nodes in this community are weakly interconnected._

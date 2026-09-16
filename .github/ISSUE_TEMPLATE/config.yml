@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: An open business fact
+    url: https://github.com/simpleHacker0893/ethanel-real-estate-management/blob/main/.docs/QUESTIONS.md
+    about: A threshold, fee, rate, notice period or approval rule that is not written down is not an issue. It goes in QUESTIONS.md with the sprint it blocks. A plausible invented number is the most expensive thing you can produce here.
+  - name: A durable choice
+    url: https://github.com/simpleHacker0893/ethanel-real-estate-management/blob/main/.docs/DECISIONS.md
+    about: House rules are inherited, not re-litigated. To change one, write a superseding entry.

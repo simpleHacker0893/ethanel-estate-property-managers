@@ -1,0 +1,38 @@
+name: Research ticket
+description: The deliverable is a number, a document or a fixture — not a diff.
+labels: ["research"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Measurement is not a coding ticket.** Driving it through a TDD implement
+        loop produces something that looks like work and answers nothing
+        (`001/blueprint.md`). Research tickets are the one case where more than
+        one may run in a session.
+  - type: textarea
+    id: question
+    attributes:
+      label: The question, and what changes depending on the answer
+    validations:
+      required: true
+  - type: input
+    id: output
+    attributes:
+      label: Output artifact
+      placeholder: ".docs/adr/ADR-002-region.md, or fixtures/partners/rent-roll.xlsx"
+    validations:
+      required: true
+  - type: textarea
+    id: threshold
+    attributes:
+      label: The decision rule, written BEFORE the measurement
+      description: Without a threshold, 180ms against 195ms decides nothing and the ADR becomes an argument with yourself on the day. Set it while nobody has a stake in the outcome.
+    validations:
+      required: true
+  - type: textarea
+    id: method
+    attributes:
+      label: How it is measured, and under what conditions
+      placeholder: "p50 and p95 on a real Safaricom mobile connection — not office fibre, not a cloud shell."
+    validations:
+      required: true

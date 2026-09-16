@@ -220,6 +220,18 @@
       "source_location": "L172"
     },
     {
+      "id": "docs_prd_7_functional_requirements",
+      "label": "7. Functional requirements",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Ethanel \u2014 Product Requirements Document",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "7. functional requirements",
+      "source_file": ".docs/PRD.md",
+      "source_location": "L210"
+    },
+    {
       "id": "docs_prd_8_report_catalogue_pilot",
       "label": "8. Report catalogue (pilot)",
       "_origin": "ast",
@@ -388,6 +400,162 @@
       "source_location": "L1"
     },
     {
+      "id": "docs_prd_m10_marketplace_storefronts_and_viewings",
+      "label": "M10 Marketplace, storefronts and viewings",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Ethanel \u2014 Product Requirements Document",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "m10 marketplace, storefronts and viewings",
+      "source_file": ".docs/PRD.md",
+      "source_location": "L305"
+    },
+    {
+      "id": "docs_prd_m11_land_projects_and_sales_1_1",
+      "label": "M11 Land projects and sales [1.1]",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Ethanel \u2014 Product Requirements Document",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "m11 land projects and sales [1.1]",
+      "source_file": ".docs/PRD.md",
+      "source_location": "L319"
+    },
+    {
+      "id": "docs_prd_m12_super_admin_and_saas_billing",
+      "label": "M12 Super admin and SaaS billing",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Ethanel \u2014 Product Requirements Document",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "m12 super admin and saas billing",
+      "source_file": ".docs/PRD.md",
+      "source_location": "L328"
+    },
+    {
+      "id": "docs_prd_m13_tax_integration_1_1",
+      "label": "M13 Tax integration [1.1]",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Ethanel \u2014 Product Requirements Document",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "m13 tax integration [1.1]",
+      "source_file": ".docs/PRD.md",
+      "source_location": "L338"
+    },
+    {
+      "id": "docs_prd_m1_organizations_accounts_and_roles",
+      "label": "M1 Organizations, accounts and roles",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Ethanel \u2014 Product Requirements Document",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "m1 organizations, accounts and roles",
+      "source_file": ".docs/PRD.md",
+      "source_location": "L214"
+    },
+    {
+      "id": "docs_prd_m2_portfolio",
+      "label": "M2 Portfolio",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Ethanel \u2014 Product Requirements Document",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "m2 portfolio",
+      "source_file": ".docs/PRD.md",
+      "source_location": "L226"
+    },
+    {
+      "id": "docs_prd_m3_residents_and_leases",
+      "label": "M3 Residents and leases",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Ethanel \u2014 Product Requirements Document",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "m3 residents and leases",
+      "source_file": ".docs/PRD.md",
+      "source_location": "L234"
+    },
+    {
+      "id": "docs_prd_m4_invoicing_and_rent_collection",
+      "label": "M4 Invoicing and rent collection",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Ethanel \u2014 Product Requirements Document",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "m4 invoicing and rent collection",
+      "source_file": ".docs/PRD.md",
+      "source_location": "L243"
+    },
+    {
+      "id": "docs_prd_m5_running_costs_and_landlord_accounting",
+      "label": "M5 Running costs and landlord accounting",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Ethanel \u2014 Product Requirements Document",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "m5 running costs and landlord accounting",
+      "source_file": ".docs/PRD.md",
+      "source_location": "L255"
+    },
+    {
+      "id": "docs_prd_m6_repairs_and_maintenance",
+      "label": "M6 Repairs and maintenance",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Ethanel \u2014 Product Requirements Document",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "m6 repairs and maintenance",
+      "source_file": ".docs/PRD.md",
+      "source_location": "L266"
+    },
+    {
+      "id": "docs_prd_m7_reports_and_dashboards",
+      "label": "M7 Reports and dashboards",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Ethanel \u2014 Product Requirements Document",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "m7 reports and dashboards",
+      "source_file": ".docs/PRD.md",
+      "source_location": "L278"
+    },
+    {
+      "id": "docs_prd_m8_documents_and_ai",
+      "label": "M8 Documents and AI",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Ethanel \u2014 Product Requirements Document",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "m8 documents and ai",
+      "source_file": ".docs/PRD.md",
+      "source_location": "L287"
+    },
+    {
+      "id": "docs_prd_m9_communications",
+      "label": "M9 Communications",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Ethanel \u2014 Product Requirements Document",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "m9 communications",
+      "source_file": ".docs/PRD.md",
+      "source_location": "L297"
+    },
+    {
       "id": "docs_prd_non_goals_all_releases_in_this_document",
       "label": "Non-goals (all releases in this document)",
       "_origin": "ast",
@@ -445,7 +613,7 @@
       "node_kind": "heading",
       "norm_label": "10. security",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L562"
+      "source_location": "L558"
     },
     {
       "id": "docs_architecture_11_0_the_pilot_platform_sprints_001_016",
@@ -457,7 +625,7 @@
       "node_kind": "heading",
       "norm_label": "11.0 the pilot platform (sprints 001\u2013016)",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L580"
+      "source_location": "L576"
     },
     {
       "id": "docs_architecture_11_1_cluster_layout",
@@ -469,7 +637,7 @@
       "node_kind": "heading",
       "norm_label": "11.1 cluster layout",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L599"
+      "source_location": "L595"
     },
     {
       "id": "docs_architecture_11_2_delivery_pipeline",
@@ -481,7 +649,7 @@
       "node_kind": "heading",
       "norm_label": "11.2 delivery pipeline",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L625"
+      "source_location": "L621"
     },
     {
       "id": "docs_architecture_11_kubernetes_platform",
@@ -493,7 +661,7 @@
       "node_kind": "heading",
       "norm_label": "11. kubernetes platform",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L578"
+      "source_location": "L574"
     },
     {
       "id": "docs_architecture_12_observability_and_operations",
@@ -505,7 +673,7 @@
       "node_kind": "heading",
       "norm_label": "12. observability and operations",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L645"
+      "source_location": "L641"
     },
     {
       "id": "docs_architecture_13_1_when_a_service_earns_its_own_deployment",
@@ -517,7 +685,7 @@
       "node_kind": "heading",
       "norm_label": "13.1 when a service earns its own deployment",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L667"
+      "source_location": "L663"
     },
     {
       "id": "docs_architecture_13_scalability_plan_and_the_service_split_trigger",
@@ -529,7 +697,7 @@
       "node_kind": "heading",
       "norm_label": "13. scalability plan, and the service split trigger",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L659"
+      "source_location": "L655"
     },
     {
       "id": "docs_architecture_14_architecture_decision_records",
@@ -541,7 +709,7 @@
       "node_kind": "heading",
       "norm_label": "14. architecture decision records",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L682"
+      "source_location": "L678"
     },
     {
       "id": "docs_architecture_15_development_workflow_with_claude_code",
@@ -553,7 +721,7 @@
       "node_kind": "heading",
       "norm_label": "15. development workflow with claude code",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L716"
+      "source_location": "L712"
     },
     {
       "id": "docs_architecture_1_architecture_principles",
@@ -625,7 +793,7 @@
       "node_kind": "heading",
       "norm_label": "5.2 service boundaries, and the v1.1 module map",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L186"
+      "source_location": "L182"
     },
     {
       "id": "docs_architecture_5_3_request_path_in_web",
@@ -637,7 +805,7 @@
       "node_kind": "heading",
       "norm_label": "5.3 request path in `web`",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L211"
+      "source_location": "L207"
     },
     {
       "id": "docs_architecture_5_4_caching_strategy",
@@ -649,7 +817,7 @@
       "node_kind": "heading",
       "norm_label": "5.4 caching strategy",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L220"
+      "source_location": "L216"
     },
     {
       "id": "docs_architecture_5_application_architecture",
@@ -673,7 +841,7 @@
       "node_kind": "heading",
       "norm_label": "6.1 identity model",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L237"
+      "source_location": "L233"
     },
     {
       "id": "docs_architecture_6_2_authorisation_layers",
@@ -685,7 +853,7 @@
       "node_kind": "heading",
       "norm_label": "6.2 authorisation layers",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L263"
+      "source_location": "L259"
     },
     {
       "id": "docs_architecture_6_authentication_and_authorisation_clerk",
@@ -697,7 +865,7 @@
       "node_kind": "heading",
       "norm_label": "6. authentication and authorisation (clerk)",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L235"
+      "source_location": "L231"
     },
     {
       "id": "docs_architecture_7_1_database",
@@ -709,7 +877,7 @@
       "node_kind": "heading",
       "norm_label": "7.1 database",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L279"
+      "source_location": "L275"
     },
     {
       "id": "docs_architecture_7_2_core_schema_abridged",
@@ -721,7 +889,7 @@
       "node_kind": "heading",
       "norm_label": "7.2 core schema (abridged)",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L288"
+      "source_location": "L284"
     },
     {
       "id": "docs_architecture_7_3_ledger_postings_examples",
@@ -733,7 +901,7 @@
       "node_kind": "heading",
       "norm_label": "7.3 ledger postings (examples)",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L343"
+      "source_location": "L339"
     },
     {
       "id": "docs_architecture_7_4_reporting_read_models_settled_adr_012_a_read_model_service",
@@ -745,7 +913,7 @@
       "node_kind": "heading",
       "norm_label": "7.4 reporting read models \u2014 **settled: adr-012, a read-model service**",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L355"
+      "source_location": "L351"
     },
     {
       "id": "docs_architecture_7_data_architecture",
@@ -757,7 +925,7 @@
       "node_kind": "heading",
       "norm_label": "7. data architecture",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L277"
+      "source_location": "L273"
     },
     {
       "id": "docs_architecture_8_1_queues_pg_boss_on_neon_postgres",
@@ -769,7 +937,7 @@
       "node_kind": "heading",
       "norm_label": "8.1 queues (`pg-boss` on neon postgres)",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L377"
+      "source_location": "L373"
     },
     {
       "id": "docs_architecture_8_2_scheduling",
@@ -781,7 +949,7 @@
       "node_kind": "heading",
       "norm_label": "8.2 scheduling",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L396"
+      "source_location": "L392"
     },
     {
       "id": "docs_architecture_8_3_transactional_outbox",
@@ -793,7 +961,7 @@
       "node_kind": "heading",
       "norm_label": "8.3 transactional outbox",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L400"
+      "source_location": "L396"
     },
     {
       "id": "docs_architecture_8_asynchronous_processing",
@@ -805,7 +973,7 @@
       "node_kind": "heading",
       "norm_label": "8. asynchronous processing",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L375"
+      "source_location": "L371"
     },
     {
       "id": "docs_architecture_9_10_land_records_ardhisasa_and_ecitizen",
@@ -817,7 +985,7 @@
       "node_kind": "heading",
       "norm_label": "9.10 land records (ardhisasa and ecitizen)",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L535"
+      "source_location": "L531"
     },
     {
       "id": "docs_architecture_9_11_ai_services",
@@ -829,7 +997,7 @@
       "node_kind": "heading",
       "norm_label": "9.11 ai services",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L544"
+      "source_location": "L540"
     },
     {
       "id": "docs_architecture_9_12_kra_etims",
@@ -841,7 +1009,7 @@
       "node_kind": "heading",
       "norm_label": "9.12 kra etims",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L556"
+      "source_location": "L552"
     },
     {
       "id": "docs_architecture_9_1_m_pesa_rent_collection",
@@ -853,7 +1021,7 @@
       "node_kind": "heading",
       "norm_label": "9.1 m-pesa rent collection",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L412"
+      "source_location": "L408"
     },
     {
       "id": "docs_architecture_9_2_saas_billing_paystack",
@@ -865,7 +1033,7 @@
       "node_kind": "heading",
       "norm_label": "9.2 saas billing (paystack)",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L448"
+      "source_location": "L444"
     },
     {
       "id": "docs_architecture_9_3_media_pipeline_photos_and_videos",
@@ -877,7 +1045,7 @@
       "node_kind": "heading",
       "norm_label": "9.3 media pipeline (photos and videos)",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L452"
+      "source_location": "L448"
     },
     {
       "id": "docs_architecture_9_4_notifications",
@@ -889,7 +1057,7 @@
       "node_kind": "heading",
       "norm_label": "9.4 notifications",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L484"
+      "source_location": "L480"
     },
     {
       "id": "docs_architecture_9_5_outside_location_view_god_s_eye_at_near_zero_cost",
@@ -901,7 +1069,7 @@
       "node_kind": "heading",
       "norm_label": "9.5 outside location view (\"god's eye\") at near-zero cost",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L489"
+      "source_location": "L485"
     },
     {
       "id": "docs_architecture_9_6_360_photos",
@@ -913,7 +1081,7 @@
       "node_kind": "heading",
       "norm_label": "9.6 360\u00b0 photos",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L507"
+      "source_location": "L503"
     },
     {
       "id": "docs_architecture_9_7_live_video_viewings_and_calendars",
@@ -925,7 +1093,7 @@
       "node_kind": "heading",
       "norm_label": "9.7 live video viewings and calendars",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L512"
+      "source_location": "L508"
     },
     {
       "id": "docs_architecture_9_8_whatsapp_cloud_api",
@@ -937,7 +1105,7 @@
       "node_kind": "heading",
       "norm_label": "9.8 whatsapp cloud api",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L518"
+      "source_location": "L514"
     },
     {
       "id": "docs_architecture_9_9_simple_electronic_signature",
@@ -949,7 +1117,7 @@
       "node_kind": "heading",
       "norm_label": "9.9 simple electronic signature",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L525"
+      "source_location": "L521"
     },
     {
       "id": "docs_architecture_9_integrations",
@@ -961,7 +1129,7 @@
       "node_kind": "heading",
       "norm_label": "9. integrations",
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L410"
+      "source_location": "L406"
     },
     {
       "id": "docs_architecture_ethanel_architecture_v1_2",
@@ -1625,7 +1793,7 @@
       "node_kind": "heading",
       "norm_label": "4. sprint 001 \u2014 settle what is still open",
       "source_file": ".docs/PLAYBOOK.md",
-      "source_location": "L176"
+      "source_location": "L175"
     },
     {
       "id": "docs_playbook_5_where_graphify_earns_its_keep_here",
@@ -1637,7 +1805,7 @@
       "node_kind": "heading",
       "norm_label": "5. where graphify earns its keep here",
       "source_file": ".docs/PLAYBOOK.md",
-      "source_location": "L211"
+      "source_location": "L220"
     },
     {
       "id": "docs_playbook_6_guardrails",
@@ -1649,7 +1817,7 @@
       "node_kind": "heading",
       "norm_label": "6. guardrails",
       "source_file": ".docs/PLAYBOOK.md",
-      "source_location": "L247"
+      "source_location": "L256"
     },
     {
       "id": "docs_playbook_7_corrections_against_the_earlier_draft",
@@ -1661,7 +1829,7 @@
       "node_kind": "heading",
       "norm_label": "7. corrections against the earlier draft",
       "source_file": ".docs/PLAYBOOK.md",
-      "source_location": "L265"
+      "source_location": "L274"
     },
     {
       "id": "docs_playbook_a_monday_orient_on_the_graph_then_grill",
@@ -1709,7 +1877,7 @@
       "node_kind": "heading",
       "norm_label": "caveats that are real on this version",
       "source_file": ".docs/PLAYBOOK.md",
-      "source_location": "L225"
+      "source_location": "L234"
     },
     {
       "id": "docs_playbook_d_tuesday_to_thursday_one_ticket_one_fresh_session",
@@ -5457,7 +5625,7 @@
       "node_kind": "heading",
       "norm_label": "accepted debt",
       "source_file": ".docs/DECISIONS.md",
-      "source_location": "L133"
+      "source_location": "L130"
     },
     {
       "id": "docs_decisions_architecture",
@@ -5529,7 +5697,7 @@
       "node_kind": "heading",
       "norm_label": "housekeeping decisions",
       "source_file": ".docs/DECISIONS.md",
-      "source_location": "L123"
+      "source_location": "L120"
     },
     {
       "id": "docs_decisions_platform",
@@ -5580,14 +5748,14 @@
       "source_location": "L1"
     },
     {
-      "id": "docs_risks_r_01_twelve_service_boundaries_one_person_sixteen_weeks",
-      "label": "R-01 \u00b7 Twelve service boundaries, one person, sixteen weeks",
+      "id": "docs_risks_r_01_eleven_service_boundaries_one_person_sixteen_weeks",
+      "label": "R-01 \u00b7 Eleven service boundaries, one person, sixteen weeks",
       "_origin": "ast",
       "community": 35,
       "community_name": "RISKS",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "r-01 \u00b7 twelve service boundaries, one person, sixteen weeks",
+      "norm_label": "r-01 \u00b7 eleven service boundaries, one person, sixteen weeks",
       "source_file": ".docs/RISKS.md",
       "source_location": "L8"
     },
@@ -5601,7 +5769,7 @@
       "node_kind": "heading",
       "norm_label": "r-02 \u00b7 the reconciliation rate lands below 95%",
       "source_file": ".docs/RISKS.md",
-      "source_location": "L41"
+      "source_location": "L40"
     },
     {
       "id": "docs_risks_r_03_daraja_integration_behaves_differently_in_production_than_in_sandbox",
@@ -5613,7 +5781,7 @@
       "node_kind": "heading",
       "norm_label": "r-03 \u00b7 daraja integration behaves differently in production than in sandbox",
       "source_file": ".docs/RISKS.md",
-      "source_location": "L55"
+      "source_location": "L54"
     },
     {
       "id": "docs_risks_r_04_partner_sample_files_never_arrive",
@@ -5625,7 +5793,7 @@
       "node_kind": "heading",
       "norm_label": "r-04 \u00b7 partner sample files never arrive",
       "source_file": ".docs/RISKS.md",
-      "source_location": "L69"
+      "source_location": "L68"
     },
     {
       "id": "docs_risks_r_05_whatsapp_business_api_approval_and_template_review",
@@ -5637,7 +5805,7 @@
       "node_kind": "heading",
       "norm_label": "r-05 \u00b7 whatsapp business api approval and template review",
       "source_file": ".docs/RISKS.md",
-      "source_location": "L83"
+      "source_location": "L82"
     },
     {
       "id": "docs_risks_r_06_neon_at_an_african_latency",
@@ -5649,7 +5817,7 @@
       "node_kind": "heading",
       "norm_label": "r-06 \u00b7 neon at an african latency",
       "source_file": ".docs/RISKS.md",
-      "source_location": "L95"
+      "source_location": "L94"
     },
     {
       "id": "docs_risks_r_07_the_ledger_model_meets_a_real_accountant_too_late",
@@ -5661,7 +5829,7 @@
       "node_kind": "heading",
       "norm_label": "r-07 \u00b7 the ledger model meets a real accountant too late",
       "source_file": ".docs/RISKS.md",
-      "source_location": "L109"
+      "source_location": "L108"
     },
     {
       "id": "docs_risks_r_08_solo_bus_factor",
@@ -5673,7 +5841,7 @@
       "node_kind": "heading",
       "norm_label": "r-08 \u00b7 solo bus factor",
       "source_file": ".docs/RISKS.md",
-      "source_location": "L123"
+      "source_location": "L122"
     },
     {
       "id": "docs_risks_r_09_kenya_data_protection_act_obligations_discovered_late",
@@ -5685,7 +5853,7 @@
       "node_kind": "heading",
       "norm_label": "r-09 \u00b7 kenya data protection act obligations discovered late",
       "source_file": ".docs/RISKS.md",
-      "source_location": "L135"
+      "source_location": "L134"
     },
     {
       "id": "docs_risks_risks",
@@ -5841,7 +6009,7 @@
       "node_kind": "heading",
       "norm_label": "knowledge graph",
       "source_file": "AGENTS.md",
-      "source_location": "L86"
+      "source_location": "L83"
     },
     {
       "id": "agents_never_invent_a_business_fact",
@@ -5853,7 +6021,7 @@
       "node_kind": "heading",
       "norm_label": "never invent a business fact",
       "source_file": "AGENTS.md",
-      "source_location": "L71"
+      "source_location": "L68"
     },
     {
       "id": "agents_non_negotiable_engineering_rules",
@@ -5865,7 +6033,7 @@
       "node_kind": "heading",
       "norm_label": "non-negotiable engineering rules",
       "source_file": "AGENTS.md",
-      "source_location": "L47"
+      "source_location": "L44"
     },
     {
       "id": "agents_read_before_you_start",
@@ -5889,7 +6057,7 @@
       "node_kind": "heading",
       "norm_label": "vocabulary \u2014 use these words, not generic ones",
       "source_file": "AGENTS.md",
-      "source_location": "L23"
+      "source_location": "L20"
     },
     {
       "id": "agents_workflow",
@@ -5901,7 +6069,7 @@
       "node_kind": "heading",
       "norm_label": "workflow",
       "source_file": "AGENTS.md",
-      "source_location": "L78"
+      "source_location": "L75"
     },
     {
       "id": "docs_readiness",
@@ -5925,7 +6093,7 @@
       "node_kind": "heading",
       "norm_label": "1. the readiness checklist \u2014 e1 to e22",
       "source_file": ".docs/READINESS.md",
-      "source_location": "L30"
+      "source_location": "L28"
     },
     {
       "id": "docs_readiness_1a_the_d_34_gate_list_and_where_each_gate_is_enforced",
@@ -5937,7 +6105,7 @@
       "node_kind": "heading",
       "norm_label": "1a. the d-34 gate list, and where each gate is enforced",
       "source_file": ".docs/READINESS.md",
-      "source_location": "L63"
+      "source_location": "L61"
     },
     {
       "id": "docs_readiness_2_go_live_gate",
@@ -5949,7 +6117,7 @@
       "node_kind": "heading",
       "norm_label": "2. go-live gate",
       "source_file": ".docs/READINESS.md",
-      "source_location": "L94"
+      "source_location": "L92"
     },
     {
       "id": "docs_readiness_3_the_other_series_retired_decoder_kept",
@@ -5961,7 +6129,7 @@
       "node_kind": "heading",
       "norm_label": "3. the other series \u2014 retired, decoder kept",
       "source_file": ".docs/READINESS.md",
-      "source_location": "L113"
+      "source_location": "L111"
     },
     {
       "id": "docs_readiness_4_resolved_the_code_collision_and_the_legacy_index",
@@ -5973,7 +6141,7 @@
       "node_kind": "heading",
       "norm_label": "4. resolved: the code collision, and the legacy index",
       "source_file": ".docs/READINESS.md",
-      "source_location": "L134"
+      "source_location": "L132"
     },
     {
       "id": "docs_readiness_readiness",
@@ -6421,19 +6589,7 @@
       "node_kind": "heading",
       "norm_label": "architecture decisions \u2014 none open",
       "source_file": ".docs/STATE.md",
-      "source_location": "L239"
-    },
-    {
-      "id": "docs_state_eleven_stale_cross_references_closed",
-      "label": "Eleven stale cross-references, closed",
-      "_origin": "ast",
-      "community": 40,
-      "community_name": "STATE",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "eleven stale cross-references, closed",
-      "source_file": ".docs/STATE.md",
-      "source_location": "L177"
+      "source_location": "L164"
     },
     {
       "id": "docs_state_live_risks",
@@ -6445,7 +6601,7 @@
       "node_kind": "heading",
       "norm_label": "live risks",
       "source_file": ".docs/STATE.md",
-      "source_location": "L260"
+      "source_location": "L185"
     },
     {
       "id": "docs_state_open_questions_blocking_the_nearest_sprints",
@@ -6457,7 +6613,7 @@
       "node_kind": "heading",
       "norm_label": "open questions blocking the nearest sprints",
       "source_file": ".docs/STATE.md",
-      "source_location": "L215"
+      "source_location": "L140"
     },
     {
       "id": "docs_state_state",
@@ -6481,19 +6637,7 @@
       "node_kind": "heading",
       "norm_label": "the go-live target",
       "source_file": ".docs/STATE.md",
-      "source_location": "L208"
-    },
-    {
-      "id": "docs_state_the_marketing_site_track",
-      "label": "The marketing-site track",
-      "_origin": "ast",
-      "community": 40,
-      "community_name": "STATE",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "the marketing-site track",
-      "source_file": ".docs/STATE.md",
-      "source_location": "L140"
+      "source_location": "L133"
     },
     {
       "id": "docs_state_what_has_to_happen_before_sprint_001_can_start",
@@ -6505,7 +6649,7 @@
       "node_kind": "heading",
       "norm_label": "what has to happen before sprint 001 can start",
       "source_file": ".docs/STATE.md",
-      "source_location": "L97"
+      "source_location": "L96"
     },
     {
       "id": "docs_state_where_the_project_is",
@@ -6517,7 +6661,7 @@
       "node_kind": "heading",
       "norm_label": "where the project is",
       "source_file": ".docs/STATE.md",
-      "source_location": "L11"
+      "source_location": "L10"
     },
     {
       "id": "docs_validation",
@@ -8796,18 +8940,6 @@
       "source_location": "L1"
     },
     {
-      "id": "claude_claude_md",
-      "label": "CLAUDE.md",
-      "_origin": "ast",
-      "community": 62,
-      "community_name": "CLAUDE.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "claude.md",
-      "source_file": "CLAUDE.md",
-      "source_location": "L1"
-    },
-    {
       "id": "claude_execution_layer",
       "label": "Execution layer",
       "_origin": "ast",
@@ -8817,7 +8949,7 @@
       "node_kind": "heading",
       "norm_label": "execution layer",
       "source_file": "CLAUDE.md",
-      "source_location": "L23"
+      "source_location": "L21"
     },
     {
       "id": "claude_graphify",
@@ -8829,7 +8961,19 @@
       "node_kind": "heading",
       "norm_label": "graphify",
       "source_file": "CLAUDE.md",
-      "source_location": "L29"
+      "source_location": "L27"
+    },
+    {
+      "id": "claude_md_claude_claude",
+      "label": "CLAUDE.md",
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "CLAUDE.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "claude.md",
+      "source_file": "CLAUDE.md",
+      "source_location": "L1"
     },
     {
       "id": "claude_start_every_session_by_reading",
@@ -10729,7 +10873,7 @@
       "node_kind": "heading",
       "norm_label": "answered, recorded elsewhere",
       "source_file": ".docs/QUESTIONS.md",
-      "source_location": "L260"
+      "source_location": "L218"
     },
     {
       "id": "docs_questions_questions",
@@ -11082,738 +11226,6 @@
       "norm_label": "meetings",
       "source_file": ".docs/meetings/README.md",
       "source_location": "L1"
-    },
-    {
-      "id": "docs_tracks_marketing_site_blueprint",
-      "label": "marketing-site/blueprint.md",
-      "_origin": "ast",
-      "community": 93,
-      "community_name": "Marketing site blueprint",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "marketing-site/blueprint.md",
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "docs_tracks_marketing_site_blueprint_accessibility_aa_by_construction",
-      "label": "Accessibility \u2014 AA by construction",
-      "_origin": "ast",
-      "community": 93,
-      "community_name": "Marketing site blueprint",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "accessibility \u2014 aa by construction",
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L185"
-    },
-    {
-      "id": "docs_tracks_marketing_site_blueprint_api_contracts_added",
-      "label": "API contracts added",
-      "_origin": "ast",
-      "community": 93,
-      "community_name": "Marketing site blueprint",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "api contracts added",
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L80"
-    },
-    {
-      "id": "docs_tracks_marketing_site_blueprint_copy_rules_non_negotiable",
-      "label": "Copy rules \u2014 non-negotiable",
-      "_origin": "ast",
-      "community": 93,
-      "community_name": "Marketing site blueprint",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "copy rules \u2014 non-negotiable",
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L153"
-    },
-    {
-      "id": "docs_tracks_marketing_site_blueprint_dependency_policy",
-      "label": "Dependency policy",
-      "_origin": "ast",
-      "community": 93,
-      "community_name": "Marketing site blueprint",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "dependency policy",
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L195"
-    },
-    {
-      "id": "docs_tracks_marketing_site_blueprint_files_to_review_first",
-      "label": "Files to review first",
-      "_origin": "ast",
-      "community": 93,
-      "community_name": "Marketing site blueprint",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "files to review first",
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L16"
-    },
-    {
-      "id": "docs_tracks_marketing_site_blueprint_jobs",
-      "label": "Jobs",
-      "_origin": "ast",
-      "community": 93,
-      "community_name": "Marketing site blueprint",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "jobs",
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L96"
-    },
-    {
-      "id": "docs_tracks_marketing_site_blueprint_marketing_site_blueprint",
-      "label": "Marketing site blueprint",
-      "_origin": "ast",
-      "community": 93,
-      "community_name": "Marketing site blueprint",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "marketing site blueprint",
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "docs_tracks_marketing_site_blueprint_objective",
-      "label": "Objective",
-      "_origin": "ast",
-      "community": 93,
-      "community_name": "Marketing site blueprint",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "objective",
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L10"
-    },
-    {
-      "id": "docs_tracks_marketing_site_blueprint_risks_this_track_could_realise",
-      "label": "Risks this track could realise",
-      "_origin": "ast",
-      "community": 93,
-      "community_name": "Marketing site blueprint",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "risks this track could realise",
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L203"
-    },
-    {
-      "id": "docs_tracks_marketing_site_blueprint_schema_changes",
-      "label": "Schema changes",
-      "_origin": "ast",
-      "community": 93,
-      "community_name": "Marketing site blueprint",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "schema changes",
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L74"
-    },
-    {
-      "id": "docs_tracks_marketing_site_blueprint_service_boundaries_touched",
-      "label": "Service boundaries touched",
-      "_origin": "ast",
-      "community": 93,
-      "community_name": "Marketing site blueprint",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "service boundaries touched",
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L63"
-    },
-    {
-      "id": "docs_tracks_marketing_site_blueprint_tdd_seams_where_red_before_green_is_mandatory",
-      "label": "TDD seams \u2014 where red-before-green is mandatory",
-      "_origin": "ast",
-      "community": 93,
-      "community_name": "Marketing site blueprint",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "tdd seams \u2014 where red-before-green is mandatory",
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L138"
-    },
-    {
-      "id": "docs_tracks_marketing_site_blueprint_ui_surfaces",
-      "label": "UI surfaces",
-      "_origin": "ast",
-      "community": 93,
-      "community_name": "Marketing site blueprint",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "ui surfaces",
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L100"
-    },
-    {
-      "id": "docs_tracks_marketing_site_blueprint_vertical_slices",
-      "label": "Vertical slices",
-      "_origin": "ast",
-      "community": 93,
-      "community_name": "Marketing site blueprint",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "vertical slices",
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L112"
-    },
-    {
-      "id": "docs_tracks_marketing_site_blueprint_where_things_live",
-      "label": "Where things live",
-      "_origin": "ast",
-      "community": 93,
-      "community_name": "Marketing site blueprint",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "where things live",
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L27"
-    },
-    {
-      "id": "docs_prd_7_functional_requirements",
-      "label": "7. Functional requirements",
-      "_origin": "ast",
-      "community": 94,
-      "community_name": "7. Functional requirements",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "7. functional requirements",
-      "source_file": ".docs/PRD.md",
-      "source_location": "L210"
-    },
-    {
-      "id": "docs_prd_m10_marketplace_storefronts_and_viewings",
-      "label": "M10 Marketplace, storefronts and viewings",
-      "_origin": "ast",
-      "community": 94,
-      "community_name": "7. Functional requirements",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "m10 marketplace, storefronts and viewings",
-      "source_file": ".docs/PRD.md",
-      "source_location": "L305"
-    },
-    {
-      "id": "docs_prd_m11_land_projects_and_sales_1_1",
-      "label": "M11 Land projects and sales [1.1]",
-      "_origin": "ast",
-      "community": 94,
-      "community_name": "7. Functional requirements",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "m11 land projects and sales [1.1]",
-      "source_file": ".docs/PRD.md",
-      "source_location": "L319"
-    },
-    {
-      "id": "docs_prd_m12_super_admin_and_saas_billing",
-      "label": "M12 Super admin and SaaS billing",
-      "_origin": "ast",
-      "community": 94,
-      "community_name": "7. Functional requirements",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "m12 super admin and saas billing",
-      "source_file": ".docs/PRD.md",
-      "source_location": "L328"
-    },
-    {
-      "id": "docs_prd_m13_tax_integration_1_1",
-      "label": "M13 Tax integration [1.1]",
-      "_origin": "ast",
-      "community": 94,
-      "community_name": "7. Functional requirements",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "m13 tax integration [1.1]",
-      "source_file": ".docs/PRD.md",
-      "source_location": "L338"
-    },
-    {
-      "id": "docs_prd_m1_organizations_accounts_and_roles",
-      "label": "M1 Organizations, accounts and roles",
-      "_origin": "ast",
-      "community": 94,
-      "community_name": "7. Functional requirements",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "m1 organizations, accounts and roles",
-      "source_file": ".docs/PRD.md",
-      "source_location": "L214"
-    },
-    {
-      "id": "docs_prd_m2_portfolio",
-      "label": "M2 Portfolio",
-      "_origin": "ast",
-      "community": 94,
-      "community_name": "7. Functional requirements",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "m2 portfolio",
-      "source_file": ".docs/PRD.md",
-      "source_location": "L226"
-    },
-    {
-      "id": "docs_prd_m3_residents_and_leases",
-      "label": "M3 Residents and leases",
-      "_origin": "ast",
-      "community": 94,
-      "community_name": "7. Functional requirements",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "m3 residents and leases",
-      "source_file": ".docs/PRD.md",
-      "source_location": "L234"
-    },
-    {
-      "id": "docs_prd_m4_invoicing_and_rent_collection",
-      "label": "M4 Invoicing and rent collection",
-      "_origin": "ast",
-      "community": 94,
-      "community_name": "7. Functional requirements",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "m4 invoicing and rent collection",
-      "source_file": ".docs/PRD.md",
-      "source_location": "L243"
-    },
-    {
-      "id": "docs_prd_m5_running_costs_and_landlord_accounting",
-      "label": "M5 Running costs and landlord accounting",
-      "_origin": "ast",
-      "community": 94,
-      "community_name": "7. Functional requirements",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "m5 running costs and landlord accounting",
-      "source_file": ".docs/PRD.md",
-      "source_location": "L255"
-    },
-    {
-      "id": "docs_prd_m6_repairs_and_maintenance",
-      "label": "M6 Repairs and maintenance",
-      "_origin": "ast",
-      "community": 94,
-      "community_name": "7. Functional requirements",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "m6 repairs and maintenance",
-      "source_file": ".docs/PRD.md",
-      "source_location": "L266"
-    },
-    {
-      "id": "docs_prd_m7_reports_and_dashboards",
-      "label": "M7 Reports and dashboards",
-      "_origin": "ast",
-      "community": 94,
-      "community_name": "7. Functional requirements",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "m7 reports and dashboards",
-      "source_file": ".docs/PRD.md",
-      "source_location": "L278"
-    },
-    {
-      "id": "docs_prd_m8_documents_and_ai",
-      "label": "M8 Documents and AI",
-      "_origin": "ast",
-      "community": 94,
-      "community_name": "7. Functional requirements",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "m8 documents and ai",
-      "source_file": ".docs/PRD.md",
-      "source_location": "L287"
-    },
-    {
-      "id": "docs_prd_m9_communications",
-      "label": "M9 Communications",
-      "_origin": "ast",
-      "community": 94,
-      "community_name": "7. Functional requirements",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "m9 communications",
-      "source_file": ".docs/PRD.md",
-      "source_location": "L297"
-    },
-    {
-      "id": "docs_tracks_marketing_site_acceptance",
-      "label": "marketing-site/acceptance.md",
-      "_origin": "ast",
-      "community": 95,
-      "community_name": "Marketing site acceptance",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "marketing-site/acceptance.md",
-      "source_file": ".docs/tracks/marketing-site/acceptance.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "docs_tracks_marketing_site_acceptance_boundary_check",
-      "label": "Boundary check",
-      "_origin": "ast",
-      "community": 95,
-      "community_name": "Marketing site acceptance",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "boundary check",
-      "source_file": ".docs/tracks/marketing-site/acceptance.md",
-      "source_location": "L65"
-    },
-    {
-      "id": "docs_tracks_marketing_site_acceptance_conversion_self_audit",
-      "label": "Conversion self-audit",
-      "_origin": "ast",
-      "community": 95,
-      "community_name": "Marketing site acceptance",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "conversion self-audit",
-      "source_file": ".docs/tracks/marketing-site/acceptance.md",
-      "source_location": "L87"
-    },
-    {
-      "id": "docs_tracks_marketing_site_acceptance_could_not_check",
-      "label": "Could not check",
-      "_origin": "ast",
-      "community": 95,
-      "community_name": "Marketing site acceptance",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "could not check",
-      "source_file": ".docs/tracks/marketing-site/acceptance.md",
-      "source_location": "L112"
-    },
-    {
-      "id": "docs_tracks_marketing_site_acceptance_debt_this_track_books_deliberately",
-      "label": "Debt this track books, deliberately",
-      "_origin": "ast",
-      "community": 95,
-      "community_name": "Marketing site acceptance",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "debt this track books, deliberately",
-      "source_file": ".docs/tracks/marketing-site/acceptance.md",
-      "source_location": "L41"
-    },
-    {
-      "id": "docs_tracks_marketing_site_acceptance_exit_criteria",
-      "label": "Exit criteria",
-      "_origin": "ast",
-      "community": 95,
-      "community_name": "Marketing site acceptance",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "exit criteria",
-      "source_file": ".docs/tracks/marketing-site/acceptance.md",
-      "source_location": "L11"
-    },
-    {
-      "id": "docs_tracks_marketing_site_acceptance_fix_now",
-      "label": "Fix now",
-      "_origin": "ast",
-      "community": 95,
-      "community_name": "Marketing site acceptance",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "fix now",
-      "source_file": ".docs/tracks/marketing-site/acceptance.md",
-      "source_location": "L98"
-    },
-    {
-      "id": "docs_tracks_marketing_site_acceptance_marketing_site_acceptance",
-      "label": "Marketing site acceptance",
-      "_origin": "ast",
-      "community": 95,
-      "community_name": "Marketing site acceptance",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "marketing site acceptance",
-      "source_file": ".docs/tracks/marketing-site/acceptance.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "docs_tracks_marketing_site_acceptance_not_a_problem",
-      "label": "Not a problem",
-      "_origin": "ast",
-      "community": 95,
-      "community_name": "Marketing site acceptance",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "not a problem",
-      "source_file": ".docs/tracks/marketing-site/acceptance.md",
-      "source_location": "L107"
-    },
-    {
-      "id": "docs_tracks_marketing_site_acceptance_outcome",
-      "label": "Outcome",
-      "_origin": "ast",
-      "community": 95,
-      "community_name": "Marketing site acceptance",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "outcome",
-      "source_file": ".docs/tracks/marketing-site/acceptance.md",
-      "source_location": "L117"
-    },
-    {
-      "id": "docs_tracks_marketing_site_acceptance_permanent_gates_still_green",
-      "label": "Permanent gates still green",
-      "_origin": "ast",
-      "community": 95,
-      "community_name": "Marketing site acceptance",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "permanent gates still green",
-      "source_file": ".docs/tracks/marketing-site/acceptance.md",
-      "source_location": "L53"
-    },
-    {
-      "id": "docs_tracks_marketing_site_acceptance_readiness_items_narrowed",
-      "label": "Readiness items narrowed",
-      "_origin": "ast",
-      "community": 95,
-      "community_name": "Marketing site acceptance",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "readiness items narrowed",
-      "source_file": ".docs/tracks/marketing-site/acceptance.md",
-      "source_location": "L31"
-    },
-    {
-      "id": "docs_tracks_marketing_site_acceptance_test_don_t_guess",
-      "label": "Test, don't guess",
-      "_origin": "ast",
-      "community": 95,
-      "community_name": "Marketing site acceptance",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "test, don't guess",
-      "source_file": ".docs/tracks/marketing-site/acceptance.md",
-      "source_location": "L102"
-    },
-    {
-      "id": "docs_tracks_marketing_site_acceptance_verdict",
-      "label": "Verdict",
-      "_origin": "ast",
-      "community": 95,
-      "community_name": "Marketing site acceptance",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "verdict",
-      "source_file": ".docs/tracks/marketing-site/acceptance.md",
-      "source_location": "L93"
-    },
-    {
-      "id": "docs_tracks_marketing_site_requirements",
-      "label": "marketing-site/requirements.md",
-      "_origin": "ast",
-      "community": 96,
-      "community_name": "Track \u00b7 The public marketing site",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "marketing-site/requirements.md",
-      "source_file": ".docs/tracks/marketing-site/requirements.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "docs_tracks_marketing_site_requirements_blocked_by",
-      "label": "Blocked by",
-      "_origin": "ast",
-      "community": 96,
-      "community_name": "Track \u00b7 The public marketing site",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "blocked by",
-      "source_file": ".docs/tracks/marketing-site/requirements.md",
-      "source_location": "L85"
-    },
-    {
-      "id": "docs_tracks_marketing_site_requirements_decisions_this_track_may_not_re_open",
-      "label": "Decisions this track may not re-open",
-      "_origin": "ast",
-      "community": 96,
-      "community_name": "Track \u00b7 The public marketing site",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "decisions this track may not re-open",
-      "source_file": ".docs/tracks/marketing-site/requirements.md",
-      "source_location": "L131"
-    },
-    {
-      "id": "docs_tracks_marketing_site_requirements_depends_on",
-      "label": "Depends on",
-      "_origin": "ast",
-      "community": 96,
-      "community_name": "Track \u00b7 The public marketing site",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "depends on",
-      "source_file": ".docs/tracks/marketing-site/requirements.md",
-      "source_location": "L73"
-    },
-    {
-      "id": "docs_tracks_marketing_site_requirements_exit_criteria",
-      "label": "Exit criteria",
-      "_origin": "ast",
-      "community": 96,
-      "community_name": "Track \u00b7 The public marketing site",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "exit criteria",
-      "source_file": ".docs/tracks/marketing-site/requirements.md",
-      "source_location": "L109"
-    },
-    {
-      "id": "docs_tracks_marketing_site_requirements_goal",
-      "label": "Goal",
-      "_origin": "ast",
-      "community": 96,
-      "community_name": "Track \u00b7 The public marketing site",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "goal",
-      "source_file": ".docs/tracks/marketing-site/requirements.md",
-      "source_location": "L10"
-    },
-    {
-      "id": "docs_tracks_marketing_site_requirements_in_scope",
-      "label": "In scope",
-      "_origin": "ast",
-      "community": 96,
-      "community_name": "Track \u00b7 The public marketing site",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "in scope",
-      "source_file": ".docs/tracks/marketing-site/requirements.md",
-      "source_location": "L24"
-    },
-    {
-      "id": "docs_tracks_marketing_site_requirements_notes",
-      "label": "Notes",
-      "_origin": "ast",
-      "community": 96,
-      "community_name": "Track \u00b7 The public marketing site",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "notes",
-      "source_file": ".docs/tracks/marketing-site/requirements.md",
-      "source_location": "L139"
-    },
-    {
-      "id": "docs_tracks_marketing_site_requirements_out_of_scope",
-      "label": "Out of scope",
-      "_origin": "ast",
-      "community": 96,
-      "community_name": "Track \u00b7 The public marketing site",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "out of scope",
-      "source_file": ".docs/tracks/marketing-site/requirements.md",
-      "source_location": "L60"
-    },
-    {
-      "id": "docs_tracks_marketing_site_requirements_performance_budgets",
-      "label": "Performance budgets",
-      "_origin": "ast",
-      "community": 96,
-      "community_name": "Track \u00b7 The public marketing site",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "performance budgets",
-      "source_file": ".docs/tracks/marketing-site/requirements.md",
-      "source_location": "L96"
-    },
-    {
-      "id": "docs_tracks_marketing_site_requirements_readiness_items_paid_or_narrowed",
-      "label": "Readiness items paid or narrowed",
-      "_origin": "ast",
-      "community": 96,
-      "community_name": "Track \u00b7 The public marketing site",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "readiness items paid or narrowed",
-      "source_file": ".docs/tracks/marketing-site/requirements.md",
-      "source_location": "L78"
-    },
-    {
-      "id": "docs_tracks_marketing_site_requirements_services_touched",
-      "label": "Services touched",
-      "_origin": "ast",
-      "community": 96,
-      "community_name": "Track \u00b7 The public marketing site",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "services touched",
-      "source_file": ".docs/tracks/marketing-site/requirements.md",
-      "source_location": "L17"
-    },
-    {
-      "id": "docs_tracks_marketing_site_requirements_track_the_public_marketing_site",
-      "label": "Track \u00b7 The public marketing site",
-      "_origin": "ast",
-      "community": 96,
-      "community_name": "Track \u00b7 The public marketing site",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "track \u00b7 the public marketing site",
-      "source_file": ".docs/tracks/marketing-site/requirements.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "docs_tracks_readme",
-      "label": "tracks/README.md",
-      "_origin": "ast",
-      "community": 97,
-      "community_name": "Tracks",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "tracks/readme.md",
-      "source_file": ".docs/tracks/README.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "docs_tracks_readme_current_tracks",
-      "label": "Current tracks",
-      "_origin": "ast",
-      "community": 97,
-      "community_name": "Tracks",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "current tracks",
-      "source_file": ".docs/tracks/README.md",
-      "source_location": "L34"
-    },
-    {
-      "id": "docs_tracks_readme_tracks",
-      "label": "Tracks",
-      "_origin": "ast",
-      "community": 97,
-      "community_name": "Tracks",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "tracks",
-      "source_file": ".docs/tracks/README.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "docs_tracks_readme_what_a_track_is_not",
-      "label": "What a track is not",
-      "_origin": "ast",
-      "community": 97,
-      "community_name": "Tracks",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "what a track is not",
-      "source_file": ".docs/tracks/README.md",
-      "source_location": "L25"
     }
   ],
   "links": [
@@ -11836,7 +11248,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "AGENTS.md",
-      "source_location": "L23",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -11847,7 +11259,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "AGENTS.md",
-      "source_location": "L47",
+      "source_location": "L44",
+      "weight": 1.0
+    },
+    {
+      "source": "agents_ethanel_agent_instructions",
+      "target": "agents_never_invent_a_business_fact",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L68",
       "weight": 1.0
     },
     {
@@ -11863,24 +11286,13 @@
     },
     {
       "source": "agents_ethanel_agent_instructions",
-      "target": "agents_never_invent_a_business_fact",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "AGENTS.md",
-      "source_location": "L71",
-      "weight": 1.0
-    },
-    {
-      "source": "agents_ethanel_agent_instructions",
       "target": "agents_workflow",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "AGENTS.md",
-      "source_location": "L78",
+      "source_location": "L75",
       "weight": 1.0
     },
     {
@@ -11891,12 +11303,12 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "AGENTS.md",
-      "source_location": "L86",
+      "source_location": "L83",
       "weight": 1.0
     },
     {
       "source": "claude",
-      "target": "claude_claude_md",
+      "target": "claude_md_claude_claude",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13578,7 +12990,18 @@
       "weight": 1.0
     },
     {
-      "source": "claude_claude_md",
+      "source": "claude_claude_md_claude_claude",
+      "target": "claude_claude_graphify",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/CLAUDE.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_md_claude_claude",
       "target": "claude_start_every_session_by_reading",
       "relation": "contains",
       "_origin": "ast",
@@ -13589,36 +13012,25 @@
       "weight": 1.0
     },
     {
-      "source": "claude_claude_md",
+      "source": "claude_md_claude_claude",
       "target": "claude_execution_layer",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CLAUDE.md",
-      "source_location": "L23",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
-      "source": "claude_claude_md",
+      "source": "claude_md_claude_claude",
       "target": "claude_graphify",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CLAUDE.md",
-      "source_location": "L29",
-      "weight": 1.0
-    },
-    {
-      "source": "claude_claude_md_claude_claude",
-      "target": "claude_claude_graphify",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".claude/CLAUDE.md",
-      "source_location": "L1",
+      "source_location": "L27",
       "weight": 1.0
     },
     {
@@ -14432,7 +13844,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L580",
+      "source_location": "L576",
       "weight": 1.0
     },
     {
@@ -14443,7 +13855,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L599",
+      "source_location": "L595",
       "weight": 1.0
     },
     {
@@ -14454,7 +13866,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L625",
+      "source_location": "L621",
       "weight": 1.0
     },
     {
@@ -14465,7 +13877,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L667",
+      "source_location": "L663",
       "weight": 1.0
     },
     {
@@ -14487,7 +13899,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L186",
+      "source_location": "L182",
       "weight": 1.0
     },
     {
@@ -14498,7 +13910,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L211",
+      "source_location": "L207",
       "weight": 1.0
     },
     {
@@ -14509,7 +13921,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L220",
+      "source_location": "L216",
       "weight": 1.0
     },
     {
@@ -14520,7 +13932,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L237",
+      "source_location": "L233",
       "weight": 1.0
     },
     {
@@ -14531,7 +13943,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L263",
+      "source_location": "L259",
       "weight": 1.0
     },
     {
@@ -14542,7 +13954,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L279",
+      "source_location": "L275",
       "weight": 1.0
     },
     {
@@ -14553,7 +13965,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L288",
+      "source_location": "L284",
       "weight": 1.0
     },
     {
@@ -14564,7 +13976,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L343",
+      "source_location": "L339",
       "weight": 1.0
     },
     {
@@ -14575,7 +13987,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L355",
+      "source_location": "L351",
       "weight": 1.0
     },
     {
@@ -14586,7 +13998,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L377",
+      "source_location": "L373",
       "weight": 1.0
     },
     {
@@ -14597,7 +14009,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L396",
+      "source_location": "L392",
       "weight": 1.0
     },
     {
@@ -14608,7 +14020,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L400",
+      "source_location": "L396",
       "weight": 1.0
     },
     {
@@ -14619,7 +14031,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L412",
+      "source_location": "L408",
       "weight": 1.0
     },
     {
@@ -14630,7 +14042,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L448",
+      "source_location": "L444",
       "weight": 1.0
     },
     {
@@ -14641,7 +14053,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L452",
+      "source_location": "L448",
       "weight": 1.0
     },
     {
@@ -14652,7 +14064,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L484",
+      "source_location": "L480",
       "weight": 1.0
     },
     {
@@ -14663,7 +14075,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L489",
+      "source_location": "L485",
       "weight": 1.0
     },
     {
@@ -14674,7 +14086,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L507",
+      "source_location": "L503",
       "weight": 1.0
     },
     {
@@ -14685,7 +14097,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L512",
+      "source_location": "L508",
       "weight": 1.0
     },
     {
@@ -14696,7 +14108,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L518",
+      "source_location": "L514",
       "weight": 1.0
     },
     {
@@ -14707,7 +14119,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L525",
+      "source_location": "L521",
       "weight": 1.0
     },
     {
@@ -14718,7 +14130,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L535",
+      "source_location": "L531",
       "weight": 1.0
     },
     {
@@ -14729,7 +14141,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L544",
+      "source_location": "L540",
       "weight": 1.0
     },
     {
@@ -14740,7 +14152,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L556",
+      "source_location": "L552",
       "weight": 1.0
     },
     {
@@ -14773,7 +14185,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L235",
+      "source_location": "L231",
       "weight": 1.0
     },
     {
@@ -14795,7 +14207,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L277",
+      "source_location": "L273",
       "weight": 1.0
     },
     {
@@ -14806,7 +14218,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L375",
+      "source_location": "L371",
       "weight": 1.0
     },
     {
@@ -14817,7 +14229,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L410",
+      "source_location": "L406",
       "weight": 1.0
     },
     {
@@ -14839,7 +14251,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L562",
+      "source_location": "L558",
       "weight": 1.0
     },
     {
@@ -14850,7 +14262,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L578",
+      "source_location": "L574",
       "weight": 1.0
     },
     {
@@ -14861,7 +14273,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L645",
+      "source_location": "L641",
       "weight": 1.0
     },
     {
@@ -14872,7 +14284,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L659",
+      "source_location": "L655",
       "weight": 1.0
     },
     {
@@ -14883,7 +14295,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L682",
+      "source_location": "L678",
       "weight": 1.0
     },
     {
@@ -14894,7 +14306,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/ARCHITECTURE.md",
-      "source_location": "L716",
+      "source_location": "L712",
       "weight": 1.0
     },
     {
@@ -14949,7 +14361,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/DECISIONS.md",
-      "source_location": "L123",
+      "source_location": "L120",
       "weight": 1.0
     },
     {
@@ -14960,7 +14372,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/DECISIONS.md",
-      "source_location": "L133",
+      "source_location": "L130",
       "weight": 1.0
     },
     {
@@ -15334,7 +14746,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/PLAYBOOK.md",
-      "source_location": "L225",
+      "source_location": "L234",
       "weight": 1.0
     },
     {
@@ -15367,7 +14779,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/PLAYBOOK.md",
-      "source_location": "L176",
+      "source_location": "L175",
       "weight": 1.0
     },
     {
@@ -15378,7 +14790,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/PLAYBOOK.md",
-      "source_location": "L211",
+      "source_location": "L220",
       "weight": 1.0
     },
     {
@@ -15389,7 +14801,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/PLAYBOOK.md",
-      "source_location": "L247",
+      "source_location": "L256",
       "weight": 1.0
     },
     {
@@ -15400,7 +14812,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/PLAYBOOK.md",
-      "source_location": "L265",
+      "source_location": "L274",
       "weight": 1.0
     },
     {
@@ -15961,7 +15373,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/QUESTIONS.md",
-      "source_location": "L260",
+      "source_location": "L218",
       "weight": 1.0
     },
     {
@@ -15983,7 +15395,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/READINESS.md",
-      "source_location": "L113",
+      "source_location": "L111",
       "weight": 1.0
     },
     {
@@ -16005,7 +15417,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/READINESS.md",
-      "source_location": "L134",
+      "source_location": "L132",
       "weight": 1.0
     },
     {
@@ -16016,7 +15428,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/READINESS.md",
-      "source_location": "L30",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -16027,7 +15439,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/READINESS.md",
-      "source_location": "L63",
+      "source_location": "L61",
       "weight": 1.0
     },
     {
@@ -16038,7 +15450,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/READINESS.md",
-      "source_location": "L94",
+      "source_location": "L92",
       "weight": 1.0
     },
     {
@@ -16115,7 +15527,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/RISKS.md",
-      "source_location": "L109",
+      "source_location": "L108",
       "weight": 1.0
     },
     {
@@ -16126,7 +15538,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/RISKS.md",
-      "source_location": "L123",
+      "source_location": "L122",
       "weight": 1.0
     },
     {
@@ -16137,7 +15549,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/RISKS.md",
-      "source_location": "L135",
+      "source_location": "L134",
       "weight": 1.0
     },
     {
@@ -16148,7 +15560,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/RISKS.md",
-      "source_location": "L41",
+      "source_location": "L40",
       "weight": 1.0
     },
     {
@@ -16159,7 +15571,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/RISKS.md",
-      "source_location": "L55",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
@@ -16170,12 +15582,12 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/RISKS.md",
-      "source_location": "L69",
+      "source_location": "L68",
       "weight": 1.0
     },
     {
       "source": "docs_risks_risks",
-      "target": "docs_risks_r_01_twelve_service_boundaries_one_person_sixteen_weeks",
+      "target": "docs_risks_r_01_eleven_service_boundaries_one_person_sixteen_weeks",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -16192,7 +15604,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/RISKS.md",
-      "source_location": "L83",
+      "source_location": "L82",
       "weight": 1.0
     },
     {
@@ -16203,7 +15615,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/RISKS.md",
-      "source_location": "L95",
+      "source_location": "L94",
       "weight": 1.0
     },
     {
@@ -20911,29 +20323,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/STATE.md",
-      "source_location": "L11",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_state_state",
-      "target": "docs_state_the_marketing_site_track",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/STATE.md",
-      "source_location": "L140",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_state_state",
-      "target": "docs_state_eleven_stale_cross_references_closed",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/STATE.md",
-      "source_location": "L177",
+      "source_location": "L10",
       "weight": 1.0
     },
     {
@@ -20944,7 +20334,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/STATE.md",
-      "source_location": "L208",
+      "source_location": "L133",
       "weight": 1.0
     },
     {
@@ -20955,7 +20345,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/STATE.md",
-      "source_location": "L215",
+      "source_location": "L140",
       "weight": 1.0
     },
     {
@@ -20966,7 +20356,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/STATE.md",
-      "source_location": "L239",
+      "source_location": "L164",
       "weight": 1.0
     },
     {
@@ -20977,7 +20367,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/STATE.md",
-      "source_location": "L260",
+      "source_location": "L185",
       "weight": 1.0
     },
     {
@@ -20988,480 +20378,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/STATE.md",
-      "source_location": "L97",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_acceptance",
-      "target": "docs_tracks_marketing_site_acceptance_marketing_site_acceptance",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/acceptance.md",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_acceptance_conversion_self_audit",
-      "target": "docs_tracks_marketing_site_acceptance_test_don_t_guess",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/acceptance.md",
-      "source_location": "L102",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_acceptance_conversion_self_audit",
-      "target": "docs_tracks_marketing_site_acceptance_not_a_problem",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/acceptance.md",
-      "source_location": "L107",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_acceptance_conversion_self_audit",
-      "target": "docs_tracks_marketing_site_acceptance_could_not_check",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/acceptance.md",
-      "source_location": "L112",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_acceptance_conversion_self_audit",
-      "target": "docs_tracks_marketing_site_acceptance_verdict",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/acceptance.md",
-      "source_location": "L93",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_acceptance_conversion_self_audit",
-      "target": "docs_tracks_marketing_site_acceptance_fix_now",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/acceptance.md",
-      "source_location": "L98",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_acceptance_marketing_site_acceptance",
-      "target": "docs_tracks_marketing_site_acceptance_exit_criteria",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/acceptance.md",
-      "source_location": "L11",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_acceptance_marketing_site_acceptance",
-      "target": "docs_tracks_marketing_site_acceptance_outcome",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/acceptance.md",
-      "source_location": "L117",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_acceptance_marketing_site_acceptance",
-      "target": "docs_tracks_marketing_site_acceptance_readiness_items_narrowed",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/acceptance.md",
-      "source_location": "L31",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_acceptance_marketing_site_acceptance",
-      "target": "docs_tracks_marketing_site_acceptance_debt_this_track_books_deliberately",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/acceptance.md",
-      "source_location": "L41",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_acceptance_marketing_site_acceptance",
-      "target": "docs_tracks_marketing_site_acceptance_permanent_gates_still_green",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/acceptance.md",
-      "source_location": "L53",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_acceptance_marketing_site_acceptance",
-      "target": "docs_tracks_marketing_site_acceptance_boundary_check",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/acceptance.md",
-      "source_location": "L65",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_acceptance_marketing_site_acceptance",
-      "target": "docs_tracks_marketing_site_acceptance_conversion_self_audit",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/acceptance.md",
-      "source_location": "L87",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_blueprint",
-      "target": "docs_tracks_marketing_site_blueprint_marketing_site_blueprint",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_blueprint_marketing_site_blueprint",
-      "target": "docs_tracks_marketing_site_blueprint_objective",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L10",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_blueprint_marketing_site_blueprint",
-      "target": "docs_tracks_marketing_site_blueprint_ui_surfaces",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L100",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_blueprint_marketing_site_blueprint",
-      "target": "docs_tracks_marketing_site_blueprint_vertical_slices",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L112",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_blueprint_marketing_site_blueprint",
-      "target": "docs_tracks_marketing_site_blueprint_tdd_seams_where_red_before_green_is_mandatory",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L138",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_blueprint_marketing_site_blueprint",
-      "target": "docs_tracks_marketing_site_blueprint_copy_rules_non_negotiable",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L153",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_blueprint_marketing_site_blueprint",
-      "target": "docs_tracks_marketing_site_blueprint_files_to_review_first",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L16",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_blueprint_marketing_site_blueprint",
-      "target": "docs_tracks_marketing_site_blueprint_accessibility_aa_by_construction",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L185",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_blueprint_marketing_site_blueprint",
-      "target": "docs_tracks_marketing_site_blueprint_dependency_policy",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L195",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_blueprint_marketing_site_blueprint",
-      "target": "docs_tracks_marketing_site_blueprint_risks_this_track_could_realise",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L203",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_blueprint_marketing_site_blueprint",
-      "target": "docs_tracks_marketing_site_blueprint_where_things_live",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L27",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_blueprint_marketing_site_blueprint",
-      "target": "docs_tracks_marketing_site_blueprint_service_boundaries_touched",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L63",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_blueprint_marketing_site_blueprint",
-      "target": "docs_tracks_marketing_site_blueprint_schema_changes",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L74",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_blueprint_marketing_site_blueprint",
-      "target": "docs_tracks_marketing_site_blueprint_api_contracts_added",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
-      "source_location": "L80",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_blueprint_marketing_site_blueprint",
-      "target": "docs_tracks_marketing_site_blueprint_jobs",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/blueprint.md",
       "source_location": "L96",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_requirements",
-      "target": "docs_tracks_marketing_site_requirements_track_the_public_marketing_site",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/requirements.md",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_requirements_track_the_public_marketing_site",
-      "target": "docs_tracks_marketing_site_requirements_goal",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/requirements.md",
-      "source_location": "L10",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_requirements_track_the_public_marketing_site",
-      "target": "docs_tracks_marketing_site_requirements_exit_criteria",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/requirements.md",
-      "source_location": "L109",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_requirements_track_the_public_marketing_site",
-      "target": "docs_tracks_marketing_site_requirements_decisions_this_track_may_not_re_open",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/requirements.md",
-      "source_location": "L131",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_requirements_track_the_public_marketing_site",
-      "target": "docs_tracks_marketing_site_requirements_notes",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/requirements.md",
-      "source_location": "L139",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_requirements_track_the_public_marketing_site",
-      "target": "docs_tracks_marketing_site_requirements_services_touched",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/requirements.md",
-      "source_location": "L17",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_requirements_track_the_public_marketing_site",
-      "target": "docs_tracks_marketing_site_requirements_in_scope",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/requirements.md",
-      "source_location": "L24",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_requirements_track_the_public_marketing_site",
-      "target": "docs_tracks_marketing_site_requirements_out_of_scope",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/requirements.md",
-      "source_location": "L60",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_requirements_track_the_public_marketing_site",
-      "target": "docs_tracks_marketing_site_requirements_depends_on",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/requirements.md",
-      "source_location": "L73",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_requirements_track_the_public_marketing_site",
-      "target": "docs_tracks_marketing_site_requirements_readiness_items_paid_or_narrowed",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/requirements.md",
-      "source_location": "L78",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_requirements_track_the_public_marketing_site",
-      "target": "docs_tracks_marketing_site_requirements_blocked_by",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/requirements.md",
-      "source_location": "L85",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_marketing_site_requirements_track_the_public_marketing_site",
-      "target": "docs_tracks_marketing_site_requirements_performance_budgets",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/marketing-site/requirements.md",
-      "source_location": "L96",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_readme",
-      "target": "docs_tracks_readme_tracks",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/README.md",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_readme_tracks",
-      "target": "docs_tracks_readme_what_a_track_is_not",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/README.md",
-      "source_location": "L25",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_tracks_readme_tracks",
-      "target": "docs_tracks_readme_current_tracks",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".docs/tracks/README.md",
-      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -21543,5 +20460,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "c7722e99d6475079d5dffa69cfbbd2ef8ee8fc25"
+  "built_at_commit": "9f60508371e2b35ab43ab8d51907cf9b6a190760"
 }

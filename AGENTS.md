@@ -87,9 +87,12 @@ A sprint is done when `acceptance.md` passes, not when the code compiles.
 
 This project has a graphify knowledge graph at `graphify-out/`.
 
-- **No graph exists yet** — `graphify-out/` has no `graph.json`, because no code
-  does. Until Sprint 001 lands and `graphify update .` has run once, read the
-  `.docs/` pack directly; the rules below start applying when the graph does.
+- **A graph exists, and it is documents only.** The post-commit hook built it on
+  16 September 2026: 981 nodes, 884 edges, 98 communities — all of it `.docs/`,
+  because no code exists yet. It was extracted AST-only and cost nothing, which
+  is what made the cost objection in `STATE.md` moot. Query it for *where is X
+  stated* across the pack. Do not expect it to answer anything about code until
+  Sprint 001 lands and `graphify update .` has run over real source.
 - Once it exists: before answering any architecture, file-relationship or
   "where is X used" question, query the graph rather than grepping the tree first.
 - Before editing `packages/chassis`, `charts/service`, or anything under

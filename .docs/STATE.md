@@ -110,15 +110,26 @@ around them:
       and it is the highest-value unknown in the pack.
 - [ ] Line up the design-partner meeting for week 1, with the four sample files
       named in advance so they arrive (see RISKS R-04).
-- [ ] Answer **Q11 (phone verification, PRD-F3)** — it blocks Sprint 002, which
-      is two weeks away and builds the gate.
+- [x] Answer **Q11 (phone verification, PRD-F3)** — **D-63, accepted as
+      designed.** WhatsApp one-time code, SMS fallback, hashed, five attempts per
+      hour; one standard for every non-member actor, no weaker prospect tier
+      (D-59). The gate does not wait on Meta: if WhatsApp Business verification
+      is not through by Sprint 002 it ships SMS-only. This box was still open
+      while the same file said Q11 was answered two sections down.
 - [ ] Start WhatsApp Business verification and the eTIMS integrator conversation.
       Both have multi-week tails owned by someone else (RISKS R-05).
 - [ ] **Install and authenticate `gh` — confirmed missing** (`gh: command not
       found`). Hard gate: the whole ticket workflow (`/to-spec`, `/to-tickets`,
       `/wayfinder`) and `graphify prs` depend on it. Do it before cutting a
       ticket, not during.
-- [x] Decide whether the planning pack goes in the knowledge graph — **not now.**
+- [x] Decide whether the planning pack goes in the knowledge graph — **overtaken
+      by events, and the reasoning below was wrong about the cost.** The
+      post-commit hook indexed the pack on 16 September 2026 with no API key and
+      no spend: 981 nodes, 884 edges, 98 communities. Markdown structure
+      extracts deterministically, exactly as code does — only *deep* semantic
+      extraction needs a key. So the graph exists, it is documents only, and the
+      thing that was deferred turned out to be free. Revisit deep mode, not
+      indexing, around Sprint 004. The original note read:
       Document indexing costs money, code indexing is free, and the twenty-eight
       documents are greppable files you have just read. `graphify-out/` has no
       `graph.json` at all yet. Run `graphify update .` from Sprint 001's first
