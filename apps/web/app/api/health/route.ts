@@ -6,10 +6,16 @@
  * Neon connectivity -- because a probe that fails when Postgres blips takes
  * every pod out at once, and that belongs behind one shared implementation
  * rather than being invented here.
+ *
+ * `connection()` opts the handler out of static prerendering, which is what
+ * `export const dynamic = 'force-dynamic'` used to do before cacheComponents
+ * stopped accepting segment config (a probe must always answer at request
+ * time, never from a build).
  */
-export const dynamic = 'force-dynamic'
+import { connection } from 'next/server'
 
-export function GET(): Response {
+export async function GET(): Promise<Response> {
+  await connection()
   return Response.json({
     status: 'ok',
     service: 'web',
