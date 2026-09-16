@@ -36,31 +36,3 @@ export function Button({
     </button>
   )
 }
-
-/**
- * A link that looks like a button. Separate from `Button` on purpose: a thing
- * that navigates is an anchor and a thing that acts is a button, and collapsing
- * the two is how a keyboard and screen-reader user loses the ability to tell
- * them apart.
- *
- * Marketing routes mostly want `next/link` instead, and reach the same classes
- * through `buttonClassName` — which keeps `packages/ui` free of a dependency on
- * Next.
- */
-export function ButtonLink({
-  variant = 'primary',
-  size = 'md',
-  className,
-  children,
-  ...rest
-}: Omit<ComponentPropsWithoutRef<'a'>, 'className'> & {
-  variant?: ButtonVariant
-  size?: ButtonSize
-  className?: string
-}) {
-  return (
-    <a className={buttonClassName(variant, size, className)} {...ctaMarker(variant)} {...rest}>
-      {children}
-    </a>
-  )
-}

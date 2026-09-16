@@ -83,10 +83,6 @@ export const SOLUTION_SLUGS = [
 
 export type SolutionSlug = (typeof SOLUTION_SLUGS)[number]
 
-export const LEGAL_SLUGS = ['privacy', 'terms', 'data-processing', 'cookies'] as const
-
-export type LegalSlug = (typeof LEGAL_SLUGS)[number]
-
 const featureRoutes: RouteEntry[] = [
   { slug: 'rent-collection', title: 'Rent collection' },
   { slug: 'reconciliation', title: 'Reconciliation' },
