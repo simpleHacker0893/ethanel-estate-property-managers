@@ -1,0 +1,18 @@
+{
+  "shell": {
+    "brand": "Ethanel",
+    "skipToContent": "Skip to main content",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "menu": "Menu",
+    "mainNav": "Main",
+    "mobileNav": "Mobile",
+    "primaryCta": "Request a demo",
+    "footerBlurb": "Letting and property management for Kenyan agencies. Residents pay over M-Pesa; you see it posted and reconciled against a double-entry ledger.",
+    "footerContactHeading": "Contact",
+    "footerEmailLabel": "hello@ethanel.co.ke",
+    "footerContactPending": "A WhatsApp line and a Nairobi address go here once they exist. We would rather show nothing than a number that reaches a stranger.",
+    "copyright": "© Ethanel",
+    "comingSoon": "Coming with the next release"
+  }
+}

@@ -109,15 +109,27 @@ export default tseslint.config(
 
   // Marketing copy lives in content modules so a copy edit never touches a
   // component (marketing-site/acceptance.md criterion 12).
+  //
+  // The selector is a string, so the regex backslashes have to survive JS string
+  // escaping: `'\s'` is just `'s'`. Written unescaped, this rule matched
+  // `[^s]{2,}(s+[^s]+){5,}` and never fired on a single line of real prose --
+  // criterion 12 had no enforcement at all. Verified by fixture below.
   {
     files: ['apps/web/app/(marketing)/_sections/**/*.tsx'],
     rules: {
       'no-restricted-syntax': [
         'error',
         {
-          selector: 'JSXText[value=/[^\s]{2,}(\s+[^\s]+){5,}/]',
+          // Six or more whitespace-separated words of literal text in JSX.
+          selector: 'JSXText[value=/[^\\s]+(\\s+[^\\s]+){5,}/]',
           message:
             'Prose in a section component. Move it to apps/web/content/marketing/ and pass it as a typed prop.',
+        },
+        {
+          // The same copy, smuggled in as {'...'} rather than as bare JSX text.
+          selector: 'JSXExpressionContainer > Literal[value=/^.{31,}/]',
+          message:
+            'A string literal over 30 characters in a section component. Move it to apps/web/content/marketing/ and pass it as a typed prop.',
         },
       ],
     },

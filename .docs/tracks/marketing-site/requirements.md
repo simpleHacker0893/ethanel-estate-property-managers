@@ -102,9 +102,9 @@ Graded on a throttled 4G profile, not on a laptop.
 | LCP, mobile 4G, on `/` | under 2.0s; hard fail over 2.5s |
 | CLS | under 0.05 |
 | INP | under 200ms |
-| First-party JS on `/` | under 120 KB gzipped |
+| First-party JS on `/` | under 150 KB gzipped (**D-71**, closing Q23; was 120 KB) |
 | Total page weight on `/` | under 900 KB including the hero image |
-| Font families on `/` | 2 maximum, self-hosted via `next/font`, `latin` subset, `display: swap` |
+| Font families on `/` | **4 families / 6 files** — operator decision, 16 September 2026, superseding the 2-family row. `next/font/google`, `latin` subset, `display: swap`, one or two weights each. Six single-weight files is a smaller download than two families at four weights, which is the shape this row was written to prevent. |
 
 ## Exit criteria
 
