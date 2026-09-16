@@ -3,8 +3,10 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Container, Eyebrow, Prose, Section } from '@ethanel/ui'
 
+import { getStandardPage } from '../../../content/marketing/pages'
 import { pending } from '../../../content/marketing/pending'
-import { routeFor, routes } from '../../../content/marketing/routes'
+import { BASE_URL, routeFor, routes } from '../../../content/marketing/routes'
+import { StandardPage } from '../_sections/standard-page'
 
 /**
  * Every route the manifest names but no page implements yet.
@@ -68,12 +70,29 @@ function pathFor(slug: string[]): string {
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params
-  const entry = routeFor(pathFor(slug))
+  const path = pathFor(slug)
+  const entry = routeFor(path)
   if (!entry) return {}
 
+  const page = getStandardPage(path)
+
+  // A written page is indexable and carries its own description and card. A
+  // path with no page yet is a placeholder, and an indexed placeholder competes
+  // in search with the real page that eventually replaces it.
+  if (!page) {
+    return { title: entry.title, robots: { index: false, follow: true } }
+  }
+
   return {
-    title: entry.title,
-    robots: { index: false, follow: true },
+    title: page.meta.title,
+    description: page.meta.description,
+    alternates: { canonical: `${BASE_URL}${page.slug}` },
+    openGraph: {
+      title: page.meta.title,
+      description: page.meta.description,
+      url: `${BASE_URL}${page.slug}`,
+      images: [{ url: `/og?title=${encodeURIComponent(page.hero.h1)}`, width: 1200, height: 630 }],
+    },
   }
 }
 
@@ -83,6 +102,9 @@ export default async function PendingPage({ params }: Params) {
 
   // Not in the manifest, or development-only: a genuine 404 either way.
   if (!entry || entry.devOnly) notFound()
+
+  const page = getStandardPage(pathFor(slug))
+  if (page) return <StandardPage content={page} />
 
   return (
     <Section>

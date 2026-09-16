@@ -4,10 +4,10 @@ import { expect, test } from '@playwright/test'
 /**
  * Acceptance criterion 3 (the merge gate of D-70) and criterion 11.
  *
- * Criterion 3 names `/`, `/demo`, `/pricing` and one feature page. `/pricing`
- * arrives with the trust pages and is added to `SCANNED` then; the rest are
- * here. `/demo/thanks` is scanned too because it is the one page a converted
- * visitor actually lands on and it would otherwise never be looked at again.
+ * Criterion 3 names `/`, `/demo`, `/pricing` and one feature page; all four are
+ * here now that the trust pages exist. `/demo/thanks` is scanned too because it
+ * is the one page a converted visitor actually lands on and it would otherwise
+ * never be looked at again.
  *
  * Every route is scanned in **both colour schemes**, which is criterion 11 made
  * enforceable. Dark mode is automatic token redefinition with no toggle, so the
@@ -16,7 +16,22 @@ import { expect, test } from '@playwright/test'
  * token pairs; this proves the pairs that actually reached the page.
  */
 
-const SCANNED = ['/', '/demo', '/demo/thanks', '/features/rent-collection'] as const
+const SCANNED = [
+  '/',
+  '/demo',
+  '/demo/thanks',
+  '/features/rent-collection',
+  // One page of each remaining template shape. The eighteen standard pages all
+  // render through `StandardPage`, so scanning one of each distinct
+  // configuration covers the markup the others produce: `/pricing` for a plain
+  // page, `/security` for the facts table, `/solutions/landlords` for a page
+  // carrying block links, and `/legal/privacy` for the in-review banner, which
+  // is the only element on the site that appears above an h1.
+  '/pricing',
+  '/security',
+  '/solutions/landlords',
+  '/legal/privacy',
+] as const
 const SCHEMES = ['light', 'dark'] as const
 
 test('the site responds', async ({ page }) => {

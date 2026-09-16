@@ -255,3 +255,61 @@ export interface AssetRow {
   height: number
   alt: string
 }
+
+// ----------------------------------------------------------- site pages ---
+
+/**
+ * The block vocabulary every non-feature page is built from.
+ *
+ * Four shapes, chosen because sixteen pages needed them and not one needed a
+ * fifth: running prose, a list of named things, an ordered process, and a
+ * label/value table. A page picks blocks in order; the template knows how to
+ * draw each kind and nothing else. Adding a `kind` is a deliberate act with a
+ * renderer attached, which is what stops this drifting into a CMS.
+ */
+export type PageBlockBody =
+  | { kind: 'prose'; paragraphs: string[] }
+  | { kind: 'list'; items: { title: string; body: string }[] }
+  | { kind: 'steps'; steps: Step[] }
+  | { kind: 'facts'; rows: { label: string; value: string }[] }
+
+export type PageBlock = {
+  heading: SectionHeading
+  /**
+   * Links rendered as a row under the block.
+   *
+   * Body copy is plain strings with no markdown and no link parsing, which is
+   * deliberate — a renderer that parses copy is a renderer that can be made to
+   * emit markup from content. But that left pages unable to link at all, so
+   * `/security` was being referenced as bare path text in prose that a reader
+   * cannot click. This is the affordance: links are structured data with an
+   * href the test suite can resolve against the route manifest, rather than a
+   * string that happens to look like a path.
+   */
+  links?: Cta[]
+} & PageBlockBody
+
+/**
+ * Every page on the site that is not the landing page, the demo path or a
+ * feature page: pricing, the trust pages, the four solutions, the company
+ * pages and the four legal stubs.
+ *
+ * One shape for all of them, for the same reason the ten feature pages share
+ * one template — a page that cannot express something the type does not have
+ * is a page that cannot quietly invent a customer, a price or a launch date.
+ */
+export interface StandardPageContent {
+  /** Must equal the manifest path, asserted by `tests/content/pages.test.ts`. */
+  slug: string
+  meta: { title: string; description: string }
+  /**
+   * The in-review banner. Present only on pages whose content is owed to
+   * someone outside the team — the four `/legal/*` stubs, where an advocate
+   * review is outstanding and Q6 is open (DEBT-09). A page that renders this
+   * is saying so on the page, not only in the nav.
+   */
+  banner?: string
+  hero: { eyebrow?: string; h1: string; lede: string }
+  blocks: PageBlock[]
+  cta: FinalCtaContent
+}
