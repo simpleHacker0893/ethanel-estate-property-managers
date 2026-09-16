@@ -3,4 +3,4 @@ export { Card, Container, Eyebrow, Prose, Section } from './primitives/layout.ts
 export type { CardTone, SectionTone } from './primitives/layout.tsx'
 export { buttonClassName, ctaMarker } from './primitives/button-classes.ts'
 export type { ButtonSize, ButtonVariant } from './primitives/button-classes.ts'
-export { Button, ButtonLink } from './primitives/button.tsx'
+export { Button } from './primitives/button.tsx'
