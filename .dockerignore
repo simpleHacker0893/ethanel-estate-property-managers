@@ -1,0 +1,30 @@
+# Everything the build does not need. A fat context is slow and it is also how a
+# stray .env reaches a layer.
+node_modules
+**/node_modules
+.git
+.github
+.docs
+.claude
+.husky
+graphify-out
+charts
+deploy
+infra
+coverage
+**/coverage
+.next
+**/.next
+dist
+**/dist
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+samples
+fixtures
+*.log
+README.md
+AGENTS.md
+CLAUDE.md
+CODEX.md

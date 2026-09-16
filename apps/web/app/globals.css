@@ -1,0 +1,2 @@
+/* The design system is the single @theme block in packages/ui. */
+@import '@ethanel/ui/theme.css';

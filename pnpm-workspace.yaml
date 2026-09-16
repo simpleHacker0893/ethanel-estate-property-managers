@@ -1,0 +1,21 @@
+packages:
+  - apps/*
+  - packages/*
+  - packages/services/*
+
+# pnpm blocks postinstall scripts by default. Allowing them wholesale is how a
+# compromised transitive dependency runs code on a machine that will hold AWS
+# and Daraja credentials, so each one is named and nothing else may build.
+#
+# All three ship prebuilt native binaries that tooling needs:
+#   @swc/core       Next.js's compiler
+#   @parcel/watcher file watching for next dev and turbo
+#   unrs-resolver   ESLint import resolution
+#
+# `allowBuilds` is the pnpm 11 setting. pnpm 10's `onlyBuiltDependencies` is
+# still read but superseded, and setting both means the next person has to work
+# out which one is live.
+allowBuilds:
+  '@parcel/watcher': true
+  '@swc/core': true
+  unrs-resolver: true

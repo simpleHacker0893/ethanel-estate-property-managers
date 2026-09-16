@@ -1,0 +1,88 @@
+nameOverride: docs-worker
+
+image:
+  repository: ''
+  tag: ''
+  digest: ''
+
+containerPort: 3000
+command: ['node', 'apps/docs-worker/src/main.ts']
+
+service:
+  enabled: false
+
+autoscaling:
+  enabled: false
+replicaCount: 1
+
+# One replica, so a PDB would block every node drain rather than protect
+# anything. Set false ON PURPOSE, and _validate.tpl requires the key to be
+# present so the decision is visible rather than forgotten. A stalled PDF render
+# is a delayed receipt, not lost money -- the job is idempotent and resumable and
+# pg-boss will redeliver it.
+podDisruptionBudget:
+  enabled: false
+
+rollout:
+  maxSurge: 1
+  maxUnavailable: 0
+
+# Chromium can sit mid-render. Long enough to finish a statement, not so long
+# that a stuck browser holds a node drain open indefinitely.
+terminationGracePeriodSeconds: 90
+
+probes:
+  readiness:
+    httpGet: { path: /ready, port: http }
+    initialDelaySeconds: 5
+    periodSeconds: 10
+    failureThreshold: 3
+  liveness:
+    httpGet: { path: /health, port: http }
+    # Chromium is the memory leak this Deployment was split out to contain
+    # (D-10, ARCHITECTURE §13.1). A liveness probe that restarts a wedged pod is
+    # the containment, so the window is deliberately not generous.
+    initialDelaySeconds: 20
+    periodSeconds: 30
+    timeoutSeconds: 5
+    failureThreshold: 2
+
+# "Own resource class, because Chromium does" -- ARCHITECTURE §11.1. The memory
+# limit is the highest of the four and the CPU request the lowest: rendering is
+# bursty and memory-hungry, not steadily CPU-bound.
+resources:
+  requests:
+    cpu: 200m
+    memory: 1Gi
+  limits:
+    cpu: '2'
+    memory: 2Gi
+
+# Chromium needs writable space for its own temp files, and the root filesystem
+# is read-only and not negotiable (D-34 gate 5, hard-coded in the library).
+tmpSizeLimit: 512Mi
+
+# ARCHITECTURE §10: "docs-worker -> Neon/S3 only". The narrowest allow list of
+# the four, and that is the point -- this Deployment runs a browser engine over
+# untrusted-ish HTML, so it is the one whose blast radius is bounded hardest.
+# No Valkey, no provider APIs, no port 5432 to anything but Neon.
+networkPolicy:
+  enabled: true
+  ingress: []
+  egress:
+    - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0
+            except:
+              - 10.0.0.0/8
+              - 172.16.0.0/12
+              - 192.168.0.0/16
+              - 169.254.169.254/32
+      ports:
+        - port: 443
+          protocol: TCP
+        - port: 5432
+          protocol: TCP
+
+env:
+  NODE_ENV: production

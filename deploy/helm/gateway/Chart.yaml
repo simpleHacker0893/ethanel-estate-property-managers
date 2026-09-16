@@ -1,0 +1,10 @@
+apiVersion: v2
+name: gateway
+description: The `gateway` Deployment. All resources come from the charts/service library chart (D-34).
+type: application
+version: 0.1.0
+appVersion: '0.0.0'
+dependencies:
+  - name: service
+    version: 0.1.0
+    repository: file://../../../charts/service

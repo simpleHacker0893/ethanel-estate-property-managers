@@ -1,0 +1,9 @@
+pnpm-lock.yaml
+.next/
+dist/
+coverage/
+graphify-out/
+.docs/
+*.md
+# Helm Go templates are not valid YAML; prettier cannot parse them.
+deploy/helm/*/templates/

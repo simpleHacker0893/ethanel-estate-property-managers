@@ -1,0 +1,19 @@
+/*
+ * The design system's single @theme block.
+ *
+ * It lives in packages/ui and not in apps/web/app/(marketing)/ on purpose:
+ * D-27 requires this same scale to be re-derived per organization from a
+ * supplied logo and one accent colour for storefronts in Sprint 011. Tokens
+ * scoped to the marketing route group would have to move then, and a move is
+ * how a second source of truth gets created.
+ *
+ * Rule: every colour, radius, type and motion value in the repo comes from here.
+ * `grep -rE '#[0-9a-fA-F]{6}'` outside this file must return nothing.
+ *
+ * TOKENS ARE WRITTEN IN THE MARKETING TRACK, SLICE 1 (see
+ * .docs/tracks/marketing-site/blueprint.md). This file is the agreed home, not
+ * yet the agreed values -- nothing in the pack has ever specified a colour or a
+ * typeface, so these are the project's first brand artifact and Sprint 003
+ * inherits them rather than re-deciding them.
+ */
+@import 'tailwindcss';

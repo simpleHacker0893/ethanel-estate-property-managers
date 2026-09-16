@@ -1,0 +1,46 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", ":semanticCommitsDisabled"],
+  "schedule": ["* 0-6 * * 1"],
+  "timezone": "Africa/Nairobi",
+  "prConcurrentLimit": 3,
+  "rangeStrategy": "pin",
+  "minimumReleaseAge": "3 days",
+  "_minimumReleaseAgeWhy": "pnpm on this machine enforces a minimumReleaseAge supply-chain policy and refuses a lockfile containing a package published inside the window. Without a matching setting here, Renovate opens PRs that cannot install -- vitest@5.0.1 was rejected exactly that way on 16 Sept 2026. Keep this at or above the pnpm policy window.",
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["* 0-6 * * 1"]
+  },
+  "vulnerabilityAlerts": {
+    "labels": ["security"],
+    "schedule": ["at any time"]
+  },
+  "packageRules": [
+    {
+      "description": "D-16: Next.js tracks the Active LTS line and security releases land within 7 days. Majors are a decision, not a Renovate PR.",
+      "matchPackageNames": ["next", "eslint-config-next", "@next/eslint-plugin-next"],
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "TypeScript is held on the 6.x line. typescript-eslint@8 peer-requires typescript <6.1.0, and typescript-eslint is what enforces VALIDATION.md \u00a72's 'no any in a public interface' merge gate. Bumping TypeScript to 7 does not fail the build -- it silently disables a permanent gate. Revisit when typescript-eslint supports 7.",
+      "matchPackageNames": ["typescript"],
+      "allowedVersions": "<6.1.0"
+    },
+    {
+      "description": "Group the lint toolchain so eslint and typescript-eslint never move apart.",
+      "matchPackageNames": ["eslint", "typescript-eslint", "eslint-config-prettier"],
+      "groupName": "lint toolchain"
+    },
+    {
+      "description": "Group the test toolchain: vitest and its coverage provider are version-locked to each other.",
+      "matchPackageNames": ["vitest", "@vitest/coverage-v8", "vite"],
+      "groupName": "test toolchain"
+    },
+    {
+      "description": "Pin every GitHub Action to a commit SHA. A mutable tag on a workflow with cloud credentials is a supply-chain hole.",
+      "matchManagers": ["github-actions"],
+      "pinDigests": true
+    }
+  ]
+}
