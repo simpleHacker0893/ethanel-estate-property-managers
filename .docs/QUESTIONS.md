@@ -230,6 +230,25 @@ cannot scope — which is a policy question, not a table question.
 through a `LeadSink` seam to an append-only file, recorded as **DEBT-08**. The
 seam exists precisely so this answer is a new implementation and not a migration.
 
+**Q23 · The 120 KB first-party JS budget is under the Next.js floor — relax, re-platform, or hold?** — blocks the marketing track's Lighthouse gate
+`requirements.md` (marketing track) budgets "first-party JS on `/` under
+120 KB gzipped". Measured 16 September 2026 on the deployed placeholder — a
+single static server-component page with **zero** first-party client code —
+Next.js 16.3.5 (Turbopack, cacheComponents on) ships **135.9 KB** of script
+transfer (Lighthouse `resource-summary:script`, third-party = 0, so the figure
+is all framework baseline: React 19 + App Router runtime). The budget cannot be
+met by deleting first-party code, because there is none to delete; it is the
+framework floor.
+Three ways out, none chosen: relax the budget to ~150 KB (cheapest, and it
+weakens a gate that exists to protect Kenyan 4G handsets); accept the miss and
+record it as standing stack evidence (the budget stays, CI stays yellow on that
+one assertion); or move marketing routes off the Next runtime — a D-69-adjacent
+decision far beyond this track. The assertion currently runs as a **warning**
+so CI stays green while this is open; it is not silently deleted.
+*Needed by:* before `/` goes live with real content, which can only add script.
+Whichever way this lands, the Lighthouse assertion is flipped from warn back to
+error in the same commit.
+
 **Q14 · What is readiness item E18?** — **ANSWERED, D-55**
 E18 is the **automated delivery pipeline**: merge to `main` builds, tests and
 deploys to `staging` with no human step, with production behind a manual approval

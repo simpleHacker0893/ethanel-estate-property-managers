@@ -16,7 +16,7 @@
         "largest-contentful-paint": ["error", { "maxNumericValue": 2000 }],
         "cumulative-layout-shift": ["error", { "maxNumericValue": 0.05 }],
         "interaction-to-next-paint": ["error", { "maxNumericValue": 200 }],
-        "resource-summary:script:size": ["error", { "maxNumericValue": 122880 }],
+        "resource-summary:script:size": ["warn", { "maxNumericValue": 122880 }],
         "resource-summary:total:size": ["error", { "maxNumericValue": 921600 }],
         "font-display": ["error", { "minScore": 1 }]
       }

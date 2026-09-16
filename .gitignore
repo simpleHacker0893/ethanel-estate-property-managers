@@ -53,3 +53,9 @@ Thumbs.db
 *.log
 # Playwright CLI output (may contain credentials)
 .playwright-cli/
+
+# Test and budget run artifacts (evidence is the rerunnable command, not the blob)
+apps/web/test-results/
+apps/web/playwright-report/
+apps/web/.lighthouseci/
+apps/web/lighthouse-*.json
