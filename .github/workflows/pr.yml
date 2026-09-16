@@ -64,6 +64,40 @@ jobs:
       - name: Build
         run: pnpm build
 
+  # ------------------------------------------------------- marketing gates ---
+  # Ticket 01 of the marketing-site track (D-70): accessibility and performance
+  # block a merge on marketing routes from the first commit, not from a final
+  # slice. Needs the same three approved devDependencies the app declares.
+  marketing-gates:
+    name: Marketing gates (axe + Lighthouse)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .node-version
+      - name: Enable pnpm via corepack
+        run: corepack enable
+      - name: Install
+        run: pnpm install --frozen-lockfile
+      - name: Build web
+        run: pnpm --filter @ethanel/web build
+      - name: Install Playwright browsers
+        run: pnpm --filter @ethanel/web exec playwright install --with-deps chromium
+      - name: Browser suite (smoke, axe)
+        run: pnpm --filter @ethanel/web test:e2e
+      - name: Budget suite (Lighthouse CI)
+        # The assertion table prints the measured values, not only pass/fail;
+        # reports land in apps/web/.lighthouseci.
+        run: pnpm --filter @ethanel/web test:budget
+      - name: Upload Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports
+          path: apps/web/.lighthouseci
+          retention-days: 14
+
   # ------------------------------------------------------------------ chart ---
   chart:
     name: Helm chart and D-34 gates
