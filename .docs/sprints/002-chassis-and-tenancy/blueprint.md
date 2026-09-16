@@ -66,7 +66,7 @@ Every Deployment inherits it: probes, CPU and memory requests and limits,
 PodDisruptionBudget, non-root with read-only root filesystem, default-deny
 NetworkPolicy with an explicit allow list.
 
-**The D-34 gates become structural.** A Deployment that omits any of them must not
+**Rows 1–5 of the D-34 gates become structural.** A Deployment that omits any of those five must not
 be renderable — not "should be caught in review". If a gate can be omitted and
 still deploy, the chart is not done.
 
@@ -102,7 +102,7 @@ optional**, landlords and residents are **not** organization members, so their
 RLS policies span organizations, and `verified_phones` is the only link between a
 Google identity and payments, chats, leases or leads.
 
-> **Q11 (phone verification accepted) is open and blocks this sprint** — and this
+> **Q11 is ANSWERED (D-63): the gate is accepted as designed.** WhatsApp one-time code, SMS fallback, hashed, five attempts per hour; a number change re-verifies; a manual re-link is `org:owner` or `org:admin` only and is audited; one standard, no weaker prospect tier (D-59). The gate does not wait on Meta — if WhatsApp Business verification (R-05) is not through, it ships SMS-only. This
 > is the sprint that builds the gate. Get the answer before building the flow, or
 > build the gate behind a seam you can change.
 
@@ -126,7 +126,7 @@ Blocking on high and critical.
 3. Chassis config, logging, error envelope, probes, shutdown — thin, one service consuming it.
 4. Prisma base client + RLS hook with `SET LOCAL`, turning slice 2 green.
 5. `charts/service` with the pinned gate list, structural.
-6. Nine schemas and roles, migrations committed.
+6. Ten schemas and roles, migrations committed — the nine domain schemas plus `reporting` (D-67, ADR-012).
 7. `identity-svc`: Clerk mirror, Google sign-in, memberships, audit log.
 8. E3 harness + CI wiring, and a deliberately policy-less table proving CI rejects it.
 9. Scaffold a throwaway second service end to end, timed.

@@ -12,6 +12,9 @@ channel. Built solo with agent assistance.
 3. `.docs/SERVICE-TOPOLOGY.md` — what runs and why.
 4. `.docs/sprints/<current>/requirements.md`, then `blueprint.md` and
    `acceptance.md` in the same folder.
+5. If you are on a **track** rather than a sprint, the same three files under
+   `.docs/tracks/<track>/`. A track is graded exactly like a sprint and inherits
+   every decision; `.docs/tracks/README.md` says what it is and is not.
 
 `.docs/ARCHITECTURE.md` (v1.2) and `.docs/PRD.md` (v1.2) are the long-form
 product and system documents and are reconciled with the above — where an older

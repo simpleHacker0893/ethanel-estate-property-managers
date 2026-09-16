@@ -7,7 +7,7 @@
 | **Companion** | Ethanel PRD v1.2 · `DECISIONS.md` · `SERVICE-TOPOLOGY.md` |
 | **Change log** | **1.2:** reconciled with the round 2 decisions in `DECISIONS.md`. Eleven logical services deployed as four Deployments (ADR-001), Prisma 7 (ADR-004), `pg-boss` on Postgres (ADR-005), one Valkey for cache only, schema per service (ADR-008), all inbound webhooks at `gateway` (ADR-011), OpenTofu, GitHub Actions + Helm, AWS only, sixteen one-week sprints, ADR numbering aligned to `DECISIONS.md`. Closes `RECONCILIATION.md` |
 | | **1.1:** organization/resident/landlord naming, verified WhatsApp numbers, outside view at near-zero cost, 360° photos, video viewings, WhatsApp channel, e-signature, AI, eTIMS, land projects, minimum pilot platform (§11.0) |
-| **Scope** | Release 1 platform: web app, gateway, background workers, data, integrations, Kubernetes deployment. Landing page out of scope |
+| **Scope** | Release 1 platform: web app, gateway, background workers, data, integrations, Kubernetes deployment. **Public marketing site in scope from D-68**, governed by `.docs/tracks/marketing-site/` — this row read "Landing page out of scope" until that decision reversed it |
 
 ---
 
@@ -86,7 +86,7 @@ flowchart TB
     CRON["reconcile-sweeper<br/>and ledger-check CronJobs"]
   end
   subgraph Data
-    NEON[("Neon Postgres + PostGIS<br/>9 schemas, 1 role each<br/>+ pg-boss")]
+    NEON[("Neon Postgres + PostGIS<br/>10 schemas, 1 role each<br/>+ pg-boss")]
     VK[("Valkey<br/>cache only, allkeys-lru")]
     S3[("S3 buckets<br/>media-public, docs-private,<br/>exports")]
   end
@@ -117,7 +117,7 @@ flowchart TB
 
 | Deployable | Hosts | Responsibility | Scaling |
 |---|---|---|---|
-| `web` | `web` + the nine domain service modules, in-process behind their contracts | All UI (resident, landlord, staff, caretaker, super admin), Server Actions, exports download | HPA on CPU and requests per pod; min 2, PodDisruptionBudget |
+| `web` | `web` + the ten domain service modules, in-process behind their contracts | All UI (resident, landlord, staff, caretaker, super admin), Server Actions, exports download | HPA on CPU and requests per pod; min 2, PodDisruptionBudget |
 | `gateway` | `gateway` + the inbox writers of the services it feeds | Public versioned REST API, API keys and scopes, per-key rate limits, and **every inbound webhook**: verify signature, persist to the owning service's inbox table, return 200 | HPA; min 2, PodDisruptionBudget |
 | `worker` | `money-worker`, `payments-worker`, `messaging-worker` handlers | `pg-boss` consumers and schedulers: rent runs, statements, arrears rollups, callback draining and matching, outbound WhatsApp and SMS, media processing, metering, exports | Fixed replicas, scaled up manually before rent days (D-35); queue-class concurrency within the Deployment |
 | `docs-worker` | `docs-worker` | Headless Chromium (Playwright) rendering of leases, receipts, invoices and statements. Isolated so a Chromium leak cannot take a request path down (D-10) | Fixed, own resource class |
@@ -136,12 +136,14 @@ ethanel/
 ├─ apps/                      # one per Deployment — entrypoints only, no domain logic
 │  ├─ web/                    # Next.js App Router (Active LTS line, D-16)
 │  │  ├─ app/
+│  │  │  ├─ (marketing)/      # public marketing site, no auth (D-68)
 │  │  │  ├─ (auth)/           # Clerk sign-in / sign-up
 │  │  │  ├─ (resident)/r/…    # resident PWA
 │  │  │  ├─ (landlord)/l/…    # landlord portal
 │  │  │  ├─ (org)/w/[orgSlug]/…   # staff app
 │  │  │  ├─ (caretaker)/c/…   # PWA task screens
 │  │  │  └─ (admin)/admin/…   # super admin
+│  │  ├─ content/marketing/   # typed marketing copy modules (D-68)
 │  │  └─ proxy.ts             # clerkMiddleware route protection
 │  ├─ gateway/                # public /v1 REST, API keys, ALL inbound webhooks
 │  ├─ worker/                 # pg-boss consumers and schedulers
@@ -152,7 +154,7 @@ ethanel/
 │  │                          # pg-boss wiring, Prisma base client + RLS hook
 │  ├─ contracts/              # zod schemas → OpenAPI → React Hook Form validation;
 │  │                          # one definition per request shape (D-02)
-│  ├─ services/               # the nine domain services, one folder each. Each
+│  ├─ services/               # the ten domain services, one folder each. Each
 │  │  │                       # declares its schema, role, contract, job handlers
 │  │  ├─ identity/            # organizations, users, memberships, roles, audit
 │  │  ├─ property/            # landlords, properties, units, leases, residents
@@ -163,7 +165,9 @@ ethanel/
 │  │  ├─ ops/                 # repair requests, work orders, inspections,
 │  │  │                       # meter readings, running costs, vendors
 │  │  ├─ docs/                # template catalogue, render requests
-│  │  └─ billing/             # SaaS plans, usage counters, feature flags
+│  │  ├─ billing/             # SaaS plans, usage counters, feature flags
+│  │  └─ reporting/           # rpt_* read models, fed only by outbox
+│  │                         # events (D-67, ADR-012)
 │  ├─ db/                     # Prisma schema per service, migrations, RLS SQL, seed
 │  ├─ auth/                   # Clerk helpers, permission checks, organization context
 │  ├─ integrations/           # mpesa, paystack, sms, email, whatsapp, media, ai
@@ -365,7 +369,7 @@ The three candidates that were weighed — **the first was chosen** (D-67). Spri
 Whichever is chosen, two rules already hold: **reports are fed by outbox events, never by a cross-schema join**, and **every figure reconciles to the ledger** (PRD M7-05). Until ADR-012 lands, Sprint 004 builds the grid against `property`- and `money`-owned endpoints only, which is enough for the rent roll and does not prejudge the answer.
 
 - Grids request pages of rows from Server Actions with server-side sort, filter and grouping for datasets over 5,000 rows; smaller sets load fully for instant client-side interaction.
-- **Grid component:** an Excel-like React data grid with virtualisation. AG Grid Community covers sorting, filtering, virtual scrolling and CSV export; row grouping, pivoting and styled Excel export need AG Grid Enterprise (commercial licence). Release 1 uses Community plus server-generated XLSX (ExcelJS in `worker`); the licence decision is PRD O6.
+- **Grid component:** an Excel-like React data grid with virtualisation. AG Grid Community covers sorting, filtering, virtual scrolling and CSV export; row grouping, pivoting and styled Excel export need AG Grid Enterprise (commercial licence). Release 1 uses Community plus server-generated XLSX (ExcelJS in `worker`); the licence decision is D-20, which puts Enterprise behind a usability-test trigger. Earlier drafts cited "PRD O6"; the PRD has no O-series code and never did.
 - **Exports:** request → job → XLSX/PDF written to `exports` bucket → notification with a signed link valid for 24 hours.
 
 ## 8. Asynchronous processing

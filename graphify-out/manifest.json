@@ -1,0 +1,572 @@
+{
+  ".claude/settings.json": {
+    "mtime": 1789488493.3417506,
+    "seen": 1789535418.145874,
+    "ast_hash": "9d3a84e246dcd96f09de4953d315788f",
+    "semantic_hash": ""
+  },
+  ".claude/CLAUDE.md": {
+    "mtime": 1789488493.3342578,
+    "seen": 1789535418.14588,
+    "ast_hash": "c232166e6492ba1ed955030b16979b05",
+    "semantic_hash": ""
+  },
+  ".claude/agents/expert-nextjs-developer.md": {
+    "mtime": 1789488427.072219,
+    "seen": 1789535418.1458826,
+    "ast_hash": "3f5d30f51dcca1eac951f45955e0150b",
+    "semantic_hash": ""
+  },
+  ".claude/agents/se-gitops-ci-specialist.md": {
+    "mtime": 1789488427.0486462,
+    "seen": 1789535418.1458843,
+    "ast_hash": "d7386487aad364b390374d91e8833898",
+    "semantic_hash": ""
+  },
+  ".claude/agents/se-product-manager-advisor.md": {
+    "mtime": 1789488427.0562751,
+    "seen": 1789535418.1458857,
+    "ast_hash": "0885a16284b22d195ca71752f939f2ab",
+    "semantic_hash": ""
+  },
+  ".claude/agents/se-responsible-ai-code.md": {
+    "mtime": 1789488427.0603864,
+    "seen": 1789535418.145887,
+    "ast_hash": "cc2965281c307fcae0212b45fb5e65f4",
+    "semantic_hash": ""
+  },
+  ".claude/agents/se-security-reviewer.md": {
+    "mtime": 1789488427.06176,
+    "seen": 1789535418.1458886,
+    "ast_hash": "1c21e45b71d0782504147d7abf7f6841",
+    "semantic_hash": ""
+  },
+  ".claude/agents/se-system-architecture-reviewer.md": {
+    "mtime": 1789488427.0643508,
+    "seen": 1789535418.1458895,
+    "ast_hash": "2c153f9d305851a523e503050ed6b83b",
+    "semantic_hash": ""
+  },
+  ".claude/agents/se-technical-writer.md": {
+    "mtime": 1789488427.0668159,
+    "seen": 1789535418.1458907,
+    "ast_hash": "7da87cdb53d6effd2c2817ffa0f61884",
+    "semantic_hash": ""
+  },
+  ".claude/agents/se-ux-ui-designer.md": {
+    "mtime": 1789488427.0678363,
+    "seen": 1789535418.145892,
+    "ast_hash": "73c76ece65f4d88fae1a8532a6be6cd1",
+    "semantic_hash": ""
+  },
+  ".claude/skills/gem-devops-guidelines/SKILL.md": {
+    "mtime": 1789488430.6576824,
+    "seen": 1789535418.145893,
+    "ast_hash": "dbce37ed5bb7ca7e1e172a7c3441edba",
+    "semantic_hash": ""
+  },
+  ".claude/skills/graphify/SKILL.md": {
+    "mtime": 1789488493.3270483,
+    "seen": 1789535418.1458943,
+    "ast_hash": "1656a8a8e4a05bbe69f32cd15de81e87",
+    "semantic_hash": ""
+  },
+  ".claude/skills/graphify/references/add-watch.md": {
+    "mtime": 1789488088.7483919,
+    "seen": 1789535418.145896,
+    "ast_hash": "d59d027fe449f06aa03905a01184e779",
+    "semantic_hash": ""
+  },
+  ".claude/skills/graphify/references/exports.md": {
+    "mtime": 1789488088.7483919,
+    "seen": 1789535418.145897,
+    "ast_hash": "9da2a2152e60a22f07f05fed5158f287",
+    "semantic_hash": ""
+  },
+  ".claude/skills/graphify/references/extraction-spec.md": {
+    "mtime": 1789488088.7483919,
+    "seen": 1789535418.1458983,
+    "ast_hash": "42fef56a01698118f7fd722acdadea34",
+    "semantic_hash": ""
+  },
+  ".claude/skills/graphify/references/github-and-merge.md": {
+    "mtime": 1789488088.7530165,
+    "seen": 1789535418.1458995,
+    "ast_hash": "cde13df085e4c492aeb7ba298a996d0d",
+    "semantic_hash": ""
+  },
+  ".claude/skills/graphify/references/hooks.md": {
+    "mtime": 1789488088.75619,
+    "seen": 1789535418.1459005,
+    "ast_hash": "3f545db6ce646650bb9de588f5512a27",
+    "semantic_hash": ""
+  },
+  ".claude/skills/graphify/references/query.md": {
+    "mtime": 1789488088.75619,
+    "seen": 1789535418.145902,
+    "ast_hash": "3c46f8ad006874260614ed8657d02307",
+    "semantic_hash": ""
+  },
+  ".claude/skills/graphify/references/transcribe.md": {
+    "mtime": 1789488088.7582123,
+    "seen": 1789535418.1459029,
+    "ast_hash": "67b6a5fa6c0974e18f60db9f8932fbd8",
+    "semantic_hash": ""
+  },
+  ".claude/skills/graphify/references/update.md": {
+    "mtime": 1789488088.798535,
+    "seen": 1789535418.145904,
+    "ast_hash": "9378bd03d56baaf78bd738ab3848f142",
+    "semantic_hash": ""
+  },
+  ".docs/ARCHITECTURE.md": {
+    "mtime": 1789493835.365078,
+    "seen": 1789535418.1459055,
+    "ast_hash": "7b19a90e856c768244c4e42bb77f6c5a",
+    "semantic_hash": ""
+  },
+  ".docs/DECISIONS.md": {
+    "mtime": 1789493714.6986635,
+    "seen": 1789535418.1459067,
+    "ast_hash": "c1fd57dc0699eead17b0936c85cfe1b9",
+    "semantic_hash": ""
+  },
+  ".docs/DOMAIN.md": {
+    "mtime": 1789493344.545792,
+    "seen": 1789535418.145908,
+    "ast_hash": "3a96990e468141e9dba1c07a6fc2e7bd",
+    "semantic_hash": ""
+  },
+  ".docs/FILE_INVENTORY.md": {
+    "mtime": 1789492044.0502627,
+    "seen": 1789535418.1459095,
+    "ast_hash": "5f1414716376ba2a8509cd210f66bd02",
+    "semantic_hash": ""
+  },
+  ".docs/PLAYBOOK.md": {
+    "mtime": 1789491415.8130875,
+    "seen": 1789535418.1459107,
+    "ast_hash": "c9fe7cf816515fb39eceb5dc0aadee67",
+    "semantic_hash": ""
+  },
+  ".docs/PRD.md": {
+    "mtime": 1789493835.3671148,
+    "seen": 1789535418.1459122,
+    "ast_hash": "cc5e3d6636bdee7c11bb601305c8e3c8",
+    "semantic_hash": ""
+  },
+  ".docs/QUESTIONS.md": {
+    "mtime": 1789493508.4800699,
+    "seen": 1789535418.1459131,
+    "ast_hash": "165628f7dec6cd366da8c78498c157a0",
+    "semantic_hash": ""
+  },
+  ".docs/READINESS.md": {
+    "mtime": 1789493887.8470936,
+    "seen": 1789535418.1459143,
+    "ast_hash": "b3bf32b0db43e096debd999db5e5ba6d",
+    "semantic_hash": ""
+  },
+  ".docs/RECONCILIATION.md": {
+    "mtime": 1789492110.4398532,
+    "seen": 1789535418.1459155,
+    "ast_hash": "bc3279794927b4d261c9965761ac76e1",
+    "semantic_hash": ""
+  },
+  ".docs/RISKS.md": {
+    "mtime": 1789491415.7927375,
+    "seen": 1789535418.1459167,
+    "ast_hash": "358526d79feb5adfc193bcdbf3247d66",
+    "semantic_hash": ""
+  },
+  ".docs/ROADMAP.md": {
+    "mtime": 1789493835.3578503,
+    "seen": 1789535418.1459177,
+    "ast_hash": "0624f08a49203ef2d7e3167b5f74a7a4",
+    "semantic_hash": ""
+  },
+  ".docs/SERVICE-TOPOLOGY.md": {
+    "mtime": 1789493835.3671148,
+    "seen": 1789535418.145919,
+    "ast_hash": "fb22d6242d351ec7dc26dec899f28fdd",
+    "semantic_hash": ""
+  },
+  ".docs/STATE.md": {
+    "mtime": 1789493835.3759198,
+    "seen": 1789535418.1459203,
+    "ast_hash": "b7ecfce9d9af15efdc6cee05567cf511",
+    "semantic_hash": ""
+  },
+  ".docs/VALIDATION.md": {
+    "mtime": 1789492044.0457036,
+    "seen": 1789535418.1459212,
+    "ast_hash": "9dd25aa86edfb86f2cddfa1beeb93783",
+    "semantic_hash": ""
+  },
+  ".docs/adr/ADR-012-reporting-read-model.md": {
+    "mtime": 1789493847.93369,
+    "seen": 1789535418.1459224,
+    "ast_hash": "a42068dcb26450404e7f5517fd1e2a58",
+    "semantic_hash": ""
+  },
+  ".docs/adr/ADR-023-lease-receivable-grain.md": {
+    "mtime": 1789493532.175539,
+    "seen": 1789535418.1459236,
+    "ast_hash": "0e571c1f74dc8ba23676afc1a19144e2",
+    "semantic_hash": ""
+  },
+  ".docs/meetings/README.md": {
+    "mtime": 1789488985.1851504,
+    "seen": 1789535418.1459246,
+    "ast_hash": "744ebdf9bef67ee72e184189177fcf8c",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/001-foundations-and-region/acceptance.md": {
+    "mtime": 1789491415.8811016,
+    "seen": 1789535418.1459262,
+    "ast_hash": "7e7e72ecddc22af45923314ba96e755d",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/001-foundations-and-region/blueprint.md": {
+    "mtime": 1789493773.3349562,
+    "seen": 1789535418.1459274,
+    "ast_hash": "8f7ada80b64693c975e575c10ff7f2a8",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/001-foundations-and-region/handoff-prompt.md": {
+    "mtime": 1789489153.4612873,
+    "seen": 1789535418.1459284,
+    "ast_hash": "c4a70c4b334a9383fcbd63648cb49814",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/001-foundations-and-region/requirements.md": {
+    "mtime": 1789492044.056867,
+    "seen": 1789535418.1459298,
+    "ast_hash": "1f831dd498a0c9ce319d63f86cb55155",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/002-chassis-and-tenancy/acceptance.md": {
+    "mtime": 1789493665.029332,
+    "seen": 1789535418.145931,
+    "ast_hash": "bdb15bf4f15f587212878d25993379ed",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/002-chassis-and-tenancy/blueprint.md": {
+    "mtime": 1789493665.0272875,
+    "seen": 1789535418.145932,
+    "ast_hash": "eb3b5d77959bd51f635de47ddc7bd3c1",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/002-chassis-and-tenancy/handoff-prompt.md": {
+    "mtime": 1789489153.4709747,
+    "seen": 1789535418.1459339,
+    "ast_hash": "8782a84da99e4e3bf3cf744c73334a2a",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/002-chassis-and-tenancy/requirements.md": {
+    "mtime": 1789493665.0262392,
+    "seen": 1789535418.145935,
+    "ast_hash": "9364379bcc057220e7cc9c86cb14d40f",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/003-property-domain/acceptance.md": {
+    "mtime": 1789491415.8873909,
+    "seen": 1789535418.1459365,
+    "ast_hash": "b4d0f3e8333b54946d84a19780af03b3",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/003-property-domain/handoff-prompt.md": {
+    "mtime": 1789489153.4709747,
+    "seen": 1789535418.1459374,
+    "ast_hash": "be933509114893fc8f09ca2cee6f5112",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/003-property-domain/requirements.md": {
+    "mtime": 1789493835.3671148,
+    "seen": 1789535418.1459384,
+    "ast_hash": "f9d7dce7e0cd4938dd157714afd48c2a",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/004-grid-and-readiness-floor/acceptance.md": {
+    "mtime": 1789492044.0589547,
+    "seen": 1789535418.1459398,
+    "ast_hash": "4a182f46684a94a987c841f8e42181d7",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/004-grid-and-readiness-floor/handoff-prompt.md": {
+    "mtime": 1789492044.0609813,
+    "seen": 1789535418.1459408,
+    "ast_hash": "de64ad7a41735f4909b43640484c8937",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/004-grid-and-readiness-floor/requirements.md": {
+    "mtime": 1789492044.0629933,
+    "seen": 1789535418.145942,
+    "ast_hash": "c49e9d37982e553295fba7df2f31d7a7",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/005-ledger-core/acceptance.md": {
+    "mtime": 1789491415.8955748,
+    "seen": 1789535418.145943,
+    "ast_hash": "6ad59f101fa85e9ececd00f3438a17ea",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/005-ledger-core/handoff-prompt.md": {
+    "mtime": 1789489153.4771454,
+    "seen": 1789535418.1459444,
+    "ast_hash": "af99a259e14d995e4faa6cbbc5999d62",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/005-ledger-core/requirements.md": {
+    "mtime": 1789493835.360504,
+    "seen": 1789535418.1459453,
+    "ast_hash": "04d2e778941d02aa0bfb37314600800a",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/006-invoicing-and-rent-runs/acceptance.md": {
+    "mtime": 1789491415.9077413,
+    "seen": 1789535418.1459467,
+    "ast_hash": "bceb3095e07533746a1600acfb06f3b6",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/006-invoicing-and-rent-runs/handoff-prompt.md": {
+    "mtime": 1789491415.9564645,
+    "seen": 1789535418.1459477,
+    "ast_hash": "722dd4448d9addcb4119573e94ad73f8",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/006-invoicing-and-rent-runs/requirements.md": {
+    "mtime": 1789491415.841339,
+    "seen": 1789535418.1459486,
+    "ast_hash": "afc0ff091628891f5b57bc0f681ba99e",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/007-payments-and-reconciliation/acceptance.md": {
+    "mtime": 1789491415.9119303,
+    "seen": 1789535418.1459498,
+    "ast_hash": "a8d522b514ed55e6fb60f03f74f3ea22",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/007-payments-and-reconciliation/handoff-prompt.md": {
+    "mtime": 1789489153.483174,
+    "seen": 1789535418.145951,
+    "ast_hash": "cf6723b8a75d49aba9547547cf868025",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/007-payments-and-reconciliation/requirements.md": {
+    "mtime": 1789491415.8452933,
+    "seen": 1789535418.145952,
+    "ast_hash": "4d7f384d187e23bf22fbc5b5343053fb",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/008-repairs-and-caretakers/acceptance.md": {
+    "mtime": 1789491415.9156423,
+    "seen": 1789535418.1459532,
+    "ast_hash": "249caae2592c70290e917d139f50eb49",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/008-repairs-and-caretakers/handoff-prompt.md": {
+    "mtime": 1789489153.4851818,
+    "seen": 1789535418.1459544,
+    "ast_hash": "e98bb258cf024790132ad9e76043ca47",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/008-repairs-and-caretakers/requirements.md": {
+    "mtime": 1789491415.848876,
+    "seen": 1789535418.1459556,
+    "ast_hash": "ba470d8689fcb2c1959c05f4fdb4f202",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/009-whatsapp-and-notifications/acceptance.md": {
+    "mtime": 1789491415.9172256,
+    "seen": 1789535418.1459568,
+    "ast_hash": "d7f00a514f8ca493c18464fae74678ed",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/009-whatsapp-and-notifications/handoff-prompt.md": {
+    "mtime": 1789489153.4892921,
+    "seen": 1789535418.145958,
+    "ast_hash": "f6542e1463ca922f47e6ccf46608a5d0",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/009-whatsapp-and-notifications/requirements.md": {
+    "mtime": 1789491415.848876,
+    "seen": 1789535418.145959,
+    "ast_hash": "923db22647409b42135136ad238facb0",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/010-resident-and-landlord/acceptance.md": {
+    "mtime": 1789491415.9209962,
+    "seen": 1789535418.14596,
+    "ast_hash": "3d4109c92d23d04f61e73ac041873ac0",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/010-resident-and-landlord/handoff-prompt.md": {
+    "mtime": 1789489153.4908953,
+    "seen": 1789535418.1459613,
+    "ast_hash": "e33e976ee164a0a67fe22e89738f47be",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/010-resident-and-landlord/requirements.md": {
+    "mtime": 1789491415.8555648,
+    "seen": 1789535418.1459625,
+    "ast_hash": "125792f5abcf3e96f3ca020a0e6d7bb0",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/011-marketplace-and-viewings/acceptance.md": {
+    "mtime": 1789491415.925557,
+    "seen": 1789535418.1459637,
+    "ast_hash": "732ff1fe13b53d3f3a8691f5514ee84b",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/011-marketplace-and-viewings/handoff-prompt.md": {
+    "mtime": 1789489153.4937403,
+    "seen": 1789535418.1459649,
+    "ast_hash": "3aa7bd1c1e9cea28605e408293a5fd8c",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/011-marketplace-and-viewings/requirements.md": {
+    "mtime": 1789491415.858448,
+    "seen": 1789535418.145966,
+    "ast_hash": "c55570d8aabdcc166e5591407d235f66",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/012-land-plots-and-billing/acceptance.md": {
+    "mtime": 1789491415.9298193,
+    "seen": 1789535418.1459672,
+    "ast_hash": "b8aa0806e9c4ffb136c8ce6406093278",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/012-land-plots-and-billing/handoff-prompt.md": {
+    "mtime": 1789489153.4969158,
+    "seen": 1789535418.1459684,
+    "ast_hash": "8f77588c62f9e182c0b179be34b0a6ff",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/012-land-plots-and-billing/requirements.md": {
+    "mtime": 1789491415.8615003,
+    "seen": 1789535418.1459696,
+    "ast_hash": "54fe13a4c2ad784444f87b03ab6eb0a6",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/013-hardening-security/acceptance.md": {
+    "mtime": 1789491415.9326978,
+    "seen": 1789535418.1459706,
+    "ast_hash": "f34bfe1354e8c9cf5f3636539b50a2d0",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/013-hardening-security/handoff-prompt.md": {
+    "mtime": 1789491415.9732883,
+    "seen": 1789535418.1459723,
+    "ast_hash": "2b2fec4b3310c736b4d85ede58ed2f16",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/013-hardening-security/requirements.md": {
+    "mtime": 1789491415.864543,
+    "seen": 1789535418.1459732,
+    "ast_hash": "655497e18486973f4ebb7f23bab553b3",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/014-hardening-reliability/acceptance.md": {
+    "mtime": 1789491415.935336,
+    "seen": 1789535418.1459742,
+    "ast_hash": "3d74f9d78824ac3ef2e6fdae750cdeef",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/014-hardening-reliability/handoff-prompt.md": {
+    "mtime": 1789489153.4969158,
+    "seen": 1789535418.1459756,
+    "ast_hash": "2c550094b0682d9a2a8a03ad3189f642",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/014-hardening-reliability/requirements.md": {
+    "mtime": 1789491415.8666532,
+    "seen": 1789535418.1459765,
+    "ast_hash": "8a7acccc5957a6024836b57047fbd6cd",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/015-pilot-readiness/acceptance.md": {
+    "mtime": 1789492044.0629933,
+    "seen": 1789535418.1459782,
+    "ast_hash": "24d6ebd4ee63ffa46f2cb9e54c15247d",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/015-pilot-readiness/handoff-prompt.md": {
+    "mtime": 1789492044.0656598,
+    "seen": 1789535418.1459792,
+    "ast_hash": "39bbfad333f9bbcc29b9dfe0493a67fa",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/015-pilot-readiness/requirements.md": {
+    "mtime": 1789492044.067669,
+    "seen": 1789535418.1459804,
+    "ast_hash": "495b107d273146c6f6656634b1aac345",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/016-go-live/acceptance.md": {
+    "mtime": 1789491415.9388714,
+    "seen": 1789535418.1459816,
+    "ast_hash": "07682d57f00b6f3c01e413888be5a195",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/016-go-live/handoff-prompt.md": {
+    "mtime": 1789489153.5081446,
+    "seen": 1789535418.1459827,
+    "ast_hash": "c0d0adda4be06dd07ff2cd1fe967a09b",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/016-go-live/requirements.md": {
+    "mtime": 1789491415.875617,
+    "seen": 1789535418.1459846,
+    "ast_hash": "08014172c9b15fa0e1837d6e7a4e2c3f",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/README.md": {
+    "mtime": 1789491415.8157625,
+    "seen": 1789535418.1459858,
+    "ast_hash": "83760291b8de9c753efb23fc675691e1",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/_templates/acceptance.md": {
+    "mtime": 1789491415.8157625,
+    "seen": 1789535418.145987,
+    "ast_hash": "fc80d6ffe7b0aa36e2cd5425326e286b",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/_templates/blueprint.md": {
+    "mtime": 1789488999.399957,
+    "seen": 1789535418.145988,
+    "ast_hash": "427207d38fabc5f498f2512718844559",
+    "semantic_hash": ""
+  },
+  ".docs/sprints/_templates/handoff-prompt.md": {
+    "mtime": 1789489020.8698323,
+    "seen": 1789535418.1459894,
+    "ast_hash": "8dddf8ec606eeb65571ba4d265803df9",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1789493665.029332,
+    "seen": 1789535418.1459904,
+    "ast_hash": "fadb803a3fc8a961bc83e3c8f95df165",
+    "semantic_hash": ""
+  },
+  "CLAUDE.md": {
+    "mtime": 1789488493.3393714,
+    "seen": 1789535418.1459916,
+    "ast_hash": "f13d34aa8bf66bfa727f97b6922832b8",
+    "semantic_hash": ""
+  },
+  "CODEX.md": {
+    "mtime": 1789488479.6825478,
+    "seen": 1789535418.145993,
+    "ast_hash": "655151b33252f0c1763953d1f1abaf10",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1789479711.8973866,
+    "seen": 1789535418.145994,
+    "ast_hash": "dcc0c423b934818215e31bb16eb0e619",
+    "semantic_hash": ""
+  }
+}

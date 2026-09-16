@@ -16,7 +16,9 @@ go-live". That reconciles exactly against the **E-series**:
 
 - The checklist is **E1–E22** — twenty-two items.
 - `ROADMAP.md` schedules eighteen of them: E1–E5, E7–E15, E17–E19, E22.
-- The four not paid before go-live are **E6**, **E16** and **E21**, each deferred
+- The four not paid before go-live are **E6**, **E16**, **E21** and **E20** —
+  three deferred and one void. **E16 and E21 are since narrowed to product
+  surfaces by D-70**, so marketing routes gate on both. The three deferred are
   to Release 1.1 with a written trigger, and **E20**, which is void.
 
 The C, D, F and G codes are **not** part of this checklist. They are separate
@@ -44,12 +46,12 @@ source of a live ambiguity (§4).
 | **E13** | SLO alerting: webhook failure rate, `pg-boss` queue age, error rate, reconciliation rate. Paged to WhatsApp and SMS. Definitions written in 004, wired in 014. | 014 | ROADMAP 004, 014 |
 | **E14** | The Africa-first posture written down with the international scale path: what triggers a second region and what changes when it happens. | 015 | ROADMAP 015; QUESTIONS assumption |
 | **E15** | Cloud cost budgets and anomaly alerts. | 014 | ROADMAP 014 |
-| **E16** | Accessibility audit, WCAG 2.1 AA. | **Deferred to R1.1.** Trigger: first institutional or government client. | ROADMAP R1.1 backlog |
+| **E16** | Accessibility audit, WCAG 2.1 AA. | **Deferred to R1.1 for product surfaces only (D-70).** Trigger: first institutional or government client. **Marketing routes are not deferred** — they gate on `@axe-core/playwright` at zero serious or critical violations from the marketing track. | ROADMAP R1.1 backlog; D-70 |
 | **E17** | ADRs complete under `.docs/adr/` for every hard-to-reverse decision. Files are written for hard-to-reverse decisions only. | 001 folder and first ADRs, 015 completion | ROADMAP 001, 015; ARCHITECTURE; DECISIONS |
 | **E18** | **Automated delivery pipeline.** Merge to `main` builds, tests and deploys to the `staging` namespace with no human step; production deploys through the same pipeline behind a manual approval gate. Evidenced by a commit reaching staging unattended, and by the gate blocking an unapproved production deploy. **Recovered by elimination, not from source notes — see D-55.** | 001 (`001/blueprint.md` P4) | ROADMAP 001 exit criterion; D-55 |
 | **E19** | SaaS usage counters recorded from Sprint 012 even though pilot invoicing is done by hand. Explicitly **accepted debt**. | 012 | ROADMAP 012 |
 | **E20** | **VOID.** Was the Drizzle ORM item; superseded by D-03 (Prisma 7). | — | DECISIONS D-03; RECONCILIATION item 3 |
-| **E21** | Performance budgets in CI. | **Deferred to R1.1.** Trigger: resident page p75 LCP exceeds 2.5s on 3G. | ROADMAP R1.1 backlog |
+| **E21** | Performance budgets in CI. | **Deferred to R1.1 for product surfaces only (D-70).** Trigger: resident page p75 LCP exceeds 2.5s on 3G. **Marketing routes are not deferred** — `@lhci/cli` asserts LCP < 2.0s, CLS < 0.05, INP < 200ms, first-party JS < 120 KB gz and total weight < 900 KB on a throttled 4G profile from the marketing track. | ROADMAP R1.1 backlog; D-70 |
 | **E22** | Anonymised staging seed: mock listings, every user role, transaction history. Production-shaped and production-sized. | 004 | ROADMAP 004; 004 requirements |
 
 Automated SaaS metering is also deferred to R1.1 (trigger: more than five paying
@@ -125,7 +127,7 @@ code can still be read.
 | **F1–F5** (pack sense) | Field work, no decision equivalent: caretaker device audit (F1), grid requirements (F2), partner sample files (F3), usability tests (F4), Swahili (F5). | **Spell out inline** |
 | **G7, G9–G14** | Loose product facts, no decision equivalent: documents collected manually (G7), recurring maintenance jobs (G9), caretaker basic-phone flow (G10), eTIMS integrator (G11), compliance certificate storage (G12), email only for statements (G14). | **Spell out inline** |
 | **D1–D20, F1–F5, A/B/C/G/H/J** (PRD sense) | Round-1 questionnaire answers, PRD founder tensions, PRD decisions log. Different meanings from the pack senses above — that was the collision. | `DQ-` / `PRD-` prefixed, inside `PRD.md` only |
-| **D-01 … D-56** | **Decisions**, hyphenated. The namespace everything else folded into. | unchanged |
+| **D-01 … D-70** | **Decisions**, hyphenated. The namespace everything else folded into. It ran to D-56 when D-56 was written; it grows, so cite the prefix and not the range. | unchanged |
 
 ---
 
@@ -157,8 +159,9 @@ number it already was — 194 citations across 44 files.
 - **`E1`–`E22`** — this checklist. A checklist with a go-live gate, not a
   decision, so it has no `D-nn` equivalent and needs none. It is now the only
   bare letter-code in the pack, which is what makes it unambiguous.
-- **`D-01`–`D-56`** decisions, **`R-01`–`R-09`** risks, **`Q1`–`Q15`**
-  questions, **`ADR-001`** onwards.
+- **`D-nn`** decisions (D-01–D-70 today), **`R-nn`** risks (R-01–R-09),
+  **`Qn`** questions (Q1–Q22), **`ADR-nnn`** onwards. Cite the prefix, never the
+  range — the ranges move and the prefixes do not.
 - **`F1`–`F5`** (pack sense) and **`G7`, `G9`–`G14`** have no decision
   equivalents — they are field-work tasks and loose product facts. Spell these
   out inline rather than citing a bare code. Roughly a dozen citations.

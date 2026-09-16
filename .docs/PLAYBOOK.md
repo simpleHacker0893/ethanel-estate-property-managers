@@ -167,8 +167,9 @@ Current state:
 - `blueprint.md` — **001 and 002 only.** Templates for the rest are in
   `sprints/_templates/`.
 
-Sprint 005's blueprint genuinely cannot be written yet: it depends on ADR-012,
-which is not due until the end of Sprint 004.
+Sprint 005's blueprint is now unblocked: it depended on ADR-012, which **D-67
+resolved in Sprint 002** rather than at the end of Sprint 004. It is written in
+the week before Sprint 005 like every other blueprint.
 
 ---
 
@@ -183,19 +184,7 @@ The reconciliation is **closed**, so most of what an earlier draft wanted
 Chart the open architectural decisions, from .docs/STATE.md and
 .docs/ARCHITECTURE.md §7.4. One decision ticket each for:
 
-1. ADR-012, the reporting read model. D-11 forbids cross-schema joins, but rent
-   roll, arrears ageing and landlord statements each read across four or five
-   services. Three candidates are written up in ARCHITECTURE.md §7.4: a
-   read-model service fed by the outbox, per-service report endpoints composed in
-   web, or a reporting schema with read-only subscriptions. Due END OF SPRINT 004
-   because Sprint 005's ledger design depends on it. Note ARCHITECTURE.md §5.2
-   says "due by Sprint 005" and §7.4 says "end of Sprint 004" - STATE.md says
-   004; fix the stale reference.
-
-2. Who owns reporting. ARCHITECTURE.md §5.2 records that `reporting` has no
-   owning service. Falls out of (1) but confirm it explicitly.
-
-3. eTIMS. Integration is only possible through a KRA-certified integrator.
+1. eTIMS. Integration is only possible through a KRA-certified integrator.
    Find the real lead time NOW. If it is longer than sixteen weeks this is a
    Sprint 001 action, not a Sprint 013 one.
 
@@ -206,11 +195,13 @@ per session.
 
 Also close in Sprint 001, both cheap now and expensive later:
 
-- **Q14** — what is readiness item E18? Listed as paid by Sprint 001, defined
-  nowhere. A go-live blocker in Sprint 016.
-- **Q15** — which C/D/E/F/G namespace wins. Same class of defect as the ADR
-  collision, unresolved.
-- The D-34 gate count: ROADMAP says seven, `002/requirements.md` says eight.
+- ~~**Q14** — what is readiness item E18?~~ **Closed by D-55:** the automated
+  delivery pipeline.
+- ~~**Q15** — which C/D/E/F/G namespace wins.~~ **Closed by D-56:** the `D-nn`
+  decision numbers.
+- ~~The D-34 gate count.~~ **Closed by D-65:** eight gates, three enforcement
+  homes, and only five can be structural in `charts/service`. `READINESS.md`
+  §1a is the row-by-row table.
 
 **`/wayfinder` hands off at `/to-spec`.** Looping a map straight into
 `/implement` throws away the linked detail the map was built to capture.
@@ -285,7 +276,7 @@ pack. If you are working from it, these are wrong in it:
 | "This repo has CLAUDE.md. Edit it. Do not create AGENTS.md." | Backwards. **`AGENTS.md` is canonical**; `CLAUDE.md` and `CODEX.md` are thin adapters pointing at it. |
 | ADRs live at `.docs/adr/` | Correct, and worth keeping — it is the one deviation the setup skill must record rather than override. |
 | PRD §9.2 and §9.3 "answer Q7" | **No.** PRD §14 states those pricing tables are explicitly **hypotheses, not decisions**. Q7 is open. Do not meter against them. |
-| ADR-012 due by Sprint 005 | Due **end of Sprint 004**. `ARCHITECTURE.md` §5.2 still says 005 and is stale; §7.4 and `STATE.md` say 004. |
+| ADR-012 due by Sprint 005 | **Resolved in Sprint 002** (D-67, ADR-012): reporting is a read-model service fed by outbox events. The draft, and the pack's own "end of Sprint 004" date, are both superseded. |
 | `graphify affected` / `god-nodes` may not exist | Both real in 0.9.43. |
 | `.tf` files may be uncovered | Covered; the `terraform` extra is installed. |
 | `graphify . --mode deep` is free | Free for code. The pack's documents need an API key. |

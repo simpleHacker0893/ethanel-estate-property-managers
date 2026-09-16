@@ -31,7 +31,7 @@ that distinction matters.
 | **D-38** | The region, decided from measured numbers | | ☐ |
 | **E11** | Monorepo toolchain and dependency hygiene, Renovate weekly | | ☐ |
 | **E17** | ADRs under `.docs/adr/` for every hard-to-reverse decision (folder + first ADRs) | | ☐ |
-| **E18** | **UNDEFINED in the pack - see QUESTIONS Q14.** Cannot be evidenced until it is defined | | ☐ |
+| **E18** | **Automated delivery pipeline** (defined by D-55, closing Q14): merge to `main` builds, tests and deploys to `staging` with no human step; production goes through the same pipeline behind a manual approval gate. Evidence is a commit that reached staging unattended, plus the gate blocking an unapproved production deploy. | Pipeline authored and its five structural D-34 gates unit-proven (`helm unittest`), but **not paid** — no cluster exists to reach. Recorded as **DEBT-07**. | ☐ |
 | **D-49** | The `.docs/` pack committed | | ☐ |
 | **D-52** | Trunk-based branch protection with required PR checks | | ☐ |
 | **D-53** | GitHub Project and issue templates | | ☐ |

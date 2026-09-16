@@ -65,5 +65,5 @@ schema reaches the graph through the SQL extractor instead.
 | Path | Contents | Status |
 |---|---|---|
 | `.docs/` | The operating pack. `ARCHITECTURE.md` and `PRD.md` at v1.2, reconciled. | Committed (D-49) |
-| `.docs/adr/` | Full ADR records for hard-to-reverse decisions (E17) | **Empty.** ADR-002 is the first one due, in Sprint 001. |
+| `.docs/adr/` | Full ADR records for hard-to-reverse decisions (E17) | **Two written:** `ADR-012-reporting-read-model.md` and `ADR-023-lease-receivable-grain.md`. **ADR-002 (the region) is the next one due**, in Sprint 001, and it is blocked on the M1 latency measurement. |
 | `ethanel-sprint-pack.zip` | The original archive the `.docs/` tree was unpacked from | Gitignored. The unpacked tree is the source of truth. |

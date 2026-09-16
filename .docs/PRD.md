@@ -27,7 +27,7 @@ the pack's — and, in two places, with each other (D-56, `READINESS.md` §4).
   are *provenance*: they say where a statement came from, not what was decided.
 - **`PRD-D1`–`PRD-D20`** — this document's decisions log, §14.
   **`PRD-F1`–`PRD-F5`** — the five founder tensions in §0.
-- **`D-01`–`D-56`** unprefixed — a decision in `DECISIONS.md`, which is the
+- **`D-nn`** unprefixed — a decision in `DECISIONS.md`, which is the
   binding record. **`E1`–`E22`** — a readiness item in `READINESS.md`.
 
 `DQ-D2` and `PRD-D2` are different things, which is why neither is written bare
@@ -110,7 +110,7 @@ Ethanel is a multi-tenant SaaS platform for Kenyan property businesses, with a p
 
 ### Non-goals (all releases in this document)
 
-- Public marketing landing page (deferred).
+- ~~Public marketing landing page (deferred).~~ **Reversed by D-68.** The public marketing site is in scope and is built as a track (`.docs/tracks/marketing-site/`) alongside the sixteen sprints rather than inside them, so the eighteen-of-twenty-two readiness arithmetic is unaffected.
 - Ethanel receiving or disbursing rent (funds go to organization client accounts, DQ-G2).
 - Slack integration in the product (DQ-C2: very few agencies use it). Slack stays a developer and internal tool only.
 - Short stays and off-plan inventory before Release 2.

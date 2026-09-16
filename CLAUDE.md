@@ -17,6 +17,8 @@ scope in `.docs/sprints/<current>/`.
 4. `.docs/DOMAIN.md`
 5. `.docs/SERVICE-TOPOLOGY.md`
 6. `.docs/sprints/<current>/` — `requirements.md`, `blueprint.md`, `acceptance.md`
+7. `.docs/tracks/<track>/` — same three files, if the work is a track rather
+   than a sprint. See `.docs/tracks/README.md`.
 
 ## Execution layer
 

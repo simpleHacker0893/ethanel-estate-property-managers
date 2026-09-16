@@ -2,10 +2,11 @@
 
 A rolling snapshot, edited in place. Not a log. If you want history, read git.
 
-**Last updated:** 2026-09-15
+**Last updated:** 2026-09-16
 **Phase:** pre-Sprint 001 — planning
 **Current sprint:** none started
 **Next sprint:** 001 · Ground truth and the pipeline
+**Active track:** marketing site (D-68) — `.docs/tracks/marketing-site/`
 
 ## Where the project is
 
@@ -95,7 +96,13 @@ around them:
 
 ## What has to happen before Sprint 001 can start
 
-- [x] Create the repository and commit this `.docs/` pack.
+- [x] Create the repository and commit this `.docs/` pack. **Actually done on
+      16 September 2026, not before.** This box was ticked while only four files
+      were tracked — `ARCHITECTURE.md`, `PRD.md`, `.gitignore`, `README.md`.
+      The ninety-six files carrying the house rules, including `DECISIONS.md`
+      and this file, sat untracked on one machine. R-08's entire mitigation is
+      *"this is what `.docs/` is for"*, which makes it the most expensive wrong
+      tick the pack contained.
 - [x] Resolve the `ARCHITECTURE.md` / `PRD.md` contradictions — was a Sprint 001
       task, done early. See `RECONCILIATION.md`.
 - [ ] Confirm the two assumptions at the bottom of `QUESTIONS.md`.
@@ -129,6 +136,74 @@ around them:
       `002/acceptance.md` is split into four checkboxes to match.
 - [x] Fix the stale ADR-012 due date in `ARCHITECTURE.md` §5.2 — now end of
       Sprint 004 in all four places that state it.
+
+## The marketing-site track
+
+**Opened 16 September 2026, authorised by D-68.** A public marketing site was a
+declared non-goal in two places — `ARCHITECTURE.md`'s Scope row and `PRD.md` §3
+— and is now in scope. It runs as a **track**, not a seventeenth sprint, because
+the eighteen-of-twenty-two readiness arithmetic this file leans on is
+load-bearing and `READINESS.md` §2 forbids moving it to tidy something up.
+`.docs/tracks/` is new, with its own README stating what a track is and is not.
+
+Three decisions and four debt rows were written rather than assumed:
+
+- **D-68** — the site is in scope, as a track. Says explicitly what the reversal
+  does *not* license: no invented customer, logo, testimonial, rating, units
+  figure or price, and the four defensible engineering numbers (D-40, D-41, D-39
+  as bounded by D-66, D-45) may be stated only as design targets the platform
+  holds itself to.
+- **D-69** — extends D-18. `use cache` is permitted on marketing routes, which
+  pass D-18's own test: a marketing page carries no money figure, so it can be
+  stale without anyone losing money. D-45 is untouched.
+- **D-70** — narrows **DEBT-04** and **DEBT-05** to product surfaces. Marketing
+  routes gate on axe-core and `@lhci/cli` from the first commit. The product
+  triggers do not move, and `READINESS.md` E16/E21 and `VALIDATION.md` §5 are
+  amended so all three places that record the exception agree.
+- **DEBT-07** E18 authored but unpaid · **DEBT-08** `/demo` writes to a file, not
+  a database · **DEBT-09** the legal pages are stubs · **DEBT-10** all imagery is
+  a watermarked placeholder. Each with a repayment trigger.
+
+**Three new questions, and every one is a fact that was refused rather than
+guessed:** **Q20** the real WhatsApp number and Nairobi address, **Q21** which ad
+platforms are live so the server-side conversion event has a destination, and
+**Q22** which boundary owns a *sales* lead — `listing-svc` owns marketplace leads
+for prospects on listings, a prospective customer agency is a different animal
+with no `organization_id` at all, and D-11 forbids parking it across a schema
+line because a table happens to be nearby. Q22 is the first record in the system
+that `organization_id` cannot scope, which makes it a policy question rather than
+a table question.
+
+## Eleven stale cross-references, closed
+
+Reading the pack end to end for the track surfaced eleven places where two files
+disagreed. All are fixed; none needed a new decision, because in every case one
+side was simply later than the other.
+
+The three that mattered:
+
+- **`001/acceptance.md` still called E18 "UNDEFINED in the pack"** and said it
+  *"cannot be evidenced until it is defined"* — nine months after D-55 defined
+  it. That was one un-evidenceable cell in an eighteen-row go-live gate.
+- **`002/requirements.md` and `002/blueprint.md` both promised "every D-34 gate
+  becomes structural"**, which D-65 established is impossible for three of the
+  eight. `002/blueprint.md` contradicted itself two paragraphs apart.
+- **`ARCHITECTURE.md` counted nine domain services in three places** — the §4
+  table, the §4 diagram and the §5.1 tree — while §5.2 and §7.1 said ten, and
+  the tree had no `reporting/` folder at all. A Builder scaffolding from the tree
+  would have created nine schemas and discovered the tenth in Sprint 004.
+
+The rest: `002/blueprint.md` said nine schemas in one slice and ten in its own
+§3, and called Q11 open after D-63 answered it; `PLAYBOOK.md` §3/§4/§7 still
+treated ADR-012 as due end of Sprint 004 and Q14, Q15 and the D-34 gate count as
+open; `READINESS.md` §3/§4 and `PRD.md` cited the range "D-01–D-56" as though it
+were fixed; `READINESS.md` called E6/E16/E21 "the four not paid" while listing
+three; `FILE_INVENTORY.md` said `.docs/adr/` was empty when two ADRs exist;
+`RISKS.md` R-01 was still titled "Eleven service boundaries"; and
+`ARCHITECTURE.md` §7.4 cited "PRD O6", a code the PRD has never had.
+
+**The standing rule that falls out of this:** cite the prefix, never the range.
+`READINESS.md` §4 now says so — ranges move, prefixes do not.
 
 ## The go-live target
 

@@ -5,10 +5,11 @@ sprint; a risk that has not moved in four sprints is either mitigated or real.
 
 ---
 
-### R-01 · Eleven service boundaries, one person, sixteen weeks
+### R-01 · Twelve service boundaries, one person, sixteen weeks
 **Likelihood: medium (was high) · Impact: the schedule**
 
-The three answers in play — eleven service boundaries, sixteen sprints, and every
+The three answers in play — twelve service boundaries (D-67 added
+`reporting-svc` as the twelfth), sixteen sprints, and every
 readiness gate paid — are individually reasonable and jointly the tightest
 combination available. Nothing here is unachievable; the margin is thin.
 

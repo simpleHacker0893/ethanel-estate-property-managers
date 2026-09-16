@@ -109,7 +109,7 @@ and reconciliation rate below 90%.
 |---|---|---|
 | Pilot SaaS invoicing is manual (E19) | Usage counters are recorded from Sprint 012; automating the invoice is not worth a sprint yet | More than five paying organizations |
 | No external penetration test (E6) | Cost, at pilot scale | First client over 1,000 units, or a security questionnaire |
-| No accessibility audit (E16) | Deferred deliberately, not overlooked | First institutional or government client |
-| No performance budgets in CI (E21) | Measured manually during the pilot | Resident page p75 LCP exceeds 2.5s on 3G |
+| No accessibility audit (E16) — **product surfaces only** (D-70) | Deferred deliberately, not overlooked. Marketing routes gate on axe-core from the marketing track, because static pages are cheap to get right and expensive to retrofit | First institutional or government client |
+| No performance budgets in CI (E21) — **product surfaces only** (D-70) | Measured manually during the pilot. Marketing routes are budget-gated by `@lhci/cli` from the marketing track | Resident page p75 LCP exceeds 2.5s on 3G |
 | Caretaker offline mode absent | Online-only is a decision, not an oversight | A caretaker reports a failed task submission twice |
 | E12 tooling built on an assumed reading of the Act | Registration status is Q6, open | Before Sprint 013 closes |

@@ -188,6 +188,48 @@ companies reference instalment payments today?
 *Needed by:* start of Sprint 012 (week 12), or whenever Sprint 012 is pulled
 forward. Logged so it is not discovered during the sprint.
 
+**Q20 · What is the real WhatsApp business number and the Nairobi address?** — blocks the marketing track
+The footer carries a click-to-chat link and a physical line, and the site-wide
+`Organization` JSON-LD carries `address` and `areaServed`. Both are facts about
+the business, not copy. A placeholder number in a `wa.me` link is worse than no
+link: it either 404s or reaches a stranger. A fabricated address in structured
+data is a schema.org claim search engines will index.
+*Needed by:* before the footer ships (marketing track, Track 6). Until then the
+footer renders email only and the JSON-LD omits `address` rather than guessing.
+
+**Q21 · Which ad platforms are live, and where does the conversion event go?** — blocks the marketing track
+`/demo` captures `fbclid`, `gclid`, `ttclid`, `msclkid`, `utm_*` and referrer on
+first landing into a first-party 90-day cookie and carries them into the lead
+record. That half works regardless. What it cannot do is *send* the conversion:
+firing server-side needs a destination — Meta Conversions API, Google Ads
+offline conversions, TikTok Events API — each with its own credential and its
+own event name.
+Browser-only tracking under-reports badly on iOS and the platform cannot optimise
+without the click id reaching the record, which is why this is worth answering
+before spend starts rather than after.
+*Needed by:* before the first paid campaign. The click ids are captured and
+stored from day one, so nothing is lost by answering late — only the
+optimisation signal is.
+
+**Q22 · Which service boundary owns a *sales* lead?** — blocks `/demo` persistence
+`listing-svc` owns `leads` and `lead_events`, and `DOMAIN.md` §3 defines a
+**lead** as *"the pipeline record tracking a prospect's interest in a listing"*.
+A `/demo` submission is not that. It is a prospective **customer organization** —
+an agency evaluating Ethanel itself — which has no listing, no
+`organization_id` (it is not an organization yet) and no place in the marketplace
+pipeline. Parking it in `listing.leads` because the table happens to be nearby is
+exactly the chassis defect R-01's second tripwire names.
+Three candidates, none chosen: a column-compatible extension of `listing.leads`
+with a null `listing_id` (cheapest, and it pollutes the marketplace funnel's own
+metrics); a new table in `billing` next to `plans` and `subscriptions`, on the
+grounds that a sales lead is the pre-history of a subscription; or a thirteenth
+service. Note the RLS question underneath it: a sales lead belongs to **no**
+organization, so it is the first record in the system that `organization_id`
+cannot scope — which is a policy question, not a table question.
+*Needed by:* whenever Sprint 002's schemas land. Until then `/demo` writes
+through a `LeadSink` seam to an append-only file, recorded as **DEBT-08**. The
+seam exists precisely so this answer is a new implementation and not a migration.
+
 **Q14 · What is readiness item E18?** — **ANSWERED, D-55**
 E18 is the **automated delivery pipeline**: merge to `main` builds, tests and
 deploys to `staging` with no human step, with production behind a manual approval
