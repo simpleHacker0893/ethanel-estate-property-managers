@@ -107,6 +107,10 @@ Recorded because each one was an enforcement mechanism that was not enforcing.
 | Tailwind source scanning | `packages/ui` was outside the scan root, so every class in the primitives was dropped — the primary CTA had no fill and an inverted `Section` was not inverted. | Phase 0 |
 | `tailwind-merge` configuration | A custom `--text-*` step is classified as a text *colour* by default, so `cn('text-sand-0', 'text-body-sm')` dropped the colour. Shipped the header CTA at 3.33:1; caught by the axe gate, not by review. | Phase 0 |
 | Header layout | The mobile trigger rendered in its own block below the header bar rather than in it. | Phase 0 |
+| `Capability.description`'s 120-character rule | `types.ts` said it was "checked by the proof test". It was not checked anywhere. Ten pages were written to a rule nothing applied. | Phase 3 |
+| The axe gate's scanned set | `smoke.spec.ts` scanned `/` and nothing else, in one colour scheme. Acceptance row 3 names four routes and row 11 names dark mode; neither was enforced. | Phase 3 |
+| Every meta description on the site | All ten feature descriptions ran 190–230 characters and truncated mid-sentence in a search result. | Phase 3 |
+| `/security` on a feature page | `marketplace-and-viewings` linked to nine routes and not to the one where the design targets are explained. Caught by the new content test on its first run. | Phase 3 |
 
 ---
 
@@ -161,11 +165,47 @@ server-side **inside the sink** and explicitly non-fatal.
 **Gate:** `/demo` on mobile, and the attribution test proving `gclid` survives
 from first landing to the lead record.
 
-### Phase 3 · Features (tickets 10–11)
+### Phase 3 · Features (tickets 10–11) — **DONE**
 
 The eight-block template proven on `/features/rent-collection` — the hardest
-page, because it is where overstatement is most tempting — then the nine others.
-Every bullet traces to a service or it is deleted.
+page, because it is where overstatement is most tempting — then the nine others,
+three agents taking three pages each against the finished template. Every bullet
+traces to a service or it is deleted.
+
+**Ten pages, one route.** `app/(marketing)/features/[slug]` resolves a slug
+through `content/marketing/features/index.ts` and renders
+`_sections/feature-page.tsx`. There is no per-page component, so ticket 11's "no
+page introduces a new component" is structural rather than remembered, and
+`generateMetadata` lives in the route so nine pages inherited their metadata
+instead of repeating it. `generateStaticParams` prerenders all ten; the build
+shows ten static HTML files. The obvious `dynamicParams = false` is unavailable —
+`cacheComponents` rejects that segment config — so `notFound()` is what closes
+the route to a slug the registry does not name.
+
+**The registry is a total `Record<FeatureSlug, FeaturePageContent>`,** which is
+what makes the manifest and the pages the same set: a slug in `FEATURE_SLUGS`
+with no content module is a compile error, not a 404 found three phases later.
+
+**Number allocation.** The four publishable numbers are spread one per page —
+D-41 on rent collection, D-39-as-bounded-by-D-66 on reconciliation, D-40 on
+invoicing, D-45 on landlord statements — and the other six pages carry none.
+`tests/content/features.test.ts` enforces that: a design target on a page not on
+the allow-list fails, and so does a percentage written anywhere outside a target.
+
+**Honesty.** Nothing on any page is `available`; a browser test counts
+`[data-availability="available"]` and requires zero. The land page splits
+`may-not-ship` (the five Sprint 012 items) from `sprint` (the ledger and payment
+rail underneath them) rather than blanket-labelling, and says the slip-absorber
+fact in the eyebrow, the h1, the subhead and the first paragraph of the job
+block — a reader learns it without hovering anything.
+
+**Gate met:** `/features/rent-collection` reviewed at 390 and 1440 in both
+colour schemes, screenshots in `.artifacts/phase-3/`; build green with all ten
+prerendered; eslint clean; **273 unit tests** (37 ui, 28 contracts, 208 web);
+**202 Playwright tests**, including the template's structural assertions run
+against all ten slugs at both viewports; axe zero serious or critical on `/`,
+`/demo`, `/demo/thanks` and `/features/rent-collection` in **both** colour
+schemes.
 
 ### Phase 4 · The rest of the site (tickets 12–13)
 
@@ -220,9 +260,9 @@ Full rules in `AGENT-BRIEF.md`. The four that get violated first:
 | Phase | Status |
 |---|---|
 | 0 · Foundation | **done** — commit `381c3e0` |
-| 1 · Landing page | in progress |
-| 2 · Demo flow | not started |
-| 3 · Features | not started |
+| 1 · Landing page | **done** — commit `03c5d29` |
+| 2 · Demo flow | **done** — commit `03c5d29` |
+| 3 · Features | **done** — ten pages on one template |
 | 4 · Pages | not started |
 | 5 · SEO | not started |
 | 6 · Verification | not started |

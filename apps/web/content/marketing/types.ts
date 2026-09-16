@@ -44,7 +44,7 @@ export type Capability = {
   label: string
   /** Does not compile without naming the implementing service. */
   service: ServiceName
-  /** Optional one-liner; kept under 120 characters, checked by the proof test. */
+  /** Optional one-liner; kept under 120 characters, checked by `features.test.ts`. */
   description?: string
 } & (
   | { availability: 'available'; sprint?: never }

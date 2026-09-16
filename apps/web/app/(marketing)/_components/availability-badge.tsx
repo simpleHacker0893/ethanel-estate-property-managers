@@ -51,6 +51,10 @@ export function AvailabilityBadge({
   const label = LABELS[availability]
   return (
     <span
+      // The gate for the on-screen half of acceptance row 7. The type makes an
+      // unlabelled capability fail to compile; this makes an unrendered label
+      // countable from a browser test, so neither half can go quietly missing.
+      data-availability={availability}
       className={cn(
         'text-caption inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 font-semibold',
         TONES[availability],
