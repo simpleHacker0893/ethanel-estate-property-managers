@@ -1,3 +1,4 @@
+import createNextIntlPlugin from 'next-intl/plugin'
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
@@ -15,6 +16,11 @@ const nextConfig: NextConfig = {
   // step (`pnpm exec eslint . --max-warnings=0`), which is the better place --
   // it lints the whole workspace, not just what the app bundle happens to pull in.
 
+  // The workspace packages export TypeScript source rather than a build step,
+  // so Next compiles them itself. That is what keeps `packages/ui` editable
+  // without a watch process in between.
+  transpilePackages: ['@ethanel/ui', '@ethanel/contracts'],
+
   // D-68/D-69: marketing routes are static or ISR and carry no money figure.
   // Cache Components are enabled for them. D-45 is untouched -- nothing on a
   // marketing route reads the ledger, and landlord and dashboard figures stay
@@ -22,4 +28,4 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
 }
 
-export default nextConfig
+export default createNextIntlPlugin('./i18n/request.ts')(nextConfig)

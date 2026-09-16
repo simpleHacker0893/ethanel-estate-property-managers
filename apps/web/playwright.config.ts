@@ -14,10 +14,16 @@ export default defineConfig({
   use: {
     baseURL: process.env.PLAYWRIGHT_BASE_URL ?? 'http://127.0.0.1:3000',
     trace: 'retain-on-failure',
-    // Opt-in escape hatch for machines where downloading the bundled chromium
-    // is impossible (restricted network): PLAYWRIGHT_CHANNEL=chrome runs the
-    // suite on an installed Google Chrome instead. CI stays on chromium.
+    // Two opt-in escape hatches for machines where downloading the bundled
+    // chromium is impossible (restricted network, or a preinstalled browser at
+    // a different revision than this Playwright pins):
+    //   PLAYWRIGHT_CHANNEL=chrome         run on an installed Google Chrome
+    //   PLAYWRIGHT_EXECUTABLE_PATH=/path  run on a specific chromium binary
+    // CI sets neither and stays on the bundled chromium.
     ...(process.env.PLAYWRIGHT_CHANNEL ? { channel: process.env.PLAYWRIGHT_CHANNEL } : {}),
+    ...(process.env.PLAYWRIGHT_EXECUTABLE_PATH
+      ? { launchOptions: { executablePath: process.env.PLAYWRIGHT_EXECUTABLE_PATH } }
+      : {}),
   },
   // The assertions that are about geometry run at the phone profile the
   // acceptance criteria name (390x844, criterion 4 and 5).

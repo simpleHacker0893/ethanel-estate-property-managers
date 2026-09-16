@@ -11,7 +11,7 @@
  * `grep -rE '#[0-9a-fA-F]{6}'` outside this file must return nothing.
  *
  * ============================================================================
- * Why this scale (ticket 02, marketing track) — written down, not assumed:
+ * WHY THIS SCALE — written down, not assumed.
  *
  * The brand is built for DATA DENSITY first and a landing page second, because
  * Sprint 003's rent roll inherits it. The steps a rent roll will actually live
@@ -21,90 +21,122 @@
  * row heights built on the 4px base spacing step. The display and heading steps
  * exist for marketing surfaces; they are the outliers, not the core.
  *
- * Contrast pairs are computed, not guessed (WCAG 2.1 relative luminance):
- *   brand-900 #16382A on white ................. 12.86:1  (AAA body)
- *   ochre-300 #E2A85D fill + brand-900 ink ......  6.12:1  (THE CTA pair;
- *      the exact figure the blueprint pins. AA body text and AA large text.)
- *   ochre-200 + brand-900 .......................  8.36:1  (badges, large numerals)
- *   ochre-100 + brand-900 ......................  10.34:1  (banners)
- *   ochre-400 + brand-900 .......................  4.51:1  (AA body, quiet fills)
- *   ochre-500 + brand-900 .......................  3.64:1  (large text only —
- *      the floor at which ochre stops being an ink carrier)
- *   ochre-500 on white ..........................  3.53:1  (FORBIDDEN pair)
+ * Three anchors are pinned and every other step is derived from them by mixing
+ * in LINEAR light space (so the ramp is perceptually even rather than evenly
+ * spaced in sRGB integers):
  *
- * Usage rules, enforced by review and demonstrated in /kitchen-sink:
- *   - Ochre is NEVER text on white and NEVER carries white text.
- *   - The primary CTA is always the ochre-300 fill with brand-900 ink (6.12:1).
- *     The same pair serves dark mode: the fill is light, so the ink stays dark.
- *   - Focus ring: 2px brand-500 at 2px offset, never removed.
+ *   brand-500  #2c7d5d   brand-900  #0c241b
+ *   accent-300 #efc078   accent-500 #d98e2b   accent-700 #8f5614
+ *   sand-200   #e5e4de   sand-400   #9e9d94   sand-500 #6f6e66
+ *   sand-600   #4d4c46   sand-800   #1f1e1b
+ *
+ * The contrast table is NOT repeated here as prose, because prose rots away
+ * from the tokens. It is recomputed from these values by
+ * `packages/ui/contrast.test.ts`, which fails if any pair moves. The rules that
+ * table encodes, however, are binding and are demonstrated in /kitchen-sink:
+ *
+ *   - Accent is NEVER text on white (2.67:1) and NEVER carries white text
+ *     (2.67:1). Both are forbidden pairs and the test asserts they stay under
+ *     the AA floor so nobody "fixes" them into use.
+ *   - The primary CTA is always the accent-500 fill with brand-900 ink: 6.12:1.
+ *     The same pair serves dark mode — the fill is mid-tone, the ink stays dark.
+ *   - Ochre text on white is accent-700 (5.98:1), never accent-500.
+ *   - FORM CONTROL BORDERS USE sand-500 OR DARKER. sand-200 is 1.27:1 and
+ *     sand-400 is 2.73:1 on white; both fail WCAG 1.4.11's 3:1 floor for a
+ *     boundary that is the only means of identifying a control. sand-200 is
+ *     fine for a CARD border, which is decoration and not a control boundary.
+ *   - Focus ring: 2px at 2px offset, never removed. brand-500 on white is
+ *     5.00:1; the dark scheme redefines it to brand-400 for 8.83:1.
  *   - Touch targets: --spacing-touch (44px) minimum.
  * ============================================================================
  */
 
 @import 'tailwindcss';
 
+/*
+ * Tailwind's automatic source detection starts from the app that imports this
+ * file, so the primitives in this package are invisible to it — `bg-cta-fill`
+ * on the primary button and `bg-accent-band` on an inverted Section were both
+ * being dropped from the output, which renders a CTA with no fill and an
+ * inverted band that is not inverted.
+ *
+ * Declaring the sources here rather than in the consuming app means any future
+ * consumer (Sprint 003's product surfaces, Sprint 011's storefronts) inherits
+ * the scan by importing the theme, instead of each one having to remember.
+ */
+@source './src';
+
 /* ---------------------------------------------------------------- palette --- */
 @theme {
-  /* Brand green — deep, restrained; brand-900 is the anchor ink. */
-  --color-brand-50: #f0f6f2;
-  --color-brand-100: #dcebe2;
-  --color-brand-200: #b9d6c6;
-  --color-brand-300: #8fba9f;
-  --color-brand-400: #5f9b76;
-  --color-brand-500: #3e7c58;
-  --color-brand-600: #2c6245;
-  --color-brand-700: #224d37;
-  --color-brand-800: #1b4433;
-  --color-brand-900: #16382a;
+  /* Brand green — deep, restrained; brand-900 is the anchor ink and the one
+   * permitted inverted band. */
+  --color-brand-50: #fafbfa;
+  --color-brand-100: #f3f5f4;
+  --color-brand-200: #e5eae7;
+  --color-brand-300: #cdd7d2;
+  --color-brand-400: #9db5a9;
+  --color-brand-500: #2c7d5d;
+  --color-brand-600: #24684d;
+  --color-brand-700: #1c543e;
+  --color-brand-800: #15402f;
+  --color-brand-900: #0c241b;
 
-  /* Ochre accent — warm, never a body-text colour. ochre-300 is the CTA fill. */
-  --color-ochre-50: #fbf4e8;
-  --color-ochre-100: #f7e4c8;
-  --color-ochre-200: #efcb96;
-  --color-ochre-300: #e2a85d;
-  --color-ochre-400: #d08a33;
-  --color-ochre-500: #c47616;
-  --color-ochre-600: #a05a0e;
-  --color-ochre-700: #7a450b;
-  --color-ochre-800: #543008;
-  --color-ochre-900: #341d05;
+  /* Ochre accent — warm, and never a body-text colour on white below 700.
+   * accent-500 is the CTA fill; accent-300 is the quiet fill and the dark-mode
+   * accent; accent-700 is the only step that may be ochre text on white. */
+  --color-accent-50: #fcf4ec;
+  --color-accent-100: #f9e8d6;
+  --color-accent-200: #f5d8b5;
+  --color-accent-300: #efc078;
+  --color-accent-400: #e3a758;
+  --color-accent-500: #d98e2b;
+  --color-accent-600: #b77521;
+  --color-accent-700: #8f5614;
+  --color-accent-800: #73440e;
+  --color-accent-900: #563208;
 
-  /* Warm neutrals — gray with a paper warmth; neutral-950 is the dark surface. */
-  --color-neutral-0: #ffffff;
-  --color-neutral-50: #faf8f5;
-  --color-neutral-100: #f3efe9;
-  --color-neutral-200: #e7e0d6;
-  --color-neutral-300: #d5cbbd;
-  --color-neutral-400: #b3a797;
-  --color-neutral-500: #8b7e6e;
-  --color-neutral-600: #6c6153;
-  --color-neutral-700: #4f483d;
-  --color-neutral-800: #34302a;
-  --color-neutral-900: #201d18;
-  --color-neutral-950: #14120e;
+  /* Sand neutrals — grey with a paper warmth. sand-800 is body ink on white,
+   * sand-950 is the dark surface. */
+  --color-sand-0: #ffffff;
+  --color-sand-50: #fafaf9;
+  --color-sand-100: #f2f2ef;
+  --color-sand-200: #e5e4de;
+  --color-sand-300: #c2c1ba;
+  --color-sand-400: #9e9d94;
+  --color-sand-500: #6f6e66;
+  --color-sand-600: #4d4c46;
+  --color-sand-700: #3a3935;
+  --color-sand-800: #1f1e1b;
+  --color-sand-900: #161513;
+  --color-sand-950: #0f0e0c;
 
-  /* Type — fluid clamp() scale. Display and h1..h4 serve marketing; data,
-   * body-sm and caption serve the rent roll (see the note above). */
-  --text-display: clamp(2.25rem, 1.6rem + 3.2vw, 3.5rem);
-  --text-display--line-height: 1.1;
-  --text-display--letter-spacing: -0.02em;
-  --text-h1: clamp(1.875rem, 1.5rem + 1.9vw, 2.5rem);
-  --text-h1--line-height: 1.15;
-  --text-h1--letter-spacing: -0.015em;
-  --text-h2: clamp(1.5rem, 1.3rem + 1vw, 1.875rem);
-  --text-h2--line-height: 1.25;
-  --text-h3: clamp(1.25rem, 1.15rem + 0.5vw, 1.4375rem);
-  --text-h3--line-height: 1.3;
-  --text-h4: clamp(1.125rem, 1.07rem + 0.25vw, 1.25rem);
-  --text-h4--line-height: 1.35;
-  --text-body-lg: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
-  --text-body-lg--line-height: 1.6;
+  /* Type — fluid clamp() scale, interpolating between a 390px handset and a
+   * 1280px desktop. Display tracks tight (-0.035em) at a 1.02 line height
+   * because it is set large; headings track -0.022em; body runs at 1.62 for
+   * comfortable reading on a phone. */
+  --text-display: clamp(2.25rem, 1.538rem + 2.921vw, 3.875rem);
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.035em;
+  --text-h1: clamp(1.875rem, 1.492rem + 1.573vw, 2.75rem);
+  --text-h1--line-height: 1.08;
+  --text-h1--letter-spacing: -0.022em;
+  --text-h2: clamp(1.5rem, 1.281rem + 0.899vw, 2rem);
+  --text-h2--line-height: 1.15;
+  --text-h2--letter-spacing: -0.022em;
+  --text-h3: clamp(1.25rem, 1.14rem + 0.449vw, 1.5rem);
+  --text-h3--line-height: 1.25;
+  --text-h3--letter-spacing: -0.022em;
+  --text-h4: clamp(1.125rem, 1.07rem + 0.225vw, 1.25rem);
+  --text-h4--line-height: 1.3;
+  --text-h4--letter-spacing: -0.022em;
+  --text-body-lg: clamp(1.0625rem, 1.008rem + 0.225vw, 1.1875rem);
+  --text-body-lg--line-height: 1.55;
   --text-body: 1rem;
-  --text-body--line-height: 1.6;
+  --text-body--line-height: 1.62;
   --text-body-sm: 0.875rem;
-  --text-body-sm--line-height: 1.5;
+  --text-body-sm--line-height: 1.55;
   --text-caption: 0.8125rem;
-  --text-caption--line-height: 1.4;
+  --text-caption--line-height: 1.45;
   --text-data: 0.9375rem;
   --text-data--line-height: 1.4;
   --text-data--font-variant-numeric: tabular-nums;
@@ -123,10 +155,14 @@
   --motion-slow: 320ms;
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 
-  /* Fonts — at most two families (requirements budget row), wired by next/font
-   * in the app layout and exposed through these indirections. */
+  /* Fonts — four families, six files, wired by next/font in the app layout and
+   * reached only through these indirections. Deliberate deviation from the
+   * requirements' two-family budget row; recorded in the Phase 0 PR body and
+   * paid for by subsetting to `latin` with `display: swap`. */
+  --font-display: var(--font-display-next, ui-sans-serif, system-ui, sans-serif);
   --font-sans: var(--font-sans-next, ui-sans-serif, system-ui, sans-serif);
-  --font-mono: var(--font-data-next, ui-monospace, 'Cascadia Mono', monospace);
+  --font-serif: var(--font-serif-next, ui-serif, Georgia, serif);
+  --font-mono: var(--font-mono-next, ui-monospace, 'Cascadia Mono', monospace);
 }
 
 /* ------------------------------------------------------------- semantics ---
@@ -136,29 +172,59 @@
  * never a raw palette step, except through the pairs documented above.
  */
 :root {
-  --surface: var(--color-neutral-0);
-  --surface-raised: var(--color-neutral-50);
-  --surface-sunken: var(--color-neutral-100);
-  --ink: var(--color-neutral-900);
-  --ink-muted: var(--color-neutral-600);
-  --line: var(--color-neutral-200);
-  --cta-fill: var(--color-ochre-300);
+  --surface: var(--color-sand-0);
+  --surface-raised: var(--color-sand-50);
+  --surface-sunken: var(--color-sand-100);
+  --ink: var(--color-sand-800);
+  --ink-muted: var(--color-sand-600);
+  /* The quietest text the system allows: 5.12:1 on white. */
+  --ink-quiet: var(--color-sand-500);
+  /* Card and divider borders — decoration, so 1.27:1 is permitted (1.4.11
+   * governs boundaries that are the ONLY means of identifying a control). */
+  --line: var(--color-sand-200);
+  /* Form control borders — a control boundary, so it must clear 3:1. */
+  --line-control: var(--color-sand-500);
+  --cta-fill: var(--color-accent-500);
   --cta-ink: var(--color-brand-900);
+  --cta-fill-hover: var(--color-accent-400);
+  --accent-quiet: var(--color-accent-300);
+  --accent-text: var(--color-accent-700);
   --accent-band: var(--color-brand-900);
-  --accent-band-ink: var(--color-neutral-0);
-  --focus-ring: 2px solid var(--color-brand-500);
+  --accent-band-ink: var(--color-sand-0);
+  --accent-band-quiet: var(--color-accent-300);
+  --focus: var(--color-brand-500);
+
+  /* Section rhythm: 64px on a handset, 84px at tablet, 104px at desktop. The
+   * Section primitive is the only consumer; nothing sets vertical padding by
+   * hand. */
+  --space-section-sm: 4rem;
+  --space-section-md: 5.25rem;
+  --space-section-lg: 6.5rem;
+  /* Reading measure, capped so a wide viewport never produces a 120-character
+   * line. Consumed by the Prose primitive. */
+  --measure: 68ch;
   --spacing-touch: 2.75rem; /* 44px touch-target floor */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --surface: var(--color-neutral-950);
-    --surface-raised: var(--color-neutral-900);
-    --surface-sunken: var(--color-neutral-800);
-    --ink: var(--color-neutral-100);
-    --ink-muted: var(--color-neutral-400);
-    --line: var(--color-neutral-700);
-    /* CTA is unchanged in dark mode: the ochre-300 fill is light, so the
+    --surface: var(--color-sand-950);
+    --surface-raised: var(--color-sand-900);
+    --surface-sunken: var(--color-sand-800);
+    --ink: var(--color-sand-100);
+    --ink-muted: var(--color-sand-300);
+    --ink-quiet: var(--color-sand-400);
+    --line: var(--color-sand-700);
+    --line-control: var(--color-sand-400);
+    --accent-text: var(--color-accent-300);
+    /* The inverted band inverts the other way in dark mode: brand-900 on a
+     * near-black surface is invisible, so the band becomes brand-800. */
+    --accent-band: var(--color-brand-800);
+    /* A stronger ring, because the dark surface gives brand-500 only 3.86:1
+     * against 8.83:1 for brand-400. Both clear the 3:1 UI floor; take the
+     * better one. */
+    --focus: var(--color-brand-400);
+    /* CTA is unchanged in dark mode: the accent-500 fill is mid-tone, so the
      * brand-900 ink keeps its computed 6.12:1. */
   }
 }
@@ -169,12 +235,18 @@
   --color-surface-sunken: var(--surface-sunken);
   --color-ink: var(--ink);
   --color-ink-muted: var(--ink-muted);
+  --color-ink-quiet: var(--ink-quiet);
   --color-line: var(--line);
+  --color-line-control: var(--line-control);
   --color-cta-fill: var(--cta-fill);
+  --color-cta-fill-hover: var(--cta-fill-hover);
   --color-cta-ink: var(--cta-ink);
+  --color-accent-quiet: var(--accent-quiet);
+  --color-accent-text: var(--accent-text);
   --color-accent-band: var(--accent-band);
   --color-accent-band-ink: var(--accent-band-ink);
-  --color-focus: var(--color-brand-500);
+  --color-accent-band-quiet: var(--accent-band-quiet);
+  --color-focus: var(--focus);
 }
 
 /* ---------------------------------------------------------------- behavior ---
@@ -182,7 +254,7 @@
  * Tailwind preflight does not provide one.
  */
 :focus-visible {
-  outline: var(--focus-ring);
+  outline: 2px solid var(--focus);
   outline-offset: 2px;
 }
 
