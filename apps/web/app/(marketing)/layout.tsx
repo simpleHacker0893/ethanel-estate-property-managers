@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { buttonClassName } from '@ethanel/ui'
 
+import { OrganizationJsonLd } from './_components/organization-json-ld'
 import { Footer } from './_shell/footer'
 import { Header } from './_shell/header'
 import { getShellStrings } from './_shell/strings'
@@ -18,6 +19,7 @@ export default async function MarketingLayout({
 
   return (
     <div className="flex min-h-dvh flex-col">
+      <OrganizationJsonLd />
       <a
         href="#main"
         className={buttonClassName(
