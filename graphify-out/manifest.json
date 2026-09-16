@@ -192,9 +192,9 @@
     "semantic_hash": ""
   },
   ".docs/STATE.md": {
-    "mtime": 1789536055.2121093,
-    "seen": 1789536119.6991673,
-    "ast_hash": "24fb2c9d9f8ff3cc23b732447af8fced",
+    "mtime": 1789536179.5161033,
+    "seen": 1789536249.7858453,
+    "ast_hash": "59f5caf4ec6b54fbd1647ffc3578637a",
     "semantic_hash": ""
   },
   ".docs/VALIDATION.md": {
@@ -546,9 +546,9 @@
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1789536075.410614,
-    "seen": 1789536119.6992662,
-    "ast_hash": "c5f9134a94584cc79d35181b4dee7801",
+    "mtime": 1789536179.511902,
+    "seen": 1789536249.7859511,
+    "ast_hash": "368f1d7c9641ffc85003153c716fb039",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
@@ -591,6 +591,30 @@
     "mtime": 1789535901.1164699,
     "seen": 1789536119.6992645,
     "ast_hash": "cf437e5b32a01b2987bebcfff60b6b3e",
+    "semantic_hash": ""
+  },
+  ".github/ISSUE_TEMPLATE/01-ticket.yml": {
+    "mtime": 1789536216.2422676,
+    "seen": 1789536249.7859452,
+    "ast_hash": "7c341f043481b617d103b6948179d505",
+    "semantic_hash": ""
+  },
+  ".github/ISSUE_TEMPLATE/02-research.yml": {
+    "mtime": 1789536216.2718403,
+    "seen": 1789536249.7859468,
+    "ast_hash": "26560741ad8b865a6bb4074da6aa20ad",
+    "semantic_hash": ""
+  },
+  ".github/ISSUE_TEMPLATE/config.yml": {
+    "mtime": 1789536216.2101989,
+    "seen": 1789536249.7859485,
+    "ast_hash": "f4df7fbdfae8f016d0990cfa070a233f",
+    "semantic_hash": ""
+  },
+  ".github/pull_request_template.md": {
+    "mtime": 1789536246.3104198,
+    "seen": 1789536249.7859497,
+    "ast_hash": "4ece4290e347d01c953fdb1359a2959d",
     "semantic_hash": ""
   }
 }

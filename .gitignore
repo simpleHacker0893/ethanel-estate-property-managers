@@ -21,6 +21,11 @@ coverage/
 # Knowledge graph — graph.json IS committed (union-merged by the graphify
 # merge driver); the cost ledger and HTML artifacts are local noise.
 graphify-out/cache/
+# Dated backup snapshots: graphify copies the whole graph into
+# graphify-out/<YYYY-MM-DD>/ on each curated rebuild. Committing them means a
+# duplicate of a 20k-line generated file per rebuild day, and git already has
+# the history of graph.json itself.
+graphify-out/20*/
 graphify-out/cost.json
 graphify-out/graph.html
 graphify-out/GRAPH_TREE.html

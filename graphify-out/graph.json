@@ -6421,7 +6421,7 @@
       "node_kind": "heading",
       "norm_label": "architecture decisions \u2014 none open",
       "source_file": ".docs/STATE.md",
-      "source_location": "L239"
+      "source_location": "L250"
     },
     {
       "id": "docs_state_eleven_stale_cross_references_closed",
@@ -6433,7 +6433,7 @@
       "node_kind": "heading",
       "norm_label": "eleven stale cross-references, closed",
       "source_file": ".docs/STATE.md",
-      "source_location": "L177"
+      "source_location": "L188"
     },
     {
       "id": "docs_state_live_risks",
@@ -6445,7 +6445,7 @@
       "node_kind": "heading",
       "norm_label": "live risks",
       "source_file": ".docs/STATE.md",
-      "source_location": "L260"
+      "source_location": "L271"
     },
     {
       "id": "docs_state_open_questions_blocking_the_nearest_sprints",
@@ -6457,7 +6457,7 @@
       "node_kind": "heading",
       "norm_label": "open questions blocking the nearest sprints",
       "source_file": ".docs/STATE.md",
-      "source_location": "L215"
+      "source_location": "L226"
     },
     {
       "id": "docs_state_state",
@@ -6481,7 +6481,7 @@
       "node_kind": "heading",
       "norm_label": "the go-live target",
       "source_file": ".docs/STATE.md",
-      "source_location": "L208"
+      "source_location": "L219"
     },
     {
       "id": "docs_state_the_marketing_site_track",
@@ -6493,7 +6493,7 @@
       "node_kind": "heading",
       "norm_label": "the marketing-site track",
       "source_file": ".docs/STATE.md",
-      "source_location": "L140"
+      "source_location": "L151"
     },
     {
       "id": "docs_state_what_has_to_happen_before_sprint_001_can_start",
@@ -11814,6 +11814,114 @@
       "norm_label": "what a track is not",
       "source_file": ".docs/tracks/README.md",
       "source_location": "L25"
+    },
+    {
+      "id": "github_pull_request_template",
+      "label": "pull_request_template.md",
+      "_origin": "ast",
+      "community": 98,
+      "community_name": "pull_request_template.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "pull_request_template.md",
+      "source_file": ".github/pull_request_template.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "github_pull_request_template_boundary_check",
+      "label": "Boundary check",
+      "_origin": "ast",
+      "community": 98,
+      "community_name": "pull_request_template.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "boundary check",
+      "source_file": ".github/pull_request_template.md",
+      "source_location": "L32"
+    },
+    {
+      "id": "github_pull_request_template_business_facts",
+      "label": "Business facts",
+      "_origin": "ast",
+      "community": 98,
+      "community_name": "pull_request_template.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "business facts",
+      "source_file": ".github/pull_request_template.md",
+      "source_location": "L59"
+    },
+    {
+      "id": "github_pull_request_template_copy",
+      "label": "Copy",
+      "_origin": "ast",
+      "community": 98,
+      "community_name": "pull_request_template.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "copy",
+      "source_file": ".github/pull_request_template.md",
+      "source_location": "L65"
+    },
+    {
+      "id": "github_pull_request_template_evidence",
+      "label": "Evidence",
+      "_origin": "ast",
+      "community": 98,
+      "community_name": "pull_request_template.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "evidence",
+      "source_file": ".github/pull_request_template.md",
+      "source_location": "L11"
+    },
+    {
+      "id": "github_pull_request_template_money",
+      "label": "Money",
+      "_origin": "ast",
+      "community": 98,
+      "community_name": "pull_request_template.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "money",
+      "source_file": ".github/pull_request_template.md",
+      "source_location": "L50"
+    },
+    {
+      "id": "github_pull_request_template_shared_surfaces",
+      "label": "Shared surfaces",
+      "_origin": "ast",
+      "community": 98,
+      "community_name": "pull_request_template.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "shared surfaces",
+      "source_file": ".github/pull_request_template.md",
+      "source_location": "L18"
+    },
+    {
+      "id": "github_pull_request_template_what_this_changes",
+      "label": "What this changes",
+      "_origin": "ast",
+      "community": 98,
+      "community_name": "pull_request_template.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "what this changes",
+      "source_file": ".github/pull_request_template.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "github_pull_request_template_which_exit_criterion_this_moves",
+      "label": "Which exit criterion this moves",
+      "_origin": "ast",
+      "community": 98,
+      "community_name": "pull_request_template.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "which exit criterion this moves",
+      "source_file": ".github/pull_request_template.md",
+      "source_location": "L7"
     }
   ],
   "links": [
@@ -20922,7 +21030,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/STATE.md",
-      "source_location": "L140",
+      "source_location": "L151",
       "weight": 1.0
     },
     {
@@ -20933,7 +21041,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/STATE.md",
-      "source_location": "L177",
+      "source_location": "L188",
       "weight": 1.0
     },
     {
@@ -20944,7 +21052,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/STATE.md",
-      "source_location": "L208",
+      "source_location": "L219",
       "weight": 1.0
     },
     {
@@ -20955,7 +21063,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/STATE.md",
-      "source_location": "L215",
+      "source_location": "L226",
       "weight": 1.0
     },
     {
@@ -20966,7 +21074,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/STATE.md",
-      "source_location": "L239",
+      "source_location": "L250",
       "weight": 1.0
     },
     {
@@ -20977,7 +21085,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".docs/STATE.md",
-      "source_location": "L260",
+      "source_location": "L271",
       "weight": 1.0
     },
     {
@@ -21540,8 +21648,96 @@
       "source_file": ".docs/VALIDATION.md",
       "source_location": "L85",
       "weight": 1.0
+    },
+    {
+      "source": "github_pull_request_template",
+      "target": "github_pull_request_template_what_this_changes",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/pull_request_template.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "github_pull_request_template",
+      "target": "github_pull_request_template_evidence",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/pull_request_template.md",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "github_pull_request_template",
+      "target": "github_pull_request_template_shared_surfaces",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/pull_request_template.md",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "github_pull_request_template",
+      "target": "github_pull_request_template_boundary_check",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/pull_request_template.md",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "github_pull_request_template",
+      "target": "github_pull_request_template_money",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/pull_request_template.md",
+      "source_location": "L50",
+      "weight": 1.0
+    },
+    {
+      "source": "github_pull_request_template",
+      "target": "github_pull_request_template_business_facts",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/pull_request_template.md",
+      "source_location": "L59",
+      "weight": 1.0
+    },
+    {
+      "source": "github_pull_request_template",
+      "target": "github_pull_request_template_copy",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/pull_request_template.md",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "github_pull_request_template",
+      "target": "github_pull_request_template_which_exit_criterion_this_moves",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/pull_request_template.md",
+      "source_location": "L7",
+      "weight": 1.0
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "c7722e99d6475079d5dffa69cfbbd2ef8ee8fc25"
+  "built_at_commit": "10e39efec77280448731beefe739f141e03dcec7"
 }

@@ -1,17 +1,17 @@
 # Graph Report - ethanel-real-estate-management  (2026-09-16)
 
 ## Corpus Check
-- 99 files · ~96,491 words
+- 100 files · ~97,541 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 4 file(s) not represented in the graph (top: (none) 4)
 
 ## Summary
-- 981 nodes · 884 edges · 98 communities (90 shown, 8 thin omitted)
+- 990 nodes · 892 edges · 99 communities (91 shown, 8 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `c7722e99`
+- Built from commit: `10e39efe`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -114,6 +114,7 @@
 - Marketing site acceptance
 - Track · The public marketing site
 - Tracks
+- pull_request_template.md
 
 ## God Nodes (most connected - your core abstractions)
 1. `Ethanel — Product Requirements Document` - 17 edges
@@ -122,15 +123,15 @@
 4. `7. Functional requirements` - 14 edges
 5. `9. Integrations` - 13 edges
 6. `Sprint NNN Blueprint — {sprint name}` - 13 edges
-7. `Track · The public marketing site` - 12 edges
-8. `What You Must Do When Invoked` - 12 edges
-9. `Sprint 002 · The chassis and tenancy` - 11 edges
-10. `DevOps Guidelines` - 11 edges
+7. `What You Must Do When Invoked` - 12 edges
+8. `Track · The public marketing site` - 12 edges
+9. `DevOps Guidelines` - 11 edges
+10. `Sprint 001 · Ground truth and the pipeline` - 11 edges
 
 ## Surprising Connections (you probably didn't know these)
 - None detected - all connections are within the same source files.
 
-## Communities (98 total, 8 thin omitted)
+## Communities (99 total, 8 thin omitted)
 
 ### Community 0 - "Ethanel — Product Requirements Document"
 Cohesion: 0.06
@@ -492,9 +493,13 @@ Nodes (12): Blocked by, Decisions this track may not re-open, Depends on, Exit c
 Cohesion: 0.50
 Nodes (3): Current tracks, Tracks, What a track is not
 
+### Community 98 - "pull_request_template.md"
+Cohesion: 0.22
+Nodes (8): Boundary check, Business facts, Copy, Evidence, Money, Shared surfaces, What this changes, Which exit criterion this moves
+
 ## Knowledge Gaps
-- **732 isolated node(s):** `1. Architecture principles`, `2. System context`, `3. Cloud decision: AWS (GCP rejected)`, `4. Container view`, `5.1 Monorepo layout` (+727 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 829 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **740 isolated node(s):** `Where the project is`, `What has to happen before Sprint 001 can start`, `The marketing-site track`, `Eleven stale cross-references, closed`, `The go-live target` (+735 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 837 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
@@ -502,8 +507,8 @@ _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Ethanel — Product Requirements Document` connect `Ethanel — Product Requirements Document` to `7. Functional requirements`?**
   _High betweenness centrality (0.002) - this node is a cross-community bridge._
-- **What connects `1. Architecture principles`, `2. System context`, `3. Cloud decision: AWS (GCP rejected)` to the rest of the system?**
-  _732 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `Where the project is`, `What has to happen before Sprint 001 can start`, `The marketing-site track` to the rest of the system?**
+  _740 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Ethanel — Product Requirements Document` be split into smaller, more focused modules?**
   _Cohesion score 0.05714285714285714 - nodes in this community are weakly interconnected._
 - **Should `Ethanel — Architecture v1.2` be split into smaller, more focused modules?**
