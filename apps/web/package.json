@@ -9,12 +9,15 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
+    "test": "vitest run",
     "test:e2e": "playwright test",
     "test:budget": "lhci autorun"
   },
   "dependencies": {
     "@ethanel/contracts": "workspace:*",
     "@ethanel/ui": "workspace:*",
+    "@radix-ui/react-dialog": "1.1.23",
+    "@radix-ui/react-navigation-menu": "1.2.22",
     "next": "16.3.5",
     "next-intl": "4.14.5",
     "nuqs": "2.10.1",
@@ -31,6 +34,7 @@
     "@types/react-dom": "19.2.3",
     "eslint-config-next": "16.3.5",
     "playwright": "1.63.0",
-    "tailwindcss": "4.3.3"
+    "tailwindcss": "4.3.3",
+    "vitest": "5.0.0"
   }
 }

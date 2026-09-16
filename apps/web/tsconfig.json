@@ -1,5 +1,8 @@
 {
-  "extends": "@ethanel/config/tsconfig/next",
+  // Direct relative path rather than the `@ethanel/config` package export:
+  // vitest's tsconfig loader does not resolve the chain through pnpm's
+  // symlinked node_modules. tsc resolves both forms identically.
+  "extends": "../../packages/config/tsconfig/next",
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
