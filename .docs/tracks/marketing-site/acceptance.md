@@ -74,14 +74,43 @@ into an authenticated route group or a service package?** It must not. A path
 from `(marketing)` to `(org)`, `(resident)`, `(landlord)`, `(caretaker)`,
 `(admin)` or `packages/services/*` is a boundary leak.
 
+**Two guards, because one of them cannot answer yet.**
+
+**1 — An ESLint import zone. This is what enforces the boundary today.** Added in
+ticket 03, it fails the build the moment anything under `(marketing)` imports
+from an authenticated route group or a service package — at the commit, not at
+review, and with no dependency on the graph.
+
+**2 — The graph path query, kept for when it can answer.**
+
 ```bash
+graphify update .
+graphify god-nodes --top 15
 graphify path "(marketing)" "packages/services"   # expect: no path
 ```
+
+> **Read this result carefully during this track.** Measured 16 September 2026, it
+> returns "no directed path" — and it would return that even if the boundary were
+> being violated, because **neither endpoint exists yet**: there is no
+> `(marketing)` route group built, `packages/services/*` is Sprint 002, and
+> `(org)`, `(resident)`, `(landlord)`, `(caretaker)` and `(admin)` are all
+> unbuilt too. The query also warns that its target match is ambiguous, which is
+> what fuzzy-matching an absent name looks like. **A pass here is vacuous until
+> Sprint 002.** It is retained because it becomes real evidence then, and because
+> it catches a class of leak an import rule cannot — a path through a shared
+> module rather than a direct import.
+
+**God-node baseline, measured 16 September 2026** (1,449 nodes, 1,341 edges,
+after code extraction): the most connected node is `compilerOptions` at 24
+edges, which is a `tsconfig` artifact rather than a real hub, and every entry
+below it is a planning document. **There is no source-code god node**, because
+the code is still small. That is the number the row below compares against.
 
 | Question | Answer |
 |---|---|
 | New god nodes | |
 | Intentional | |
+| ESLint import zone green | |
 | Any path from `(marketing)` to an authenticated surface | |
 
 ## Conversion self-audit

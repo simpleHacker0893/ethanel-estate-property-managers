@@ -284,3 +284,29 @@ pack. If you are working from it, these are wrong in it:
 The draft was right about: `graphify install --project --strict`, `hook install`,
 `.claudeignore`, the reconciliation order, the repair state machine, the
 `SET LOCAL` and `BYPASSRLS` trap, and every skill name it used.
+
+---
+
+## 8. Agent tooling — CLIs and skill bundles
+
+Installed 16 September 2026. Every agent session can rely on these being
+present; re-run the install command if a machine is missing one. These are
+**global CLIs and skill bundles, not project dependencies** — the blueprint's
+dependency policy (approved: `playwright`, `@axe-core/playwright`, `@lhci/cli`
+as devDependencies) is unaffected.
+
+| Tool | What it is for | Install | Reference |
+|---|---|---|---|
+| `playwright-cli` | Browser automation from the terminal: open, navigate, snapshot, fill, click — the harness behind the browser test suites and the marketing track's gates. Ships its own skill into `.claude/skills/playwright-cli`. | `npm install -g @playwright/cli@latest`, then `playwright-cli install --skills` inside the repo | [github.com/microsoft/playwright-cli](https://github.com/microsoft/playwright-cli) · `playwright-cli --help` |
+| `neon` | Neon Postgres CLI — branching, staging-branch URLs for `graphify extract . --postgres`, schema work from Sprint 001's ADR-002 region decision onward. | `npm i -g neon@latest` | [neon.com/docs/reference/cli](https://neon.com/docs/reference/cli) · [github.com/neondatabase/neon-cli](https://github.com/neondatabase/neon-cli) |
+| Clerk skill bundle | Clerk auth patterns (organizations, sessions, webhooks) for `identity-svc` and the `organization_id` boundary work from Sprint 002. 20 skills into `.claude/skills/`. | `npx skills add clerk/skills -y --agent claude-code` | [github.com/clerk/skills](https://github.com/clerk/skills) |
+| Neon agent skills | Neon-specific agent guidance (branching, serverless driver, connection pooling). 7 skills into `.claude/skills/`. | `npx skills add neondatabase/agent-skills -y --agent claude-code` | [github.com/neondatabase/agent-skills](https://github.com/neondatabase/agent-skills) |
+
+Notes:
+
+- The `skills` CLI is interactive by default; pass `-y --agent claude-code` when
+  running without a TTY, or it cancels silently.
+- Skill bundles land in `.claude/skills/` (and `.agents/skills/`). Review them
+  before use — they run with full agent permissions.
+- `playwright-cli install --skills` also adds `.playwright-cli/` to
+  `.gitignore` and uses Chrome as the default browser when one is present.

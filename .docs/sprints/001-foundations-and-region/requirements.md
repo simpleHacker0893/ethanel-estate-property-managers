@@ -67,3 +67,29 @@ and say so out loud — do not work around it quietly.
 
 _Filled during the sprint. What surprised you goes here, and then into
 `../../RISKS.md` or `../../DECISIONS.md` if it outlives the week._
+
+### The three service shells have no build step (P5)
+
+`gateway`, `worker` and `docs-worker` run `node src/main.ts` directly, in
+development and in the container. Node 24 strips TypeScript types natively, and
+`tsconfig.base.json` already sets `verbatimModuleSyntax` and `erasableSyntaxOnly`
+— the two options that make a file strippable rather than compilable.
+
+The alternative was a `tsc` stage per app, a `dist/` per app, and
+`packages/config` compiled to `dist` as well so the built output could resolve
+`@ethanel/config/env` at runtime. Three build steps and a dual-resolution problem
+to solve, for shells that Sprint 002 replaces with the chassis.
+
+`apps/web` still builds, because Next.js has to. Revisit if the chassis needs a
+bundler for any reason — at that point one build config covers all four.
+
+### TypeScript is held on 6.x, and it is not a preference (P1)
+
+`typescript-eslint@8` peer-requires `typescript >=4.8.4 <6.1.0`, while
+TypeScript's `latest` tag is already 7.x. typescript-eslint is what provides
+`@typescript-eslint/no-explicit-any`, and `VALIDATION.md` §2 makes "no `any` in
+a public interface" a **permanent merge gate from this sprint**.
+
+So a Builder who installs `typescript@latest` does not break the build — they
+disable a gate. `renovate.json` caps the major and `.github/renovate-note.md`
+says why. Remove both when typescript-eslint supports 7.

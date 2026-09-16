@@ -93,6 +93,14 @@ In `packages/contracts`, so the form and the eventual API share one definition
   chosen.** The only implementation that ships appends to a file and a structured
   log. Q22 answers this; DEBT-08 records it.
 
+  **One port, not two — operator-confirmed.** The Server Action calls
+  `capture(lead)` and nothing else. The server-side conversion dispatch (Q21)
+  happens **inside** the sink implementation and is explicitly non-fatal. The two
+  operations have different failure semantics: a failed capture loses a customer,
+  a failed conversion event loses only an optimisation signal — so the sink is
+  where that asymmetry is enforced, because a caller cannot then accidentally
+  make a lead depend on an ad platform being reachable. Test surface is one fake.
+
 ## Jobs
 
 **None.** No `pg-boss` queue, no worker. Everything is request-time or build-time.
@@ -127,7 +135,8 @@ Prefactoring is sequenced first.
 6. **S10–S12** — role switcher (tab state in the URL), marketplace band, land band.
 7. **S13–S17** — security, pricing preview, FAQ with JSON-LD, final CTA, footer.
 8. **`/demo` + `/demo/thanks`**, including attribution capture and the
-   server-side conversion event behind a seam (Q21).
+   server-side conversion event — dispatched **inside** the single `LeadSink`
+   implementation, not as a second port (Q21; see "API contracts added").
 9. **The feature-page template, then the ten pages off it.** The template is its
    own slice; the ten pages are mechanical once it exists.
 10. **`/pricing`, `/security`, `/platform`, `/about`, `/contact`.**
@@ -195,7 +204,13 @@ and keeps state changes instant.
 ## Dependency policy
 
 No new npm dependency without asking the operator first, and each one is
-justified against the 120 KB first-party JS budget before it is added. Animation
+justified against the 120 KB first-party JS budget before it is added.
+
+**Approved so far (all `devDependencies`, zero browser bytes):** `playwright`,
+`@axe-core/playwright`, `@lhci/cli`. They are what make six of the twelve
+acceptance criteria evidenceable and D-70's two gates real rather than
+aspirational — criteria 1, 4, 5, 8 and 11 need a browser, 3 needs the
+accessibility scanner, 2 needs the budget runner. Nothing else is approved. Animation
 is CSS and Tailwind. Native platform first: `@starting-style`, `<details>` where
 a disclosure will do, `input type="search"` over a hand-built combobox. Icons are
 inline SVG or tree-shaken `lucide-react` — never an icon font.

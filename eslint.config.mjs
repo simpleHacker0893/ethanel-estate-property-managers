@@ -9,6 +9,10 @@ export default tseslint.config(
       '**/coverage/**',
       '**/node_modules/**',
       'graphify-out/**',
+      // Vendored skill bundles from the agent kit: third-party templates that
+      // do not meet this repo's lint contract and are not compiled here.
+      '.claude/skills/**',
+      '.agents/skills/**',
     ],
   },
 
