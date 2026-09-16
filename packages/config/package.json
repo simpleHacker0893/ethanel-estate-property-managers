@@ -1,0 +1,19 @@
+{
+  "name": "@ethanel/config",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./tsconfig/lib": "./tsconfig/lib.json",
+    "./tsconfig/node": "./tsconfig/node.json",
+    "./tsconfig/next": "./tsconfig/next.json",
+    "./env": "./src/env.ts"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "zod": "4.6.5"
+  }
+}

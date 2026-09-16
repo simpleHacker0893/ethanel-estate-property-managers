@@ -1,0 +1,231 @@
+name: PR
+
+# ARCHITECTURE.md §11.2, the left half of the pipeline:
+#   PR -> lint, typecheck, unit, integration + cross-org tests on a Neon branch,
+#         Playwright, Trivy -> build image -> push to ECR -> preview namespace.
+#
+# What runs today is everything that needs no cloud account. The jobs that need
+# one are present, guarded and skip with a reason rather than being absent --
+# a missing job is indistinguishable from a passing one on a green check.
+#
+# ACTION PINNING: every `uses:` below is a version tag, not a commit SHA, and
+# that is a known gap rather than an oversight. The GitHub API was rate-limited
+# when these were written and inventing a SHA is worse than a tag -- it either
+# fails confusingly or pins a commit nobody chose. `renovate.json` sets
+# `pinDigests: true` for the github-actions manager, so Renovate's first run
+# converts all of them. To do it by hand once `gh` is authenticated:
+#   gh api repos/actions/checkout/commits/v5 --jq .sha
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: pr-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  NEXT_TELEMETRY_DISABLED: '1'
+  TURBO_TELEMETRY_DISABLED: '1'
+
+jobs:
+  # ---------------------------------------------------------------- quality ---
+  quality:
+    name: Lint, typecheck, test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          # Matches .node-version, which is also a turbo globalDependency, so a
+          # Node bump busts the build cache instead of silently reusing it.
+          node-version-file: .node-version
+      - name: Enable pnpm via corepack
+        run: corepack enable
+      - name: Install
+        # --frozen-lockfile is the point of CI: if the lockfile and the
+        # manifests disagree, that is the failure, not something to resolve.
+        run: pnpm install --frozen-lockfile
+      - name: Format
+        run: pnpm format:check
+      - name: Lint
+        # AGENTS.md / VALIDATION.md §2: TypeScript strict and no `any` in a
+        # public interface are permanent merge gates from Sprint 001.
+        # --max-warnings=0 is what makes "no warnings" true rather than aspirational.
+        run: pnpm exec eslint . --max-warnings=0
+      - name: Typecheck
+        run: pnpm -r exec tsc --noEmit
+      - name: Test
+        run: pnpm -r test
+      - name: Build
+        run: pnpm build
+
+  # ------------------------------------------------------- marketing gates ---
+  # Ticket 01 of the marketing-site track (D-70): accessibility and performance
+  # block a merge on marketing routes from the first commit, not from a final
+  # slice. Needs the same three approved devDependencies the app declares.
+  marketing-gates:
+    name: Marketing gates (axe + Lighthouse)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .node-version
+      - name: Enable pnpm via corepack
+        run: corepack enable
+      - name: Install
+        run: pnpm install --frozen-lockfile
+      - name: Build web
+        run: pnpm --filter @ethanel/web build
+      - name: Install Playwright browsers
+        run: pnpm --filter @ethanel/web exec playwright install --with-deps chromium
+      - name: Browser suite (smoke, axe)
+        run: pnpm --filter @ethanel/web test:e2e
+      - name: Budget suite (Lighthouse CI)
+        # The assertion table prints the measured values, not only pass/fail;
+        # reports land in apps/web/.lighthouseci.
+        run: pnpm --filter @ethanel/web test:budget
+      - name: Upload Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports
+          path: apps/web/.lighthouseci
+          retention-days: 14
+
+  # ------------------------------------------------------------------ chart ---
+  chart:
+    name: Helm chart and D-34 gates
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: azure/setup-helm@v4
+      - name: Install helm-unittest
+        run: helm plugin install https://github.com/helm-unittest/helm-unittest
+      - name: Install kubeconform
+        run: |
+          curl -sSLo /tmp/kubeconform.tar.gz \
+            https://github.com/yannh/kubeconform/releases/download/v0.7.0/kubeconform-linux-amd64.tar.gz
+          tar -xzf /tmp/kubeconform.tar.gz -C /usr/local/bin kubeconform
+      - name: Resolve the library chart into each Deployment
+        run: |
+          for app in web gateway worker docs-worker; do
+            helm dependency update "deploy/helm/$app"
+          done
+      - name: Lint
+        run: |
+          for app in web gateway worker docs-worker; do
+            helm lint "deploy/helm/$app"
+          done
+      - name: 'D-34 gates 1-5: prove each one is unrenderable if omitted'
+        # The evidence for 002/acceptance.md's D-34 rows. Each case removes a
+        # gate and expects the render to FAIL. D-65: only five of the eight can
+        # live in the chart -- row 6 is the Trivy job below, row 7 is a chassis
+        # contract test in Sprint 002, row 8 is a namespace manifest.
+        run: helm unittest deploy/helm/web
+      - name: Render and validate against the Kubernetes schema
+        run: |
+          for app in web gateway worker docs-worker; do
+            helm template "$app" "deploy/helm/$app" \
+              --set image.repository=ci --set image.tag=ci \
+              > "/tmp/$app.yaml"
+            kubeconform -strict -summary -kubernetes-version 1.31.0 "/tmp/$app.yaml"
+          done
+      - name: 'Assert every rendered pod is non-root with a read-only root filesystem'
+        # Belt and braces over the unittest: the chart hard-codes gate 5, and
+        # this checks the rendered YAML rather than the template's intent.
+        run: |
+          for app in web gateway worker docs-worker; do
+            grep -q 'runAsNonRoot: true' "/tmp/$app.yaml" || { echo "::error::$app renders without runAsNonRoot"; exit 1; }
+            grep -q 'readOnlyRootFilesystem: true' "/tmp/$app.yaml" || { echo "::error::$app renders without readOnlyRootFilesystem"; exit 1; }
+          done
+
+  # ------------------------------------------------------------------ image ---
+  image:
+    name: Build image and scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: docker/setup-buildx-action@v3
+      - name: Build
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          load: true
+          tags: ethanel:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      - name: 'D-34 gate 6: Trivy, blocking on HIGH and CRITICAL'
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: ethanel:${{ github.sha }}
+          format: table
+          exit-code: '1'
+          severity: HIGH,CRITICAL
+          ignore-unfixed: true
+      - name: Confirm the image does not run as root
+        # The chart refuses to render a root pod, but the chart is not the only
+        # way this image can be run. Checking the image itself closes that gap.
+        run: |
+          user=$(docker image inspect ethanel:${{ github.sha }} --format '{{.Config.User}}')
+          [ "$user" = "1001" ] || { echo "::error::image USER is '$user', expected 1001"; exit 1; }
+
+  # ---------------------------------------------------------------- secrets ---
+  secrets:
+    name: Secret scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Trivy filesystem scan for secrets
+        # R-08's credential-leak runbook is Sprint 013; not committing the
+        # credential in the first place is cheaper than the runbook.
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          scan-type: fs
+          scanners: secret
+          format: table
+          exit-code: '1'
+          severity: HIGH,CRITICAL
+
+  # ------------------------------------------------------------ infrastructure ---
+  tofu:
+    name: OpenTofu format and validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: opentofu/setup-opentofu@v1
+      - name: Format
+        run: tofu -chdir=infra/tofu fmt -check -recursive
+      - name: Validate
+        # `validate` needs no credentials and no state. `plan` does, and it is
+        # in tofu-plan.yml behind the cloud guard -- ARCHITECTURE §11.2:
+        # "OpenTofu plans posted on PRs; applied from CI with approval."
+        run: |
+          tofu -chdir=infra/tofu init -backend=false
+          tofu -chdir=infra/tofu validate
+
+  # ---------------------------------------------------------------- preview ---
+  preview:
+    name: Preview namespace and Neon branch
+    needs: [quality, chart, image]
+    runs-on: ubuntu-latest
+    # D-52 requires a preview environment per PR. It needs an AWS account, an
+    # EKS cluster and a Neon project, none of which exist yet -- DEBT-07. The
+    # job is declared so the shape of the pipeline is honest, and it announces
+    # the reason rather than passing silently.
+    steps:
+      - name: Report why this is not running
+        run: |
+          if [ -z "${{ secrets.AWS_ROLE_ARN }}" ]; then
+            echo "::notice title=Preview skipped::No AWS_ROLE_ARN secret. Preview environments (D-52) need the cluster from Sprint 001 P3, which is blocked on ADR-002 and the Nairobi latency measurement. Tracked as DEBT-07."
+            exit 0
+          fi
+          echo "::error title=Preview not implemented::AWS_ROLE_ARN is set, so the cluster exists and this job must be implemented rather than skipped."
+          exit 1

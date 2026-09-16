@@ -1,0 +1,171 @@
+name: Deploy production
+
+# D-31: GitHub Actions + Helm, with a manual approval gate on production.
+#
+# The gate is the `environment: production` key on each deploy job. GitHub
+# enforces it -- the job queues until a required reviewer approves -- which is
+# why it is configured in repository settings and not in this file. Anything
+# expressed only in YAML can be edited in the same PR that bypasses it.
+#
+# Same chart, same image digest, same rollout order as staging. Nothing about
+# production is a different code path; if it were, staging would stop being
+# evidence about production.
+
+on:
+  workflow_dispatch:
+    inputs:
+      image_digest:
+        description: 'Image digest to promote, e.g. sha256:... . Must already be in ECR and already be running in staging.'
+        required: true
+        type: string
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  AWS_REGION: ${{ vars.AWS_REGION }}
+  ECR_REPOSITORY: ethanel
+  NAMESPACE: production
+
+jobs:
+  guard:
+    name: Cloud preconditions
+    runs-on: ubuntu-latest
+    outputs:
+      ready: ${{ steps.check.outputs.ready }}
+    steps:
+      - id: check
+        run: |
+          if [ -z "${{ secrets.AWS_ROLE_ARN }}" ] || [ -z "${{ vars.AWS_REGION }}" ]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice title=Nothing deployed::No cluster yet. See DEBT-07 and ADR-002."
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  # A digest, never a tag. A tag is mutable; promoting a tag means production
+  # can end up running bytes staging never ran, which makes the staging soak
+  # worthless. The chart prefers digest over tag for the same reason.
+  verify-digest:
+    name: The digest is already running in staging
+    needs: guard
+    if: needs.guard.outputs.ready == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+      - name: Update kubeconfig
+        run: aws eks update-kubeconfig --name ${{ vars.EKS_CLUSTER_NAME }} --region "$AWS_REGION"
+      - name: Refuse to promote something staging has not run
+        run: |
+          running=$(kubectl -n staging get deploy web-web \
+            -o jsonpath='{.spec.template.spec.containers[0].image}')
+          case "$running" in
+            *"${{ inputs.image_digest }}") echo "staging is running $running" ;;
+            *) echo "::error title=Untested digest::staging runs $running, not ${{ inputs.image_digest }}. Promote what has actually soaked."; exit 1 ;;
+          esac
+
+  request-path:
+    name: Roll web and gateway
+    needs: [guard, verify-digest]
+    if: needs.guard.outputs.ready == 'true'
+    runs-on: ubuntu-latest
+    # THE D-31 GATE. Requires a reviewer configured on the `production`
+    # environment in repository settings.
+    environment: production
+    strategy:
+      fail-fast: false
+      matrix:
+        app: [web, gateway]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+      - id: ecr
+        uses: aws-actions/amazon-ecr-login@v2
+      - uses: azure/setup-helm@v4
+      - name: Update kubeconfig
+        run: aws eks update-kubeconfig --name ${{ vars.EKS_CLUSTER_NAME }} --region "$AWS_REGION"
+      - name: helm upgrade --install
+        run: |
+          helm dependency update "deploy/helm/${{ matrix.app }}"
+          helm upgrade --install "${{ matrix.app }}" "deploy/helm/${{ matrix.app }}" \
+            --namespace "$NAMESPACE" \
+            --values "deploy/helm/${{ matrix.app }}/values.yaml" \
+            --values "deploy/helm/${{ matrix.app }}/values-production.yaml" \
+            --set image.repository=${{ steps.ecr.outputs.registry }}/$ECR_REPOSITORY \
+            --set image.digest=${{ inputs.image_digest }} \
+            --atomic --timeout 10m
+      - name: Rollout status
+        run: kubectl rollout status "deploy/${{ matrix.app }}-${{ matrix.app }}" -n "$NAMESPACE" --timeout=8m
+
+  workers:
+    name: Roll worker and docs-worker
+    needs: [guard, request-path]
+    if: needs.guard.outputs.ready == 'true'
+    runs-on: ubuntu-latest
+    environment: production
+    strategy:
+      fail-fast: false
+      matrix:
+        app: [worker, docs-worker]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+      - id: ecr
+        uses: aws-actions/amazon-ecr-login@v2
+      - uses: azure/setup-helm@v4
+      - name: Update kubeconfig
+        run: aws eks update-kubeconfig --name ${{ vars.EKS_CLUSTER_NAME }} --region "$AWS_REGION"
+      - name: helm upgrade --install
+        run: |
+          helm dependency update "deploy/helm/${{ matrix.app }}"
+          helm upgrade --install "${{ matrix.app }}" "deploy/helm/${{ matrix.app }}" \
+            --namespace "$NAMESPACE" \
+            --values "deploy/helm/${{ matrix.app }}/values.yaml" \
+            --values "deploy/helm/${{ matrix.app }}/values-production.yaml" \
+            --set image.repository=${{ steps.ecr.outputs.registry }}/$ECR_REPOSITORY \
+            --set image.digest=${{ inputs.image_digest }} \
+            --atomic --timeout 12m
+
+  rollback-note:
+    name: How to roll back
+    needs: [request-path, workers]
+    if: always() && needs.guard.outputs.ready == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          {
+            echo "## Rollback"
+            echo
+            echo '`--atomic` already reverted anything that failed its own rollout. To'
+            echo 'reverse a deploy that succeeded but is wrong:'
+            echo
+            echo '```'
+            echo 'helm rollback web -n production'
+            echo 'helm rollback gateway -n production'
+            echo 'helm rollback worker -n production'
+            echo 'helm rollback docs-worker -n production'
+            echo '```'
+            echo
+            echo 'Roll the workers back BEFORE the request path, the reverse of the'
+            echo 'deploy order, for the same reason §11.2 gives for the deploy order:'
+            echo 'an in-flight job must not meet a schema it does not expect.'
+            echo
+            echo '**Migrations do not roll back.** Expand/contract exists so they do not'
+            echo 'have to -- a release only ever adds, and removal happens in a later'
+            echo 'release once nothing reads the old structure. If a migration needs'
+            echo 'reversing, that is a restore, not a rollback: see E7 and D-37.'
+          } >> "$GITHUB_STEP_SUMMARY"

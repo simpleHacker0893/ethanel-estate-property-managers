@@ -1,0 +1,87 @@
+nameOverride: worker
+
+image:
+  repository: ''
+  tag: ''
+  digest: ''
+
+containerPort: 3000
+command: ['node', 'apps/worker/src/main.ts']
+
+# A worker is not addressable. It pulls from pg-boss; nothing calls it.
+service:
+  enabled: false
+
+# D-35: worker runs FIXED replicas, scaled up manually before rent days. KEDA on
+# queue depth is deferred with the trigger written down in ARCHITECTURE §11.0 --
+# "a rent day where manual scaling was too slow".
+autoscaling:
+  enabled: false
+replicaCount: 2
+
+# Not web or gateway, so D-34 gate 3 does not mandate a PDB -- but two replicas
+# draining money queues should not both go down to one node drain.
+podDisruptionBudget:
+  enabled: true
+  maxUnavailable: 1
+
+# Roll workers AFTER web and gateway, and one at a time: ARCHITECTURE §11.2 --
+# "so an in-flight job never meets a half-migrated schema".
+rollout:
+  maxSurge: 1
+  maxUnavailable: 0
+
+# The longest grace period of the four. D-34 gate 7 requires in-flight pg-boss
+# work to finish or be released before exit, and a rent run batch is the thing
+# most likely to be mid-flight. The chart cannot make shutdown graceful -- the
+# chassis contract test in Sprint 002 does -- but it can refuse to cut it short.
+terminationGracePeriodSeconds: 120
+
+probes:
+  readiness:
+    httpGet: { path: /ready, port: http }
+    initialDelaySeconds: 3
+    periodSeconds: 10
+    failureThreshold: 3
+  liveness:
+    httpGet: { path: /health, port: http }
+    initialDelaySeconds: 15
+    periodSeconds: 30
+    failureThreshold: 3
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 512Mi
+  limits:
+    cpu: '2'
+    memory: 1Gi
+
+# ARCHITECTURE §10: "worker -> Neon/S3/providers". The widest allow list of the
+# four, because this is the Deployment that talks to Daraja and to WhatsApp.
+networkPolicy:
+  enabled: true
+  ingress: [] # nothing calls a worker. Written, not omitted -- see _validate.tpl.
+  egress:
+    - to:
+        - ipBlock:
+            cidr: 10.0.0.0/16
+      ports:
+        - port: 6379
+          protocol: TCP
+    - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0
+            except:
+              - 10.0.0.0/8
+              - 172.16.0.0/12
+              - 192.168.0.0/16
+              - 169.254.169.254/32
+      ports:
+        - port: 443
+          protocol: TCP
+        - port: 5432
+          protocol: TCP
+
+env:
+  NODE_ENV: production

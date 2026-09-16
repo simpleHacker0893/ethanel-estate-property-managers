@@ -1,0 +1,103 @@
+nameOverride: gateway
+
+image:
+  repository: '' # set by CI to the ECR repository
+  tag: '' # set by CI to the commit SHA
+  digest: ''
+
+containerPort: 3000
+command: ['node', 'apps/gateway/src/main.ts']
+
+service:
+  enabled: true
+  port: 80
+
+# D-35: HPA on web and gateway, min 2. D-34 gate 3 requires 2+ replicas here and
+# _validate.tpl refuses to render a lower floor alongside a PDB.
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 70
+
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 1
+
+rollout:
+  maxSurge: 1
+  maxUnavailable: 0
+
+# gateway must finish acknowledging in-flight callbacks before it exits. A
+# dropped Daraja retry is the failure D-41's zero-loss bar exists to prevent.
+terminationGracePeriodSeconds: 60
+
+# D-34 gate 1. The chassis deepens these in Sprint 002 to check Valkey and Neon
+# connectivity (ARCHITECTURE §11.1). Today they answer "is this process serving
+# HTTP", which is all the shell can honestly claim.
+probes:
+  startup:
+    httpGet: { path: /health, port: http }
+    failureThreshold: 30
+    periodSeconds: 2
+  readiness:
+    httpGet: { path: /health, port: http }
+    initialDelaySeconds: 3
+    periodSeconds: 5
+    timeoutSeconds: 3
+    failureThreshold: 3
+  liveness:
+    httpGet: { path: /health, port: http }
+    initialDelaySeconds: 15
+    periodSeconds: 20
+    timeoutSeconds: 3
+    failureThreshold: 3
+
+# D-34 gate 2.
+resources:
+  requests:
+    cpu: 200m
+    memory: 512Mi
+  limits:
+    cpu: '1'
+    memory: 1Gi
+
+# D-34 gate 4. ARCHITECTURE §10 sets the allow list per Deployment:
+# "gateway -> Neon". Kubernetes NetworkPolicy cannot express a DNS name, and
+# both Neon and ElastiCache are reached by address -- so in-VPC destinations use
+# the VPC CIDR and Neon uses public egress on 443/5432, which ARCHITECTURE §10
+# pairs with "egress via NAT with fixed IPs on the Neon IP allow list". The
+# allow-listing in the other direction is what makes the wide CIDR acceptable.
+#
+# vpcCidr below is a placeholder. OpenTofu outputs the real one and the
+# per-environment values files replace this list wholesale.
+networkPolicy:
+  enabled: true
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: kube-system
+      ports:
+        - port: http
+          protocol: TCP
+  egress:
+    # Neon only. gateway verifies a webhook signature, writes the raw payload to
+    # the owning service's inbox table and returns 200 (D-14). It talks to no
+    # cache and no provider, so it is not allowed to.
+    - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0
+            except:
+              - 10.0.0.0/8
+              - 172.16.0.0/12
+              - 192.168.0.0/16
+              - 169.254.169.254/32 # IMDS. A pod has no business reading node credentials.
+      ports:
+        - port: 443
+          protocol: TCP
+        - port: 5432
+          protocol: TCP
+
+env:
+  NODE_ENV: production

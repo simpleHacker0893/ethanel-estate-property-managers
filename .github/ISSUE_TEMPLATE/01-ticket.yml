@@ -1,0 +1,55 @@
+name: Ticket (vertical slice)
+description: One tracer bullet. Schema, service, API, UI and tests together.
+labels: ["ready-for-agent"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Vertical slices only.** "Add the schema for X" is a wrong ticket.
+        "A resident can do X end to end, thinly" is a right one.
+        Sized to one fresh context window. `/clear` between every ticket.
+  - type: input
+    id: sprint
+    attributes:
+      label: Sprint or track
+      placeholder: "003 · The property domain, or tracks/marketing-site"
+    validations:
+      required: true
+  - type: textarea
+    id: slice
+    attributes:
+      label: The slice
+      description: What is demoable at the end, in one sentence, from the user's side.
+    validations:
+      required: true
+  - type: textarea
+    id: layers
+    attributes:
+      label: Layers in this ticket
+      value: |
+        - Schema + RLS policy + cross-organization test:
+        - Service + contract in `packages/contracts`:
+        - UI surface and the role that reaches it:
+        - Tests:
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: How it is verified
+      description: A command someone else can rerun, test output, or a click path. "The ticket is closed" is not evidence.
+    validations:
+      required: true
+  - type: checkboxes
+    id: shared
+    attributes:
+      label: Shared surfaces
+      options:
+        - label: This touches `packages/chassis` or `charts/service`, so it is inherited by every Deployment. Blast radius from `graphify affected "<symbol>" --depth 3` is pasted below, and the change is expand then migrate then contract.
+        - label: This touches `services/money-svc`. The property-based test asserting `sum(debit) = sum(credit)` after any sequence of operations is written FIRST.
+  - type: textarea
+    id: unknowns
+    attributes:
+      label: Business facts this needs that are not written down
+      description: Each one goes to QUESTIONS.md or is marked `ASSUMPTION:` inline with no default. Never a named guess.
+      placeholder: "None, or: Q17 — are lease parties jointly and severally liable"

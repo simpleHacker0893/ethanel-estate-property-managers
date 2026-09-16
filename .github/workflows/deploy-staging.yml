@@ -1,0 +1,202 @@
+name: Deploy staging
+
+# E18, and Sprint 001's headline exit criterion: "A commit on `main` reaches
+# `staging` with no human step -- and 'no human step' means none, including
+# approvals" (001/blueprint.md P4).
+#
+# There is therefore DELIBERATELY no `environment:` key anywhere in this file.
+# Adding one would attach GitHub's approval mechanism and break the exit
+# criterion while leaving every check green. The manual gate belongs to
+# production, and lives in deploy-production.yml (D-31).
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Never two deploys into one namespace at once, and never cancel one halfway --
+# a cancelled `helm upgrade` leaves a release in a pending state that the next
+# run has to clean up before it can do anything useful.
+concurrency:
+  group: deploy-staging
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  id-token: write # OIDC to AWS. No long-lived access keys in the repo (D-33).
+
+env:
+  AWS_REGION: ${{ vars.AWS_REGION }}
+  ECR_REPOSITORY: ethanel
+  NAMESPACE: staging
+
+jobs:
+  # A commit reaching staging unattended is E18's evidence. If the cloud does
+  # not exist yet, say so loudly in the summary rather than reporting a green
+  # check for a deploy that never happened.
+  guard:
+    name: Cloud preconditions
+    runs-on: ubuntu-latest
+    outputs:
+      ready: ${{ steps.check.outputs.ready }}
+    steps:
+      - id: check
+        run: |
+          if [ -z "${{ secrets.AWS_ROLE_ARN }}" ] || [ -z "${{ vars.AWS_REGION }}" ]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            {
+              echo "## E18 is not paid yet"
+              echo
+              echo "No \`AWS_ROLE_ARN\` secret or no \`AWS_REGION\` variable, so there is"
+              echo "no cluster to reach and this run deployed nothing."
+              echo
+              echo "The pipeline itself is complete and its Helm gates are unit-proven."
+              echo "What is missing is provisioning, which is blocked on **ADR-002** --"
+              echo "the region has to come from a measured p50/p95 from Nairobi on a real"
+              echo "Safaricom mobile connection, and \`infra/tofu\` fails closed until it does."
+              echo
+              echo "Tracked as **DEBT-07**. E18's evidence is a commit that reached staging"
+              echo "unattended; this is not that, and it is not ticked."
+            } >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  build:
+    name: Build and push to ECR
+    needs: guard
+    if: needs.guard.outputs.ready == 'true'
+    runs-on: ubuntu-latest
+    outputs:
+      digest: ${{ steps.push.outputs.digest }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+      - id: ecr
+        uses: aws-actions/amazon-ecr-login@v2
+      - uses: docker/setup-buildx-action@v3
+      - id: push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # ARCHITECTURE §11.2: migrations run as a Helm pre-upgrade hook Job using
+  # expand/contract, ONE JOB PER SERVICE SCHEMA so a failure names the boundary
+  # it failed in. The hook lives in charts/service; there are no migrations to
+  # run until Sprint 002 creates the ten schemas.
+
+  # web and gateway roll first. §11.2: "worker and docs-worker roll after them so
+  # an in-flight job never meets a half-migrated schema."
+  request-path:
+    name: Roll web and gateway
+    needs: [guard, build]
+    if: needs.guard.outputs.ready == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      # Not fail-fast: if gateway fails, knowing whether web also failed is the
+      # difference between a bad image and a bad chart change.
+      fail-fast: false
+      matrix:
+        app: [web, gateway]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+      - id: ecr
+        uses: aws-actions/amazon-ecr-login@v2
+      - uses: azure/setup-helm@v4
+      - name: Update kubeconfig
+        run: aws eks update-kubeconfig --name ${{ vars.EKS_CLUSTER_NAME }} --region "$AWS_REGION"
+      - name: helm upgrade --install
+        run: |
+          helm dependency update "deploy/helm/${{ matrix.app }}"
+          helm upgrade --install "${{ matrix.app }}" "deploy/helm/${{ matrix.app }}" \
+            --namespace "$NAMESPACE" \
+            --values "deploy/helm/${{ matrix.app }}/values.yaml" \
+            --values "deploy/helm/${{ matrix.app }}/values-staging.yaml" \
+            --set image.repository=${{ steps.ecr.outputs.registry }}/$ECR_REPOSITORY \
+            --set image.digest=${{ needs.build.outputs.digest }} \
+            --atomic --timeout 8m
+      # --atomic already rolls back on failure. This makes the rollout status an
+      # explicit, readable step rather than something buried in helm's output.
+      - name: Rollout status
+        run: kubectl rollout status "deploy/${{ matrix.app }}-${{ matrix.app }}" -n "$NAMESPACE" --timeout=5m
+
+  workers:
+    name: Roll worker and docs-worker
+    needs: [guard, build, request-path]
+    if: needs.guard.outputs.ready == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        app: [worker, docs-worker]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+      - id: ecr
+        uses: aws-actions/amazon-ecr-login@v2
+      - uses: azure/setup-helm@v4
+      - name: Update kubeconfig
+        run: aws eks update-kubeconfig --name ${{ vars.EKS_CLUSTER_NAME }} --region "$AWS_REGION"
+      - name: helm upgrade --install
+        run: |
+          helm dependency update "deploy/helm/${{ matrix.app }}"
+          helm upgrade --install "${{ matrix.app }}" "deploy/helm/${{ matrix.app }}" \
+            --namespace "$NAMESPACE" \
+            --values "deploy/helm/${{ matrix.app }}/values.yaml" \
+            --values "deploy/helm/${{ matrix.app }}/values-staging.yaml" \
+            --set image.repository=${{ steps.ecr.outputs.registry }}/$ECR_REPOSITORY \
+            --set image.digest=${{ needs.build.outputs.digest }} \
+            --atomic --timeout 10m
+
+  smoke:
+    name: Smoke tests
+    needs: [guard, request-path, workers]
+    if: needs.guard.outputs.ready == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+      - name: Update kubeconfig
+        run: aws eks update-kubeconfig --name ${{ vars.EKS_CLUSTER_NAME }} --region "$AWS_REGION"
+      - name: Every Deployment reports healthy
+        run: |
+          for app in web gateway worker docs-worker; do
+            kubectl -n "$NAMESPACE" wait --for=condition=Available \
+              "deploy/$app-$app" --timeout=3m
+          done
+      - name: 'D-34 gate 8: per-namespace resource quotas are live'
+        # READINESS.md §1a: row 8 is paid with the namespaces, which exist from
+        # Sprint 001 -- "if Sprint 001 created them without quotas, that is a
+        # Sprint 002 gap and not a Sprint 013 discovery". Checked on every
+        # deploy so it cannot become a Sprint 013 discovery either.
+        run: |
+          kubectl -n "$NAMESPACE" get resourcequota -o name | grep -q . \
+            || { echo "::error::no ResourceQuota in $NAMESPACE (D-34 gate 8)"; exit 1; }
+      - name: Record E18 evidence
+        run: |
+          {
+            echo "## E18 evidence"
+            echo
+            echo "Commit \`${{ github.sha }}\` reached the \`$NAMESPACE\` namespace with no"
+            echo "human step. No \`environment:\` key, no approval, no manual trigger."
+            echo
+            echo "Paste this run's URL into \`.docs/sprints/001-foundations-and-region/acceptance.md\`"
+            echo "and clear DEBT-07."
+          } >> "$GITHUB_STEP_SUMMARY"

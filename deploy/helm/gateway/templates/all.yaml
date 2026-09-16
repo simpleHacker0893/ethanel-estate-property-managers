@@ -1,0 +1,7 @@
+{{/*
+Every resource for this Deployment comes from the library chart. There is
+deliberately nothing else in this directory: if a Deployment needs a resource the
+library cannot render, that is a change to charts/service -- inherited by all four
+at once -- and not a one-off manifest that quietly escapes the D-34 gates.
+*/}}
+{{- include "ethanel.all" . }}

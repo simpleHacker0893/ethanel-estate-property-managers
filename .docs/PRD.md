@@ -2,34 +2,61 @@
 
 | | |
 |---|---|
-| **Version** | 1.1 (supersedes 1.0) |
+| **Version** | 1.2 (supersedes 1.1) |
 | **Date** | 15 September 2026 |
 | **Owner** | Njuguna Njenga (Cpt. N), Founder and Technical Architect |
-| **Inputs** | Discovery questionnaire answers (61/61), founder decisions of 15 Sep 2026 |
-| **Companion** | Ethanel Architecture v1.1 |
-| **Status** | Approved scope for pilot build. Founder calls in §0 needed this week |
+| **Inputs** | Discovery questionnaire answers (61/61), founder decisions of 15 Sep 2026, round 2 scoping answers recorded in `DECISIONS.md` |
+| **Companion** | Ethanel Architecture v1.2 · `DECISIONS.md` · `ROADMAP.md` |
+| **Status** | Approved scope for pilot build. PRD-F1 and PRD-F2 closed; PRD-F3, PRD-F4 and PRD-F5 still open — see §0 |
 
 ## Change log
 
 | Version | Change |
 |---|---|
+| 1.2 | Reconciled with the round 2 decisions in `DECISIONS.md`. **Pilot is sixteen one-week sprints, not thirteen weeks** (D-50) — §6.1, §13 and the §3 on-time metric rebuilt against `ROADMAP.md`. Tension **PRD-F1 closed** by taking its own "move the pilot date to 16 weeks" option; **PRD-F2 closed** by D-28/D-31. Release 1.1 and Release 2 windows shifted one month. Decision PRD-D5 corrected to schema-per-service with RLS (D-11, D-12). Closes `RECONCILIATION.md` |
 | 1.1 | Discovery answers applied. Renamed workspace → **organization**, tenant → **resident**, property owner → **landlord**. Added land companies, subdivided land projects, sale milestone tracker, lead pipeline, storefronts, live video viewings, 360° photos, outside location view, e-signature, document text recognition and AI, eTIMS, WhatsApp as the main channel. Slack removed from the product. Pricing extended for land companies and lead fees. Release plan rebuilt for a solo build and a 3-month pilot go-live |
 | 1.0 | Clerk auth, rental management focus, reports, repairs, pricing model, Kubernetes |
 | 0.1 | Initial marketplace-first draft |
 
+### A note on the codes in this document
+
+Two prefixes, because the bare codes this document used to carry collided with
+the pack's — and, in two places, with each other (D-56, `READINESS.md` §4).
+
+- **`DQ-…`** — an answer from the round-1 discovery questionnaire (61/61). These
+  are *provenance*: they say where a statement came from, not what was decided.
+- **`PRD-D1`–`PRD-D20`** — this document's decisions log, §14.
+  **`PRD-F1`–`PRD-F5`** — the five founder tensions in §0.
+- **`D-nn`** unprefixed — a decision in `DECISIONS.md`, which is the
+  binding record. **`E1`–`E22`** — a readiness item in `READINESS.md`.
+
+`DQ-D2` and `PRD-D2` are different things, which is why neither is written bare
+any more. Journeys in §5 are numbered "Journey 1…6" rather than `J1…J6` for the
+same reason. One bare code survives on purpose: `B4` in Journey 2 is a literal
+unit code, the kind a resident types as an M-Pesa account reference.
+
 ---
 
-## 0. Founder calls needed this week
+## 0. Founder calls
 
-The answers are consistent with each other except in five places. Each needs a yes or no before Phase 0 ends.
+Five tensions were raised in v1.1. **Two are now closed.** The remaining three still need a yes or no, and Phase 0 is now sprints 001–004 (`ROADMAP.md`), so they are due by the end of Sprint 004.
+
+### Closed
+
+| # | Tension | Resolution |
+|---|---|---|
+| **PRD-F1** | Solo build with Claude Code (DQ-J3), first paying agency live within 3 months (DQ-J4), and every workflow excellent (DQ-J5), with a very large MVP scope | **Closed by taking PRD-F1's own third option: the pilot date moves to 16 weeks** (D-50). Sixteen one-week sprints, go-live at the end of Sprint 016. The extra four weeks are Phase 4 — readiness — and they exist because 18 of 22 readiness items were marked "pay before go-live". §6.1 remains the scope commitment; the rest ships in Releases 1.1 and 2. No developer is being hired |
+| **PRD-F2** | Kubernetes (DQ-D4) with a near-zero budget (DQ-F4) and no platform engineer | **Closed by D-28 and D-31.** One EKS Auto Mode cluster, GitHub Actions + Helm with a manual production gate, OpenTofu, HPA on `web` and `gateway`. Argo CD, KEDA and separate AWS accounts are deferred with explicit triggers in Architecture §11.0 — not "after the pilot" by default. Eleven logical services run in four Deployments (Architecture ADR-001), which is also what keeps the pod floor affordable |
+
+### Still open
 
 | # | Tension | Why it matters | Recommendation |
 |---|---|---|---|
-| **F1** | Solo build with Claude Code (J3), first paying agency live within 3 months (J4), and every workflow excellent (J5), with a very large MVP scope | The full scope is roughly 9–12 months of work for one engineer, even with AI agents doing most of the typing. Reviews, testing, provider onboarding (Safaricom, WhatsApp, KRA integrator) and design partner support do not compress | Treat §6 **Pilot scope** as the 3-month commitment and ship the rest in Releases 1.1 and 2. Alternatively hire one full-stack developer by week 4 or move the pilot date to 16 weeks |
-| **F2** | Kubernetes (D4) with a near-zero budget (F4) and no platform engineer | An EKS control plane alone costs about USD 73 per month before nodes, NAT gateway and Redis; a full GitOps stack takes weeks to run well solo | Keep Kubernetes but start with the minimum platform in Architecture §11.0 (one EKS Auto Mode cluster, GitHub Actions + Helm). Add Argo CD, KEDA and separate accounts after the pilot |
-| **F3** | Residents sign in with Google, then type their WhatsApp number (C3) | An unverified number would let anyone see another person's M-Pesa payments and chats | Verify the number with a WhatsApp one-time code (SMS fallback) before linking payments, chats or leases |
-| **F4** | Caretaker phone numbers shown on listings for viewing calls (E1) | Public numbers attract scams and spam, bypass lead tracking, and break per-lead billing (A3) | Show a "Request viewing" and a tracked WhatsApp button; reveal the caretaker's number only after a verified prospect submits a request |
-| **F5** | Ethanel sells software to agencies and also manages its own portfolio (A2) | Agencies will ask whether Ethanel sees their data or ranks its own listings higher | Ethanel's management arm is an ordinary organization with no special access; marketplace ranking rules are published and identical for all; disclose this in the terms |
+| **PRD-F3** | Residents sign in with Google, then type their WhatsApp number (DQ-C3) | An unverified number would let anyone see another person's M-Pesa payments and chats | Verify the number with a WhatsApp one-time code (SMS fallback) before linking payments, chats or leases. Built this way in M1-02 and Architecture §6.1 — but never formally accepted, so it is still listed here |
+| **PRD-F4** | Caretaker phone numbers shown on listings for viewing calls (DQ-E1) | Public numbers attract scams and spam, bypass lead tracking, and break per-lead billing (DQ-A3) | Show a "Request viewing" and a tracked WhatsApp button; reveal the caretaker's number only after a verified prospect submits a request |
+| **PRD-F5** | Ethanel sells software to agencies and also manages its own portfolio (DQ-A2) | Agencies will ask whether Ethanel sees their data or ranks its own listings higher | Ethanel's management arm is an ordinary organization with no special access; marketplace ranking rules are published and identical for all; disclose this in the terms |
+
+PRD-F3, PRD-F4 and PRD-F5 are carried in `QUESTIONS.md` as Q11, Q12 and Q13 so they sit with the other open business facts rather than only here.
 
 ## 1. Product summary
 
@@ -70,7 +97,7 @@ Ethanel is a multi-tenant SaaS platform for Kenyan property businesses, with a p
 
 | Goal | Metric | Target |
 |---|---|---|
-| Pilot goes live on time | Committed design partners running live rent collection | All committed partners by week 13 |
+| Pilot goes live on time | Committed design partners running live rent collection | First paying agency at the end of Sprint 016 (week 16); all committed partners within 4 weeks of that |
 | Residents pay easily | Share of invoiced rent paid through supported channels | ≥ 70% by month 6 of an organization |
 | Rent reconciles itself | Paybill and STK payments matched without manual action | ≥ 95% |
 | Fast month-end close | Days from month start to all landlord statements issued | ≤ 3 working days |
@@ -78,17 +105,17 @@ Ethanel is a multi-tenant SaaS platform for Kenyan property businesses, with a p
 | Listings convert | Listing views → viewing requests | ≥ 5% |
 | Viewings happen | Requested viewings confirmed within 24 hours | ≥ 90% |
 | Landlords self-serve | Invited landlords opening their portal monthly | ≥ 60% |
-| Scale | Units under management | 5,000–50,000 (J1) |
+| Scale | Units under management | 5,000–50,000 (DQ-J1) |
 | Revenue quality | Net revenue retention | ≥ 110% |
 
 ### Non-goals (all releases in this document)
 
-- Public marketing landing page (deferred).
-- Ethanel receiving or disbursing rent (funds go to organization client accounts, G2).
-- Slack integration in the product (C2: very few agencies use it). Slack stays a developer and internal tool only.
+- ~~Public marketing landing page (deferred).~~ **Reversed by D-68.** The public marketing site is in scope and is built as a track (`.docs/tracks/marketing-site/`) alongside the sixteen sprints rather than inside them, so the eighteen-of-twenty-two readiness arithmetic is unaffected.
+- Ethanel receiving or disbursing rent (funds go to organization client accounts, DQ-G2).
+- Slack integration in the product (DQ-C2: very few agencies use it). Slack stays a developer and internal tool only.
 - Short stays and off-plan inventory before Release 2.
 - Tenant credit bureau checks, mortgages, escrow.
-- 3D interior walk-throughs (F1: outside view only; interiors use 360° photos).
+- 3D interior walk-throughs (DQ-F1: outside view only; interiors use 360° photos).
 
 ## 4. Users, roles and permissions
 
@@ -101,7 +128,7 @@ Ethanel is a multi-tenant SaaS platform for Kenyan property businesses, with a p
 | **Letting or sales agent** | Publish listings, work leads, run viewings (in person and video), close lettings and sales |
 | **Accountant** | Reconcile payments, record expenses, issue landlord statements, record remittances, eTIMS invoices |
 | **Repair manager** | Triage requests, dispatch caretakers or vendors, approve quotes, track cost |
-| **Caretaker** | Tasks, photo updates, meter readings, petty costs, showing units. Phones are a mix of smartphones and basic phones (G10) |
+| **Caretaker** | Tasks, photo updates, meter readings, petty costs, showing units. Phones are a mix of smartphones and basic phones (DQ-G10) |
 | **Landlord** | Income, expenses, arrears, occupancy, statements, approve large repairs |
 | **Resident** | Pay rent, receipts, report problems on WhatsApp or app, lease and balance, e-sign documents |
 | **Prospect / buyer** | Browse, request viewing or site visit, join live video viewing, track purchase milestones |
@@ -126,27 +153,27 @@ Ethanel is a multi-tenant SaaS platform for Kenyan property businesses, with a p
 | Reports | Platform metrics | Full | Assigned | Leads, listings | Full | Repairs | — | Own portfolio | — |
 | Documents | — | Full | Assigned | Assigned | Full | Repair docs | Upload on assigned | Own, read | Own, read |
 
-Staff in several organizations (B4) see only the data of the organization they have selected and only what their role in that organization allows. Ethanel staff access organization data only inside a time-limited support session granted by the organization (B8). Ethanel staff sign in with Google accounts via Clerk (C2).
+Staff in several organizations (DQ-B4) see only the data of the organization they have selected and only what their role in that organization allows. Ethanel staff access organization data only inside a time-limited support session granted by the organization (DQ-B8). Ethanel staff sign in with Google accounts via Clerk (DQ-C2).
 
 ## 5. Key journeys
 
-**J1. Resident onboarding and first payment.** Invite link by WhatsApp/SMS → sign in with Google → complete profile → verify WhatsApp number with a code → lease and balance appear → e-sign lease if pending → pay by M-Pesa paybill (unit code as account) or STK prompt → receipt in WhatsApp and app.
+**Journey 1. Resident onboarding and first payment.** Invite link by WhatsApp/SMS → sign in with Google → complete profile → verify WhatsApp number with a code → lease and balance appear → e-sign lease if pending → pay by M-Pesa paybill (unit code as account) or STK prompt → receipt in WhatsApp and app.
 
-**J2. Repair via WhatsApp.** Resident messages the organization's WhatsApp number ("sink leaking in B4") → verified number is matched to the resident and unit → request created, AI suggests category and urgency → repair manager confirms and assigns caretaker → caretaker updates with photo → cost above landlord threshold goes to the landlord for approval → closed, cost posted, resident confirms on WhatsApp.
+**Journey 2. Repair via WhatsApp.** Resident messages the organization's WhatsApp number ("sink leaking in B4") → verified number is matched to the resident and unit → request created, AI suggests category and urgency → repair manager confirms and assigns caretaker → caretaker updates with photo → cost above landlord threshold goes to the landlord for approval → closed, cost posted, resident confirms on WhatsApp.
 
-**J3. Month-end close.** Clear unmatched payments → expenses posted (repairs automatic, recurring costs generated) → management fee calculated → landlord statements generated, reviewed, issued → eTIMS invoices issued where applicable → remittances recorded → period locked → landlords notified.
+**Journey 3. Month-end close.** Clear unmatched payments → expenses posted (repairs automatic, recurring costs generated) → management fee calculated → landlord statements generated, reviewed, issued → eTIMS invoices issued where applicable → remittances recorded → period locked → landlords notified.
 
-**J4. Listing to viewing.** Agent creates listing → uploads photos, 360° photos and video; AI drafts the description from photos and details → Ethanel verifies → listing live on marketplace and storefront with outside location view → prospect verifies phone and requests a viewing (in person or live video) → agent or caretaker confirms; Google Calendar event with a video link is created for video viewings → WhatsApp reminder the day before → viewing held or marked no-show → lead moves through pipeline.
+**Journey 4. Listing to viewing.** Agent creates listing → uploads photos, 360° photos and video; AI drafts the description from photos and details → Ethanel verifies → listing live on marketplace and storefront with outside location view → prospect verifies phone and requests a viewing (in person or live video) → agent or caretaker confirms; Google Calendar event with a video link is created for video viewings → WhatsApp reminder the day before → viewing held or marked no-show → lead moves through pipeline.
 
-**J5. Land project sale.** Land company creates project → uploads subdivision plan and draws plot boundaries (labelled survey or illustrative) → publishes project and plot listings → buyer enquires, visits site → reserves plot → milestone tracker: offer letter, deposit, official search (Ardhisasa/eCitizen link, certificate uploaded), sale agreement, balance, transfer, title issued → each milestone with documents, dates and notifications to buyer.
+**Journey 5. Land project sale.** Land company creates project → uploads subdivision plan and draws plot boundaries (labelled survey or illustrative) → publishes project and plot listings → buyer enquires, visits site → reserves plot → milestone tracker: offer letter, deposit, official search (Ardhisasa/eCitizen link, certificate uploaded), sale agreement, balance, transfer, title issued → each milestone with documents, dates and notifications to buyer.
 
-**J6. Organization onboarding (guided pilot, H2).** Ethanel creates organization and invites owner → Ethanel imports landlords, properties, units, residents and balances from the organization's Excel files → organization connects paybill → staff and caretakers invited → residents invited in bulk → first invoice run reviewed together.
+**Journey 6. Organization onboarding (guided pilot, DQ-H2).** Ethanel creates organization and invites owner → Ethanel imports landlords, properties, units, residents and balances from the organization's Excel files → organization connects paybill → staff and caretakers invited → residents invited in bulk → first invoice run reviewed together.
 
 ## 6. Release plan
 
-### 6.1 Pilot scope: weeks 1–13 (the 3-month commitment)
+### 6.1 Pilot scope: sprints 001–016, sixteen weeks
 
-What committed design partners need to run their business on Ethanel, done well.
+What committed design partners need to run their business on Ethanel, done well. The sequence, the critical path and the per-sprint exit criteria are in `ROADMAP.md`; this table is the scope commitment, not the schedule.
 
 | Area | In pilot |
 |---|---|
@@ -161,9 +188,11 @@ What committed design partners need to run their business on Ethanel, done well.
 | Communications | WhatsApp notices and two-way messages, SMS fallback, in-app notices |
 | AI | Listing description drafts; WhatsApp message → repair request suggestion |
 | Super admin | Organizations, plans, limits and feature flags, listing verification, support sessions, announcements, suspend and offboard, manual subscription invoices payable by M-Pesa paybill or STK |
-| Platform | Minimum Kubernetes platform (Architecture §11.0), backups, monitoring |
+| Platform | Pilot Kubernetes platform (Architecture §11.0), backups with a monthly restore drill, monitoring and SLO alerting |
 
-### 6.2 Release 1.1: months 4–5
+**Scope not in §6.1 but required before go-live:** the Phase 4 sprints (013–016) — threat model, full cross-organization isolation audit, public API and keys, Data Protection Act tooling, end-to-end journey tests, load test, runbooks, self-serve import, usability tests, and the 95% reconciliation gate. These are not features and so do not appear in the table above, which is exactly how they got underestimated in v1.1.
+
+### 6.2 Release 1.1: months 5–6
 
 | Area | Scope |
 |---|---|
@@ -172,11 +201,11 @@ What committed design partners need to run their business on Ethanel, done well.
 | Documents and AI | Photo capture with text recognition; read leases and receipts into structured data; generate documents from templates; full-text search; expiry reminders |
 | Maps | On-demand photorealistic 3D outside view within the free monthly session allowance (§ Architecture 9.5) |
 | SaaS billing automation | Metering, automatic invoices, M-Pesa Ratiba standing orders, card via Paystack, dunning; qualified-lead and featured-listing billing |
-| Geography | Mombasa, Nakuru, Nanyuki listings and portfolios (A7) |
+| Geography | Mombasa, Nakuru, Nanyuki listings and portfolios (DQ-A7) |
 
-### 6.3 Release 2: months 6–9
+### 6.3 Release 2: months 7–10
 
-Off-plan inventory (D2), portal syndication to BuyRentKenya and Jiji (D6), agent commissions (D7), recurring maintenance jobs (G9), caretaker SMS task flow for basic phones and offline queue (G10), approvals and compliance certificate storage (G12), vendor portal, pivot builder and scheduled reports, lead sources from agency websites via embeddable widget, furnished and short stays discovery (D1) as a separate evaluation.
+Off-plan inventory (DQ-D2), portal syndication to BuyRentKenya and Jiji (DQ-D6), agent commissions (DQ-D7), recurring maintenance jobs (DQ-G9), caretaker SMS task flow for basic phones and offline queue (DQ-G10), approvals and compliance certificate storage (DQ-G12), vendor portal, pivot builder and scheduled reports, lead sources from agency websites via embeddable widget, furnished and short stays discovery (DQ-D1) as a separate evaluation.
 
 ## 7. Functional requirements
 
@@ -187,8 +216,8 @@ IDs are stable GitHub issue prefixes. **[P]** = pilot, **[1.1]**, **[2]** = rele
 - **M1-01 [P]** Google sign-in via Clerk for all users, including Ethanel staff.
 - **M1-02 [P]** Profile completion after first sign-in: full name, WhatsApp number, optional email for statements. The number is verified by WhatsApp one-time code (SMS fallback) before it links chats, payments or leases.
 - **M1-03 [P]** Organizations are Clerk Organizations with roles `org:owner`, `org:admin`, `org:property_manager`, `org:agent`, `org:accountant`, `org:repair_manager`, `org:caretaker`.
-- **M1-04 [P]** Landlords, residents and buyers are not organization members; access comes from Ethanel records, giving one account and one combined home across all organizations that serve them (B5).
-- **M1-05 [P]** Staff can belong to several organizations; data and permissions follow the selected organization only (B4).
+- **M1-04 [P]** Landlords, residents and buyers are not organization members; access comes from Ethanel records, giving one account and one combined home across all organizations that serve them (DQ-B5).
+- **M1-05 [P]** Staff can belong to several organizations; data and permissions follow the selected organization only (DQ-B4).
 - **M1-06 [P]** Property-level and listing-level assignment scoping.
 - **M1-07 [P]** Invitations by WhatsApp, SMS or email link.
 - **M1-08 [P]** Support sessions granted by organization owner or admin, time-limited, read-only, audited.
@@ -204,7 +233,7 @@ IDs are stable GitHub issue prefixes. **[P]** = pilot, **[1.1]**, **[2]** = rele
 
 ### M3 Residents and leases
 
-- **M3-01 [P]** Resident profile: name, verified WhatsApp number, email, ID/passport and KRA PIN (encrypted), documents collected manually (G7), emergency contact.
+- **M3-01 [P]** Resident profile: name, verified WhatsApp number, email, ID/passport and KRA PIN (encrypted), documents collected manually (DQ-G7), emergency contact.
 - **M3-02 [P]** Lease templates per organization with merge fields; generated lease PDF.
 - **M3-03 [P]** Simple electronic signature: resident and landlord or agent review the PDF, confirm with a WhatsApp/SMS one-time code, and the system stamps name, time, IP, device and document hash into a signature certificate appended to the PDF. Legal review of enforceability for lease types before go-live.
 - **M3-04 [P]** Lease terms: dates, rent, billing day, deposit, charges, penalty rule, notice period, annual increase rule (percentage or fixed, effective date).
@@ -213,7 +242,7 @@ IDs are stable GitHub issue prefixes. **[P]** = pilot, **[1.1]**, **[2]** = rele
 
 ### M4 Invoicing and rent collection
 
-- **M4-01 [P]** Charge catalogue per organization: the organization decides what is billed (G4). Charge types: fixed, metered (rate × consumption from readings), percentage, one-off.
+- **M4-01 [P]** Charge catalogue per organization: the organization decides what is billed (DQ-G4). Charge types: fixed, metered (rate × consumption from readings), percentage, one-off.
 - **M4-02 [P]** Monthly invoice runs per property with preview and approval before sending.
 - **M4-03 [P]** Meter readings entered by caretakers with photo; anomaly flag when consumption jumps.
 - **M4-04 [P]** Channels: M-Pesa paybill per organization or landlord (account = unit code), M-Pesa STK from resident app, bank transfer/PesaLink and cash recorded by staff with reference and proof.
@@ -268,7 +297,7 @@ IDs are stable GitHub issue prefixes. **[P]** = pilot, **[1.1]**, **[2]** = rele
 ### M9 Communications
 
 - **M9-01 [P]** WhatsApp as primary channel: receipts, reminders, repair updates, viewing reminders, notices, two-way conversations linked to residents, landlords and leads.
-- **M9-02 [P]** SMS fallback where WhatsApp delivery fails; in-app notices; email only for statements if the user adds an email (G14).
+- **M9-02 [P]** SMS fallback where WhatsApp delivery fails; in-app notices; email only for statements if the user adds an email (DQ-G14).
 - **M9-03 [P]** Staff inbox for WhatsApp conversations per organization with assignment and "create request" and "create lead" actions.
 - **M9-04 [P]** Bulk notices to a property or portfolio with delivery report.
 - **M9-05 [P]** WhatsApp opt-in captured at profile completion; opt-out honoured.
@@ -278,9 +307,9 @@ IDs are stable GitHub issue prefixes. **[P]** = pilot, **[1.1]**, **[2]** = rele
 - **M10-01 [P]** Listing types: unit for rent, home for sale, plot for sale, land for lease, commercial space. Off-plan and short stays in Release 2.
 - **M10-02 [P]** Media: photos (up to 30), 360° photos (up to 10) shown in an interactive panorama viewer, videos (up to 3) streamed adaptively; resumable uploads; malware scan.
 - **M10-03 [P]** Outside location view: satellite and street map around the listing, nearby roads and landmarks; property pin or plot boundary; optional 3D view in Release 1.1 within the free session allowance.
-- **M10-04 [P]** Ethanel verification before a listing goes live (H3).
-- **M10-05 [P]** Storefront page per organization with its verified listings and contact actions (B3).
-- **M10-06 [P]** Prospects must sign in and verify their WhatsApp number to request a viewing or reveal contact details (F4).
+- **M10-04 [P]** Ethanel verification before a listing goes live (DQ-H3).
+- **M10-05 [P]** Storefront page per organization with its verified listings and contact actions (DQ-B3).
+- **M10-06 [P]** Prospects must sign in and verify their WhatsApp number to request a viewing or reveal contact details (PRD-F4).
 - **M10-07 [P]** Viewing requests: in person or live video; preferred times; agent or caretaker (set per listing) confirms or proposes another time; no viewing fees allowed, with a report-a-fee button.
 - **M10-08 [P]** Confirmed viewings create Google Calendar events for the assigned staff member (when connected) and Ethanel calendar entries; live video viewings get a video meeting link in the event and on WhatsApp.
 - **M10-09 [P]** WhatsApp reminder the day before; agent marks attended or no-show.
@@ -290,7 +319,7 @@ IDs are stable GitHub issue prefixes. **[P]** = pilot, **[1.1]**, **[2]** = rele
 ### M11 Land projects and sales [1.1]
 
 - **M11-01** Land project: name, county, parent parcel reference, total area, amenities, approvals, subdivision plan upload.
-- **M11-02** Plot inventory map: plots drawn over the uploaded subdivision plan or satellite map; each plot labelled **Surveyed** (from beacon coordinates) or **Illustrative** (traced) (F3); status available, reserved, sold, on hold; price and size.
+- **M11-02** Plot inventory map: plots drawn over the uploaded subdivision plan or satellite map; each plot labelled **Surveyed** (from beacon coordinates) or **Illustrative** (traced) (DQ-F3); status available, reserved, sold, on hold; price and size.
 - **M11-03** Reservations with expiry and deposit record.
 - **M11-04** Sale milestone tracker per plot or home: offer letter, reservation deposit, official search, sale agreement, balance payments (instalment schedule), land control board consent where applicable, transfer, title issued. Each milestone has due date, documents, responsible party and buyer notification.
 - **M11-05** Official search step: deep link to Ardhisasa or eCitizen based on county, instructions for the buyer, upload of the search certificate, recorded result. No automated ownership lookup (see Architecture §9.10).
@@ -298,7 +327,7 @@ IDs are stable GitHub issue prefixes. **[P]** = pilot, **[1.1]**, **[2]** = rele
 
 ### M12 Super admin and SaaS billing
 
-- **M12-01 [P]** Organization lifecycle: create, guided onboarding, suspend, offboard with export and deletion after 90 days (H4).
+- **M12-01 [P]** Organization lifecycle: create, guided onboarding, suspend, offboard with export and deletion after 90 days (DQ-H4).
 - **M12-02 [P]** Plans, limits and feature flags per organization.
 - **M12-03 [P]** Listing verification queue and takedowns.
 - **M12-04 [P]** Platform announcements to organizations.
@@ -348,9 +377,9 @@ IDs are stable GitHub issue prefixes. **[P]** = pilot, **[1.1]**, **[2]** = rele
 | Rental listings included | 2 | 10 | 50 | Unlimited | Unlimited |
 | WhatsApp messages included per month | 100 | 1,000 | 5,000 | 25,000 | Custom |
 
-The first customers' typical size is 50–500 units (A4), which lands on Professional and Business. Price interviews with design partners should focus there.
+The first customers' typical size is 50–500 units (DQ-A4), which lands on Professional and Business. Price interviews with design partners should focus there.
 
-### 9.3 Land and sales marketing plans (new, from A1 note)
+### 9.3 Land and sales marketing plans (new, from DQ-A1 note)
 
 Land companies are charged for what they market, as the founder specified.
 
@@ -367,7 +396,7 @@ Land companies are charged for what they market, as the founder specified.
 
 Why this metric: an active plot listing is the unit of value a land company buys (exposure for a sellable asset); plots come off the meter when sold or unpublished, so they never pay for inventory that has left the market.
 
-### 9.4 Qualified lead fee (A3)
+### 9.4 Qualified lead fee (DQ-A3)
 
 Lead fees suit sales and land listings, where one closed sale is worth hundreds of thousands of shillings. They are not charged on rental listings for property management subscribers, who already pay for occupied units.
 
@@ -384,7 +413,7 @@ Included leads per plan remove bill shock; overage is capped at twice the base f
 
 | Item | Pricing |
 |---|---|
-| Setup and data migration (A3, H2) | One-off: KES 15,000 up to 200 units; KES 35,000 up to 1,000 units; custom above. Waived for committed design partners and annual Business plans |
+| Setup and data migration (DQ-A3, DQ-H2) | One-off: KES 15,000 up to 200 units; KES 35,000 up to 1,000 units; custom above. Waived for committed design partners and annual Business plans |
 | Featured listings | KES 500 per rental listing per week; KES 1,500 per sale or plot listing per week |
 | Extra WhatsApp and SMS messages | Prepaid bundles at provider cost plus 25–35% |
 | Extra media storage | Per 50 GB per month |
@@ -411,7 +440,7 @@ Pilot: super admin issues KES invoices payable by M-Pesa paybill or STK. Release
 | Integrity | Balanced append-only ledger; idempotent webhooks; no duplicate receipts; daily ledger check |
 | Security | Server-side authorisation on every read and write; organization isolation in code and Postgres RLS; verified phone before linking personal financial data; encrypted sensitive fields |
 | Privacy | Kenya Data Protection Act 2019 compliance; WhatsApp opt-in; masked phone numbers in logs and reports |
-| Cost | Mapping and 3D near zero during beta (F4): under USD 100 per month, with hard session caps |
+| Cost | Mapping and 3D near zero during beta (DQ-F4): under USD 100 per month, with hard session caps |
 | Scale | 50,000 occupied units and 500 organizations without redesign |
 | Accessibility | WCAG 2.1 AA on resident, landlord, caretaker and prospect screens |
 | Localisation | English; Swahili for resident and caretaker screens in Release 1.1 |
@@ -419,7 +448,7 @@ Pilot: super admin issues KES invoices payable by M-Pesa paybill or STK. Release
 
 ## 11. Compliance
 
-- **Funds:** rent goes to organization client accounts or landlord accounts (G2). Ethanel never holds rent.
+- **Funds:** rent goes to organization client accounts or landlord accounts (DQ-G2). Ethanel never holds rent.
 - **Electronic signatures:** confirm with an advocate which documents the simple e-signature may be used for, and which need advanced electronic signatures, witnessing or registration.
 - **eTIMS:** landlords earning rental income are now expected to issue eTIMS invoices; system integration with KRA requires certification. Ethanel uses a certified third-party integrator until it meets KRA's vendor certification requirements.
 - **Land records:** Ardhisasa requires the registered owner to approve a search; Ethanel links to official portals and stores the resulting certificate rather than querying ownership itself.
@@ -444,40 +473,58 @@ Pilot: super admin issues KES invoices payable by M-Pesa paybill or STK. Release
 
 ## 13. Pilot delivery plan (solo founder with Claude Code sub-agents)
 
-| Week | Milestone | Demo to design partners |
-|---|---|---|
-| 1–2 | Minimum platform, CI/CD, Clerk organizations and roles, verified WhatsApp numbers, RLS, audit log | Staff and caretaker sign-in with scoped access |
-| 3–4 | Landlords, properties, units, residents, leases, templates, e-signature, inspections, Excel import | Partner portfolio imported |
-| 5–7 | Charges, meter readings, invoice runs, paybill and STK, reconciliation, receipts, reminders, penalties, ledger | First real invoices and payments in pilot |
-| 8–9 | Repairs from app and WhatsApp, work orders, approvals, expenses, management fee, landlord statements, remittances, landlord portal | First month-end close |
-| 10–11 | Listings with photos, 360° and video, outside view, storefronts, verification, viewings with calendar and video link, reminders, lead pipeline | Listings live, first viewings booked |
-| 12 | Reports and grids, super admin, manual subscription invoices, security review, load test | Go-live readiness review |
-| 13 | Pilot go-live and hypercare | Paying design partners live |
+Sixteen one-week sprints (D-50). `ROADMAP.md` holds the reasoning, the critical path and each sprint's exit criterion; `.docs/sprints/<n>/requirements.md` holds the detail. This table is the product-facing summary.
 
-**Scope levers if the plan slips:** (1) move storefronts and lead pipeline to week 15; (2) e-signature falls back to signed PDF upload; (3) outside view ships as a static map with pin; (4) inspections without deductions calculator. Money, repairs and landlord statements are never cut.
+| Sprint | Phase | Milestone | Demo to design partners |
+|---|---|---|---|
+| 001 | 0 — Platform | Region measured and decided, partner sample files collected, monorepo, OpenTofu, CI/CD to staging | A commit reaches staging with no human step |
+| 002 | 0 | Service chassis, Helm library chart, tenancy and RLS, cross-organization test harness, `identity-svc`, Google sign-in | Staff sign-in with scoped access, provably isolated |
+| 003 | 0 | Landlords, properties, units, leases, residents, lease lifecycle, deposits, media, `web` shell | Partner's smallest building represented correctly |
+| 004 | 0 | Excel-like data grid, chart primitives, observability, backups, **first timed restore drill**, staging seed | The grid on their real spreadsheet data |
+| 005 | 1 — Money | Chart of accounts, double-entry journal, period close, reversal rules | Journal walkthrough with a partner accountant |
+| 006 | 1 | Invoices, charges, meter-read water, penalties, credit notes, rent runs (500 units < 2 min), PDF rendering | First real invoice run |
+| 007 | 1 | Daraja paybill and STK, webhook ingress at `gateway`, reconciliation engine, suspense and manual match | First real payments; **auto-match rate published** |
+| 008 | 2 — Operations | Repair requests, work orders, caretaker UI, inspections, meter readings, running costs, vendors | A caretaker completes a task on their own handset |
+| 009 | 2 | WhatsApp templates and inbox, notification engine and preferences, SMS fallback | Resident pays and gets a WhatsApp receipt |
+| 010 | 2 | Resident PWA, landlord portal (live ledger figures), accountant month-end | **First full month-end close**, signed off by their accountant |
+| 011 | 3 — Market | Listings, search, storefronts, viewings, calendar and video link, lead pipeline, map view | Listings live, first viewings booked |
+| 012 | 3 | Plot inventory and instalment sales, God's-eye view, `billing-svc` usage counters and feature flags | A land company onboarded end to end |
+| 013 | 4 — Readiness | Threat model, isolation audit to completeness, public API and keys, Data Protection Act tooling, secrets rotation | The gate list green in CI output |
+| 014 | 4 | End-to-end journey tests, full load test, SLO alerting, runbooks, second restore drill, cost budgets | Every failure seen in staging has a runbook |
+| 015 | 4 | Self-serve import, usability tests (residents, caretakers, accountants), **the 95% match gate**, ADRs complete | Go/no-go readiness review |
+| 016 | 4 | Production cutover, first partner migrated, **one rent cycle run in parallel with their spreadsheet** | First paying agency collecting rent |
+
+**Scope levers if the plan slips.** Sprints 011 and 012 are the designated slip absorbers: if Sprint 007 overruns, the marketplace moves to Release 1.1 and the pilot ships as a management platform. Then, in order: (1) e-signature falls back to signed PDF upload; (2) outside view ships as a static map with a pin; (3) inspections without the deductions calculator. **Money, repairs, landlord statements and the whole of Phase 4 are never cut** — Phase 4 is the reason this plan is 16 weeks rather than 12, and cutting it does not save four weeks, it moves them to after the money is real.
 
 ## 14. Decisions log
 
 | # | Decision | Source |
 |---|---|---|
-| D1 | Clerk auth, Google sign-in for all users including Ethanel staff | 15 Sep, C2, C3 |
-| D2 | First customers: letting and property management firms; land companies also served and charged for what they market | A1 |
-| D3 | Ethanel manages its own portfolio as a normal organization | A2, F5 |
-| D4 | Organization (Clerk) + resident + landlord terminology; `organization_id` in code | B1, B4 note |
-| D5 | Shared database with RLS | B2 |
-| D6 | Storefront page per organization | B3 |
-| D7 | WhatsApp is the primary channel; Slack excluded from product | C1, C2 |
-| D8 | Verified WhatsApp number required after Google sign-in | C3, F3 |
-| D9 | Subdivided land projects and full sale milestone tracker (Release 1.1) | D3, D8, F1 |
-| D10 | Live video viewings in pilot | E6 |
-| D11 | Outside 3D/location view only, near-zero cost; interiors via 360° photos | F1, F2, F4 |
-| D12 | Rent to organization client accounts; statements and remittances automated in pilot | G2, G3 |
-| D13 | eTIMS through a certified integrator | G11 |
-| D14 | Guided pilots with data import; M-Pesa and card for subscriptions | H1, H2 |
-| D15 | PWA only at launch | I1 |
-| D16 | Solo build with Claude Code; pilot go-live within 3 months with §6.1 scope | J3, J4, F1 |
-| D17 | AWS region co-located with Neon; any region with safeguards | J2, Architecture §3 |
+| PRD-D1 | Clerk auth, Google sign-in for all users including Ethanel staff | 15 Sep, DQ-C2, DQ-C3 |
+| PRD-D2 | First customers: letting and property management firms; land companies also served and charged for what they market | DQ-A1 |
+| PRD-D3 | Ethanel manages its own portfolio as a normal organization | DQ-A2, DQ-F5 |
+| PRD-D4 | Organization (Clerk) + resident + landlord terminology; `organization_id` in code | DQ-B1, DQ-B4 note |
+| PRD-D5 | One Neon project, **one schema per service and one role per schema**, with `organization_id` + Postgres RLS on every tenant-scoped table. No cross-schema joins or foreign keys | DQ-B2, superseded by D-11 and D-12 |
+| PRD-D6 | Storefront page per organization | DQ-B3 |
+| PRD-D7 | WhatsApp is the primary channel; Slack excluded from product | DQ-C1, DQ-C2 |
+| PRD-D8 | Verified WhatsApp number required after Google sign-in | DQ-C3, DQ-F3 |
+| PRD-D9 | Subdivided land projects and full sale milestone tracker (Release 1.1) | DQ-D3, DQ-D8, DQ-F1 |
+| PRD-D10 | Live video viewings in pilot | DQ-E6 |
+| PRD-D11 | Outside 3D/location view only, near-zero cost; interiors via 360° photos | DQ-F1, DQ-F2, DQ-F4 |
+| PRD-D12 | Rent to organization client accounts; statements and remittances automated in pilot | DQ-G2, DQ-G3 |
+| PRD-D13 | eTIMS through a certified integrator | DQ-G11 |
+| PRD-D14 | Guided pilots with data import; M-Pesa and card for subscriptions | DQ-H1, DQ-H2 |
+| PRD-D15 | PWA only at launch | I1 |
+| PRD-D16 | Solo build with Claude Code; **pilot go-live at the end of Sprint 016 — sixteen one-week sprints** — with §6.1 scope | DQ-J3, DQ-J4, DQ-F1, superseded by D-50 |
+| PRD-D17 | AWS only; region co-located with Neon and **chosen by measured Nairobi latency in Sprint 001**, Africa-first | DQ-J2, Architecture §3, D-28, D-38 |
+| PRD-D18 | Eleven logical services owning one schema each, deployed as four Deployments, split on documented triggers | D-01/D-54, Architecture ADR-001 |
+| PRD-D19 | All inbound webhooks terminate at `gateway`; matching is always asynchronous | D-14 |
+| PRD-D20 | Landlord portal and dashboard figures read live from the ledger with a "last updated" stamp — never a cached summary | D-45 |
 
-### Open (founder calls in §0)
+### Open
 
-F1 pilot scope, F2 minimum platform, F3 phone verification, F4 contact reveal, F5 neutrality disclosure.
+**Founder calls:** PRD-F3 phone verification, PRD-F4 contact reveal, PRD-F5 neutrality disclosure (§0, and `QUESTIONS.md` Q11–Q13). PRD-F1 and PRD-F2 are closed.
+
+**Business facts this document assumes but does not state** — all in `QUESTIONS.md`, each blocking a named sprint: agency fee terms and VAT (Q2, the highest-value unknown, blocks Sprint 005), reversal approval threshold behind M5-03 and M4-09 (Q1), resident account-number reality behind M4-05 (Q3), landlord remittance cycle behind M5-06 (Q4), deposit rules behind M3-04 (Q5), late-rent penalty behind M4-07 (Q9), water billing behind M4-01 (Q10), data-controller registration (Q6), pricing bands in §9.2 and §9.3 (Q7), and the first pilot partner (Q8). **The pricing tables in §9.2 and §9.3 are explicitly hypotheses, not decisions.**
+
+**Architecture decision still open:** the reporting read model (Architecture §7.4, ADR-012) — due by the end of Sprint 004, because M7-01 through M7-05 and the whole of §8 depend on it.

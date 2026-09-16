@@ -1,0 +1,220 @@
+suite: D-34 structural gates are unrenderable if omitted
+#
+# D-34 promises that a Deployment omitting one of its gates "must not be
+# renderable" -- not "should be caught in review". That promise is only worth
+# anything if something proves it, so each test below REMOVES a gate and expects
+# the render to fail.
+#
+# These tests are the evidence for 002/acceptance.md's D-34 rows 1-5 and for
+# .docs/tracks/ + 001/acceptance.md's E18 row. Run with:
+#
+#   helm unittest deploy/helm/web
+#
+# Only five of the eight gates are testable here, per D-65 / READINESS.md §1a.
+# Row 6 (image scanning) is a CI step, row 7 (graceful worker shutdown) is a
+# packages/chassis contract test in Sprint 002, row 8 (per-namespace resource
+# quotas) is a namespace manifest. A test here that claimed to cover them would
+# be the same mistake D-65 was written to correct.
+templates:
+  - templates/all.yaml
+release:
+  name: ethanel
+  namespace: staging
+
+tests:
+  - it: renders the full set with the shipped values
+    set:
+      image.repository: 111111111111.dkr.ecr.af-south-1.amazonaws.com/ethanel
+      image.tag: abc1234
+    asserts:
+      # Deployment, Service, PodDisruptionBudget, NetworkPolicy, HPA
+      - hasDocuments:
+          count: 5
+
+  # ---------------- Gate 1: readiness and liveness probes ----------------
+  - it: 'gate 1: refuses to render without a readiness probe'
+    set:
+      image.repository: repo
+      image.tag: t
+      probes.readiness: null
+    asserts:
+      - failedTemplate:
+          errorPattern: '\[D-34 gate 1\].*probes\.readiness is required'
+
+  - it: 'gate 1: refuses to render without a liveness probe'
+    set:
+      image.repository: repo
+      image.tag: t
+      probes.liveness: null
+    asserts:
+      - failedTemplate:
+          errorPattern: '\[D-34 gate 1\].*probes\.liveness is required'
+
+  - it: 'gate 1: refuses a probe with no mechanism'
+    set:
+      image.repository: repo
+      image.tag: t
+      probes.readiness:
+        initialDelaySeconds: 3
+    asserts:
+      - failedTemplate:
+          errorPattern: '\[D-34 gate 1\].*httpGet, exec or tcpSocket'
+
+  # ---------------- Gate 2: requests AND limits, cpu AND memory ----------------
+  - it: 'gate 2: refuses limits without requests'
+    set:
+      image.repository: repo
+      image.tag: t
+      resources.requests: null
+    asserts:
+      - failedTemplate:
+          errorPattern: '\[D-34 gate 2\].*resources\.requests is required'
+
+  - it: 'gate 2: refuses requests without limits'
+    set:
+      image.repository: repo
+      image.tag: t
+      resources.limits: null
+    asserts:
+      - failedTemplate:
+          errorPattern: '\[D-34 gate 2\].*resources\.limits is required'
+
+  - it: 'gate 2: refuses a cpu limit with no memory limit'
+    set:
+      image.repository: repo
+      image.tag: t
+      resources.limits:
+        cpu: '1'
+    asserts:
+      - failedTemplate:
+          errorPattern: '\[D-34 gate 2\].*resources\.limits\.memory is required'
+
+  # ---------------- Gate 3: PDB, and 2+ replicas for web and gateway ----------------
+  - it: 'gate 3: refuses to render web without a PodDisruptionBudget'
+    set:
+      image.repository: repo
+      image.tag: t
+      podDisruptionBudget.enabled: false
+    asserts:
+      - failedTemplate:
+          errorPattern: '\[D-34 gate 3\].*web and gateway require a PodDisruptionBudget'
+
+  - it: 'gate 3: refuses web below two replicas, because a PDB over one blocks every drain'
+    set:
+      image.repository: repo
+      image.tag: t
+      autoscaling.minReplicas: 1
+    asserts:
+      - failedTemplate:
+          errorPattern: '\[D-34 gate 3\].*min 2 replicas'
+
+  - it: 'gate 3: refuses a PDB with neither minAvailable nor maxUnavailable'
+    set:
+      image.repository: repo
+      image.tag: t
+      podDisruptionBudget:
+        enabled: true
+    asserts:
+      - failedTemplate:
+          errorPattern: '\[D-34 gate 3\].*minAvailable or maxUnavailable'
+
+  # ---------------- Gate 4: default-deny NetworkPolicy with an allow list ----------------
+  - it: 'gate 4: refuses to render with the NetworkPolicy switched off'
+    set:
+      image.repository: repo
+      image.tag: t
+      networkPolicy.enabled: false
+    asserts:
+      - failedTemplate:
+          errorPattern: '\[D-34 gate 4\].*there is no opt-out'
+
+  - it: 'gate 4: refuses an absent egress allow list'
+    set:
+      image.repository: repo
+      image.tag: t
+      networkPolicy.egress: null
+    asserts:
+      - failedTemplate:
+          errorPattern: '\[D-34 gate 4\].*explicit allow list'
+
+  # ---------------- Gate 5: non-root, read-only root filesystem ----------------
+  #
+  # Gate 5 has no omission test, and that is the strongest form of the gate
+  # rather than a gap. It is hard-coded in _deployment.tpl with no value behind
+  # it, so there is nothing to remove -- a caller cannot set it wrong because a
+  # caller cannot set it. What is asserted instead is that the rendered output
+  # really carries it, which is what would break if someone "made it
+  # configurable" later.
+  - it: 'gate 5: the rendered pod is non-root with a read-only root filesystem, and this is not configurable'
+    set:
+      image.repository: repo
+      image.tag: t
+      # Deliberately attempt to override. These keys are not read by the
+      # library; if a future edit starts honouring them, this test fails.
+      securityContext:
+        runAsNonRoot: false
+        readOnlyRootFilesystem: false
+      containerSecurityContext:
+        privileged: true
+    documentIndex: 0
+    asserts:
+      - isKind:
+          of: Deployment
+      - equal:
+          path: spec.template.spec.securityContext.runAsNonRoot
+          value: true
+      - equal:
+          path: spec.template.spec.securityContext.runAsUser
+          value: 1001
+      - equal:
+          path: spec.template.spec.securityContext.seccompProfile.type
+          value: RuntimeDefault
+      - equal:
+          path: spec.template.spec.containers[0].securityContext.readOnlyRootFilesystem
+          value: true
+      - equal:
+          path: spec.template.spec.containers[0].securityContext.allowPrivilegeEscalation
+          value: false
+      - equal:
+          path: spec.template.spec.containers[0].securityContext.privileged
+          value: false
+      - contains:
+          path: spec.template.spec.containers[0].securityContext.capabilities.drop
+          content: ALL
+      # A read-only root filesystem is useless if nothing gives the process a
+      # writable /tmp, so the emptyDir is part of the gate, not a convenience.
+      - equal:
+          path: spec.template.spec.volumes[0].name
+          value: tmp
+      - equal:
+          path: spec.template.spec.containers[0].volumeMounts[0].mountPath
+          value: /tmp
+
+  # ---------------- Not a D-34 gate, but the same class of silent failure ----------------
+  - it: 'refuses a mutable image reference with no tag or digest'
+    set:
+      image.repository: repo
+    asserts:
+      - failedTemplate:
+          errorPattern: '`latest` is not a deployment'
+
+  - it: 'prefers a digest over a tag, so a rollback resolves to the same bytes'
+    set:
+      image.repository: repo
+      image.tag: abc1234
+      image.digest: sha256:0000000000000000000000000000000000000000000000000000000000000000
+    documentIndex: 0
+    asserts:
+      - equal:
+          path: spec.template.spec.containers[0].image
+          value: repo@sha256:0000000000000000000000000000000000000000000000000000000000000000
+
+  - it: 'does not mount a service account token it has no use for'
+    set:
+      image.repository: repo
+      image.tag: t
+    documentIndex: 0
+    asserts:
+      - equal:
+          path: spec.template.spec.automountServiceAccountToken
+          value: false

@@ -1,0 +1,4 @@
+{
+  "extends": "@ethanel/config/tsconfig/next",
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
+}

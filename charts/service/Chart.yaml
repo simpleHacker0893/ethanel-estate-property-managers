@@ -1,0 +1,8 @@
+apiVersion: v2
+name: service
+description: >-
+  The Helm library chart every Ethanel Deployment inherits (D-34). It renders the
+  Deployment, Service, PodDisruptionBudget, NetworkPolicy and HPA, and it refuses
+  to render at all when one of D-34's five structural gates is missing.
+type: library
+version: 0.1.0

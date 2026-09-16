@@ -1,0 +1,202 @@
+/*
+ * The design system's single @theme block.
+ *
+ * It lives in packages/ui and not in apps/web/app/(marketing)/ on purpose:
+ * D-27 requires this same scale to be re-derived per organization from a
+ * supplied logo and one accent colour for storefronts in Sprint 011. Tokens
+ * scoped to the marketing route group would have to move then, and a move is
+ * how a second source of truth gets created.
+ *
+ * Rule: every colour, radius, type and motion value in the repo comes from here.
+ * `grep -rE '#[0-9a-fA-F]{6}'` outside this file must return nothing.
+ *
+ * ============================================================================
+ * Why this scale (ticket 02, marketing track) — written down, not assumed:
+ *
+ * The brand is built for DATA DENSITY first and a landing page second, because
+ * Sprint 003's rent roll inherits it. The steps a rent roll will actually live
+ * in are `--text-data` (15px, tabular numerals) for every money cell,
+ * `--text-body-sm` (14px) for dense table rows, `--text-caption` (13px) for
+ * column headers and metadata, `--text-h4` for section heads inside tables, and
+ * row heights built on the 4px base spacing step. The display and heading steps
+ * exist for marketing surfaces; they are the outliers, not the core.
+ *
+ * Contrast pairs are computed, not guessed (WCAG 2.1 relative luminance):
+ *   brand-900 #16382A on white ................. 12.86:1  (AAA body)
+ *   ochre-300 #E2A85D fill + brand-900 ink ......  6.12:1  (THE CTA pair;
+ *      the exact figure the blueprint pins. AA body text and AA large text.)
+ *   ochre-200 + brand-900 .......................  8.36:1  (badges, large numerals)
+ *   ochre-100 + brand-900 ......................  10.34:1  (banners)
+ *   ochre-400 + brand-900 .......................  4.51:1  (AA body, quiet fills)
+ *   ochre-500 + brand-900 .......................  3.64:1  (large text only —
+ *      the floor at which ochre stops being an ink carrier)
+ *   ochre-500 on white ..........................  3.53:1  (FORBIDDEN pair)
+ *
+ * Usage rules, enforced by review and demonstrated in /kitchen-sink:
+ *   - Ochre is NEVER text on white and NEVER carries white text.
+ *   - The primary CTA is always the ochre-300 fill with brand-900 ink (6.12:1).
+ *     The same pair serves dark mode: the fill is light, so the ink stays dark.
+ *   - Focus ring: 2px brand-500 at 2px offset, never removed.
+ *   - Touch targets: --spacing-touch (44px) minimum.
+ * ============================================================================
+ */
+
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------- palette --- */
+@theme {
+  /* Brand green — deep, restrained; brand-900 is the anchor ink. */
+  --color-brand-50: #f0f6f2;
+  --color-brand-100: #dcebe2;
+  --color-brand-200: #b9d6c6;
+  --color-brand-300: #8fba9f;
+  --color-brand-400: #5f9b76;
+  --color-brand-500: #3e7c58;
+  --color-brand-600: #2c6245;
+  --color-brand-700: #224d37;
+  --color-brand-800: #1b4433;
+  --color-brand-900: #16382a;
+
+  /* Ochre accent — warm, never a body-text colour. ochre-300 is the CTA fill. */
+  --color-ochre-50: #fbf4e8;
+  --color-ochre-100: #f7e4c8;
+  --color-ochre-200: #efcb96;
+  --color-ochre-300: #e2a85d;
+  --color-ochre-400: #d08a33;
+  --color-ochre-500: #c47616;
+  --color-ochre-600: #a05a0e;
+  --color-ochre-700: #7a450b;
+  --color-ochre-800: #543008;
+  --color-ochre-900: #341d05;
+
+  /* Warm neutrals — gray with a paper warmth; neutral-950 is the dark surface. */
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #faf8f5;
+  --color-neutral-100: #f3efe9;
+  --color-neutral-200: #e7e0d6;
+  --color-neutral-300: #d5cbbd;
+  --color-neutral-400: #b3a797;
+  --color-neutral-500: #8b7e6e;
+  --color-neutral-600: #6c6153;
+  --color-neutral-700: #4f483d;
+  --color-neutral-800: #34302a;
+  --color-neutral-900: #201d18;
+  --color-neutral-950: #14120e;
+
+  /* Type — fluid clamp() scale. Display and h1..h4 serve marketing; data,
+   * body-sm and caption serve the rent roll (see the note above). */
+  --text-display: clamp(2.25rem, 1.6rem + 3.2vw, 3.5rem);
+  --text-display--line-height: 1.1;
+  --text-display--letter-spacing: -0.02em;
+  --text-h1: clamp(1.875rem, 1.5rem + 1.9vw, 2.5rem);
+  --text-h1--line-height: 1.15;
+  --text-h1--letter-spacing: -0.015em;
+  --text-h2: clamp(1.5rem, 1.3rem + 1vw, 1.875rem);
+  --text-h2--line-height: 1.25;
+  --text-h3: clamp(1.25rem, 1.15rem + 0.5vw, 1.4375rem);
+  --text-h3--line-height: 1.3;
+  --text-h4: clamp(1.125rem, 1.07rem + 0.25vw, 1.25rem);
+  --text-h4--line-height: 1.35;
+  --text-body-lg: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+  --text-body-lg--line-height: 1.6;
+  --text-body: 1rem;
+  --text-body--line-height: 1.6;
+  --text-body-sm: 0.875rem;
+  --text-body-sm--line-height: 1.5;
+  --text-caption: 0.8125rem;
+  --text-caption--line-height: 1.4;
+  --text-data: 0.9375rem;
+  --text-data--line-height: 1.4;
+  --text-data--font-variant-numeric: tabular-nums;
+
+  /* Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+
+  /* Motion — durations short enough that state changes read as instant on a
+   * mid-range handset; easing decelerates without bouncing. */
+  --motion-fast: 120ms;
+  --motion-base: 200ms;
+  --motion-slow: 320ms;
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Fonts — at most two families (requirements budget row), wired by next/font
+   * in the app layout and exposed through these indirections. */
+  --font-sans: var(--font-sans-next, ui-sans-serif, system-ui, sans-serif);
+  --font-mono: var(--font-data-next, ui-monospace, 'Cascadia Mono', monospace);
+}
+
+/* ------------------------------------------------------------- semantics ---
+ * Semantic tokens are indirections so dark mode is a redefinition, not a
+ * second palette (no manual toggle — D-69 keeps `use cache`, this keeps the
+ * components colour-blind about the scheme). Components use surface/ink/line,
+ * never a raw palette step, except through the pairs documented above.
+ */
+:root {
+  --surface: var(--color-neutral-0);
+  --surface-raised: var(--color-neutral-50);
+  --surface-sunken: var(--color-neutral-100);
+  --ink: var(--color-neutral-900);
+  --ink-muted: var(--color-neutral-600);
+  --line: var(--color-neutral-200);
+  --cta-fill: var(--color-ochre-300);
+  --cta-ink: var(--color-brand-900);
+  --accent-band: var(--color-brand-900);
+  --accent-band-ink: var(--color-neutral-0);
+  --focus-ring: 2px solid var(--color-brand-500);
+  --spacing-touch: 2.75rem; /* 44px touch-target floor */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface: var(--color-neutral-950);
+    --surface-raised: var(--color-neutral-900);
+    --surface-sunken: var(--color-neutral-800);
+    --ink: var(--color-neutral-100);
+    --ink-muted: var(--color-neutral-400);
+    --line: var(--color-neutral-700);
+    /* CTA is unchanged in dark mode: the ochre-300 fill is light, so the
+     * brand-900 ink keeps its computed 6.12:1. */
+  }
+}
+
+@theme inline {
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-line: var(--line);
+  --color-cta-fill: var(--cta-fill);
+  --color-cta-ink: var(--cta-ink);
+  --color-accent-band: var(--accent-band);
+  --color-accent-band-ink: var(--accent-band-ink);
+  --color-focus: var(--color-brand-500);
+}
+
+/* ---------------------------------------------------------------- behavior ---
+ * The visible focus ring is a requirement, not a default; reassert it because
+ * Tailwind preflight does not provide one.
+ */
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* Reduced motion: every transform and opacity animation is disabled and state
+ * changes stay instant (acceptance-relevant; blueprint §Accessibility). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
