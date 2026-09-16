@@ -14,6 +14,10 @@ export default defineConfig({
   use: {
     baseURL: process.env.PLAYWRIGHT_BASE_URL ?? 'http://127.0.0.1:3000',
     trace: 'retain-on-failure',
+    // Opt-in escape hatch for machines where downloading the bundled chromium
+    // is impossible (restricted network): PLAYWRIGHT_CHANNEL=chrome runs the
+    // suite on an installed Google Chrome instead. CI stays on chromium.
+    ...(process.env.PLAYWRIGHT_CHANNEL ? { channel: process.env.PLAYWRIGHT_CHANNEL } : {}),
   },
   // The assertions that are about geometry run at the phone profile the
   // acceptance criteria name (390x844, criterion 4 and 5).
